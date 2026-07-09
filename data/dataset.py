@@ -7,7 +7,7 @@ read the manifest — never re-sampling masks or prompts at run time.
 
 Layout expected (already used for FreqSpec COCO runs):
     root/
-      images/val2017/*.jpg
+      val2017/*.jpg  (또는 images/val2017/*.jpg — 자동 감지)
       annotations/captions_val2017.json
 """
 from __future__ import annotations
@@ -45,6 +45,12 @@ def build_manifest(
     """Write a frozen benchmark manifest: n samples, balanced mask types/buckets."""
     root_p = Path(root)
     caps = _load_captions(root_p / "annotations" / "captions_val2017.json")
+    # image dir layout varies: <root>/val2017 (공식 zip 압축 해제 그대로)
+    # 또는 <root>/images/val2017 — 존재하는 쪽을 자동 선택
+    img_dir = root_p / "val2017"
+    if not img_dir.is_dir():
+        img_dir = root_p / "images" / "val2017"
+    assert img_dir.is_dir(), f"val2017 images not found under {root}"
     files = sorted(caps)
     random.Random(shuffle_seed).shuffle(files)
     files = files[:n]
@@ -53,7 +59,7 @@ def build_manifest(
         spec = spec_for_index(sample_id=fn, index=i, seed=mask_seed)
         items.append({
             "sample_id": fn,
-            "image": str(root_p / "images" / "val2017" / fn),
+            "image": str(img_dir / fn),
             "prompt": caps[fn],
             "mask_type": spec.mask_type,
             "bucket": spec.bucket,

@@ -20,7 +20,7 @@ python tests/test_sparse_math_mock.py    # sparse 수식 fresh-cache exactness (
 # 2) 벤치마크 고정 (COCO val2017)
 python - << 'PY'
 from data.dataset import build_manifest
-build_manifest("/mnt/HDD_12TB/bam_ki/datasets/coco", "data/coco_manifest.json",
+build_manifest("/mnt/HDD_12TB/bam_ki/datasets/coco2017", "data/coco_manifest.json",
                n=500, resolution=512)
 PY
 python -m data.prompt_cache --manifest data/coco_manifest.json \

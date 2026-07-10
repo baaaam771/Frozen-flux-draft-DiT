@@ -84,8 +84,8 @@ class FluxAnchorCache:
         for t in self.single_block_inputs:
             n += t.numel() * t.element_size()
         for kv in self.single_block_kv:
-            total += kv[0].numel() * kv[0].element_size()
-            total += kv[1].numel() * kv[1].element_size()
+            n += kv[0].numel() * kv[0].element_size()
+            n += kv[1].numel() * kv[1].element_size()
         for t in (self.entry_image_states, self.entry_text_states, self.final_prediction,
                   self.anchor_latents, self.anchor_clean_estimate):
             if t is not None:

@@ -109,6 +109,7 @@ class SelectorState:
 def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                method: str, cache_period: int, ratio: float, selector: str,
                block: int, mask_px: torch.Tensor, freq_source: str,
+               dense_head: int = 0, dense_tail: int = 0,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
     stats dict (target evals, sparse fraction, per-step records)."""
@@ -122,10 +123,15 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     attn_fracs, mac_ratios, actual_ratios = [], [], []
     hetero_rows = []
     v_prev = None
+    n_steps = len(state.timesteps)
 
     for i, t in enumerate(state.timesteps):
         sigma = pipe.scheduler.sigmas[i]
-        is_anchor = (method in ("reuse", "cache_sparse")) and (i % cache_period == 0)
+        # schedule-aware policy: hetero 측정에서 마지막 ~4 step은 변화가 mask 밖으로
+        # 퍼지고(in/out 25x -> 0.4) energy가 튐 -> 그 구간은 무조건 dense(anchor).
+        forced_dense = (i < dense_head) or (i >= n_steps - dense_tail)
+        is_anchor = (method in ("reuse", "cache_sparse")) and \
+                    (i % cache_period == 0 or forced_dense)
 
         if method in ("dense", "hetero") or is_anchor:
             model_input_cache = cache if is_anchor else None
@@ -233,6 +239,10 @@ def main():
                     help="added to each sample's manifest latent_seed (Stage 8 multi-seed)")
     ap.add_argument("--draft-ckpt", default="",
                     help="CNN router checkpoint for mbfd_draft (Stage 6)")
+    ap.add_argument("--dense-head", type=int, default=0,
+                    help="처음 K step 강제 dense (anchor)")
+    ap.add_argument("--dense-tail", type=int, default=0,
+                    help="마지막 K step 강제 dense — hetero 곡선의 말기 붕괴 구간 방어")
     ap.add_argument("--prefetch", action=__import__("argparse").BooleanOptionalAction,
                     default=True, help="background next-sample loading (--no-prefetch로 끔)")
     ap.add_argument("--tag", default="run")
@@ -286,6 +296,7 @@ def main():
                    cache_period=a.cache_period, ratio=a.ratio,
                    selector=a.selector, block=a.block,
                    mask_px=s["mask"].unsqueeze(0).to(dev), freq_source=a.freq_source,
+                   dense_head=a.dense_head, dense_tail=a.dense_tail,
                    draft=draft, log=log)
         img = decode_latents(pipe, state)
         torch.cuda.synchronize()

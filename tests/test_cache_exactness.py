@@ -82,7 +82,11 @@ def main():
     print(f"[Gate B2] step {a.step_index}: max|v_dense| = {scale:.3e} "
           f"(in-distribution check; 랜덤 입력이면 1e4+로 폭발)")
 
-    tol = 1e-4 if a.fp32 else 1e-2      # RELATIVE tolerance
+    # RELATIVE tolerance. bf16 기준은 'ulp 예산': 57개 블록에 걸친 shape 의존
+    # GEMM 축약 차이는 |v|의 bf16 ulp(2^-8·|v|) 단위로 쌓인다 — 실측 single-only
+    # 1 ulp, dual+kv 2 ulp. bf16은 3 ulp(rel≈1.2e-2)+여유 = 2e-2로 두고,
+    # 수학적 exactness의 판정은 fp32(1e-4)가 담당한다.
+    tol = 1e-4 if a.fp32 else 2e-2
     ok = True
     for r in a.ratios:
         k = max(1, int(r * N))
@@ -98,10 +102,12 @@ def main():
         abs_err = (v_hard.float() - ref.float()).abs().max().item()
         rel_err = abs_err / max(scale, 1e-12)
         merged_abs = (v_merged.float() - v_dense.float()).abs().max().item()
+        ulps = abs_err / (2 ** -8 * max(scale, 1e-12))
         status = "PASS" if rel_err <= tol else "FAIL"
         ok &= rel_err <= tol
         print(f"[Gate B2] ratio={r}: hard max|dv|={abs_err:.3e} "
-              f"rel={rel_err:.3e} merged max|dv|={merged_abs:.3e}  {status}")
+              f"rel={rel_err:.3e} (~{ulps:.1f} bf16 ulp) "
+              f"merged max|dv|={merged_abs:.3e}  {status}")
     print(f"cache VRAM: {cache.vram_bytes()/2**30:.2f} GB")
     raise SystemExit(0 if ok else 1)
 

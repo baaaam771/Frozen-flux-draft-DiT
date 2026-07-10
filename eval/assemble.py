@@ -18,7 +18,8 @@ from pathlib import Path
 
 COLS = ["Method", "Steps", "Anchor c", "Ratio r(req)", "r(actual)", "Block",
         "Selector", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
-        "KnownPSNR→input", "MACratio(est)", "Wall(s)", "VRAM(GB)", "n"]
+        "KnownPSNR→input", "MACratio(est)", "Wall(s)", "VRAM(GB)",
+        "Imgs", "Seeds"]
 
 MET_KEYS = {"MaskLPIPS→ref": "mask_lpips_to_ref",
             "BndLPIPS→ref": "boundary_lpips_to_ref",
@@ -29,7 +30,12 @@ MET_KEYS = {"MaskLPIPS→ref": "mask_lpips_to_ref",
 def _load(run_dir: Path):
     run = json.load(open(run_dir / "run.json"))
     met_p = run_dir / "metrics.json"
-    met = json.load(open(met_p))["aggregate"] if met_p.exists() else {}
+    met_n = 0
+    met = {}
+    if met_p.exists():
+        mj = json.load(open(met_p))
+        met = mj["aggregate"]
+        met_n = mj.get("n", 0)          # 평가된 이미지 수 (metrics.json 기준)
     cfg = run["config"]
     rows = [r for r in run["rows"] if not r.get("warmup")]      # Fix 7
     wall = sum(r["wall_s"] for r in rows) / max(len(rows), 1)
@@ -43,7 +49,7 @@ def _load(run_dir: Path):
            cfg.get("ratio") if cfg["method"] == "cache_sparse" else None,
            cfg.get("block", 1) if cfg["method"] == "cache_sparse" else None,
            cfg.get("selector") if cfg["method"] == "cache_sparse" else None)
-    return {"sig": sig, "wall": wall, "vram": vram,
+    return {"sig": sig, "wall": wall, "vram": vram, "met_n": met_n,
             "r_actual": statistics.mean(ratios) if ratios else None,
             "mac": statistics.mean(macs) if macs else None,
             "met": {k: met.get(v) for k, v in MET_KEYS.items()}}
@@ -83,7 +89,10 @@ def main():
                "MACratio(est)": _fmt([L["mac"] for L in Ls], 3),
                "Wall(s)": _fmt([L["wall"] for L in Ls], 2),
                "VRAM(GB)": _fmt([L["vram"] for L in Ls], 1),
-               "n": len(Ls)}
+               # Imgs: metrics.json이 평가한 이미지 수 (seed별 동일해야 정상)
+               "Imgs": "/".join(str(L["met_n"]) for L in Ls)
+                       if len({L["met_n"] for L in Ls}) > 1 else Ls[0]["met_n"],
+               "Seeds": len(Ls)}
         for col in MET_KEYS:
             row[col] = _fmt([L["met"][col] for L in Ls])
         table.append(row)

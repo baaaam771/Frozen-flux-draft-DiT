@@ -17,7 +17,7 @@ import statistics
 from pathlib import Path
 
 COLS = ["Method", "Steps", "Anchor c", "Ratio r(req)", "r(actual)", "Block",
-        "Selector", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
+        "Selector", "Tail", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
         "KnownPSNR→input", "MACratio(est)", "Wall(s)", "VRAM(GB)",
         "Imgs", "Seeds"]
 
@@ -44,11 +44,14 @@ def _load(run_dir: Path):
               if r.get("mean_actual_ratio") is not None]
     macs = [r["mean_est_transformer_mac_ratio"] for r in run["rows"]
             if r.get("mean_est_transformer_mac_ratio") is not None]
+    tail = (cfg.get("dense_head", 0), cfg.get("dense_tail", 0)) \
+        if cfg["method"] in ("reuse", "cache_sparse") else None
     sig = (cfg["method"], cfg["steps"],
            cfg.get("cache_period") if cfg["method"] != "dense" else None,
            cfg.get("ratio") if cfg["method"] == "cache_sparse" else None,
            cfg.get("block", 1) if cfg["method"] == "cache_sparse" else None,
-           cfg.get("selector") if cfg["method"] == "cache_sparse" else None)
+           cfg.get("selector") if cfg["method"] == "cache_sparse" else None,
+           tail)
     return {"sig": sig, "wall": wall, "vram": vram, "met_n": met_n,
             "r_actual": statistics.mean(ratios) if ratios else None,
             "mac": statistics.mean(macs) if macs else None,
@@ -79,13 +82,17 @@ def main():
 
     table, csv_rows = [], []
     for sig, Ls in groups.items():
-        method, steps, c, r, block, selector = sig
+        method, steps, c, r, block, selector, tail = sig
         row = {"Method": method, "Steps": steps,
                "Anchor c": c if c is not None else "-",
                "Ratio r(req)": r if r is not None else "-",
                "r(actual)": _fmt([L["r_actual"] for L in Ls], 3),
                "Block": block if block is not None else "-",
                "Selector": selector if selector is not None else "-",
+               "Tail": ("-" if tail is None else
+                        (f"h{tail[0]}+t{tail[1]}" if tail[0] else f"t{tail[1]}")
+                        if tail and (tail[0] or tail[1]) else
+                        ("0" if tail is not None else "-")),
                "MACratio(est)": _fmt([L["mac"] for L in Ls], 3),
                "Wall(s)": _fmt([L["wall"] for L in Ls], 2),
                "VRAM(GB)": _fmt([L["vram"] for L in Ls], 1),

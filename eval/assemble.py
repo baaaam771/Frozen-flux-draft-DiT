@@ -17,7 +17,7 @@ import statistics
 from pathlib import Path
 
 COLS = ["Method", "Steps", "Anchor c", "Ratio r(req)", "r(actual)", "Block",
-        "Selector", "Tail", "KV", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
+        "Selector", "Tail", "KV", "Dual", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
         "KnownPSNR→input", "MACratio(est)", "Wall(s)", "VRAM(GB)",
         "Imgs", "Seeds"]
 
@@ -51,7 +51,8 @@ def _load(run_dir: Path):
            cfg.get("ratio") if cfg["method"] == "cache_sparse" else None,
            cfg.get("block", 1) if cfg["method"] == "cache_sparse" else None,
            cfg.get("selector") if cfg["method"] == "cache_sparse" else None,
-           tail, bool(cfg.get("kv_cache", False)))
+           tail, bool(cfg.get("kv_cache", False)),
+           bool(cfg.get("dual_sparse", False)))
     return {"sig": sig, "wall": wall, "vram": vram, "met_n": met_n,
             "r_actual": statistics.mean(ratios) if ratios else None,
             "mac": statistics.mean(macs) if macs else None,
@@ -82,7 +83,7 @@ def main():
 
     table, csv_rows = [], []
     for sig, Ls in groups.items():
-        method, steps, c, r, block, selector, tail, kv = sig
+        method, steps, c, r, block, selector, tail, kv, dual = sig
         row = {"Method": method, "Steps": steps,
                "Anchor c": c if c is not None else "-",
                "Ratio r(req)": r if r is not None else "-",
@@ -90,6 +91,7 @@ def main():
                "Block": block if block is not None else "-",
                "Selector": selector if selector is not None else "-",
                "KV": ("Y" if kv else "-"),
+               "Dual": ("Y" if dual else "-"),
                "Tail": ("-" if tail is None else
                         (f"h{tail[0]}+t{tail[1]}" if tail[0] else f"t{tail[1]}")
                         if tail and (tail[0] or tail[1]) else

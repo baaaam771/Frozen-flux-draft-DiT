@@ -17,32 +17,56 @@ from models.flux_sparse_transformer import FluxSparseRunner, prepare_latent_imag
 from tests.test_sparse_math_mock import MockSingleBlock, _rope_tables
 
 
-class MockDualBlock(nn.Module):
-    """Joint attention over [text;image] like FluxTransformerBlock, returning
-    (encoder_hidden_states, hidden_states)."""
-
-    def __init__(self, d=64, heads=4):
+class MockAdaLNZero(nn.Module):
+    """AdaLayerNormZero: returns (modulated, gate_msa, shift_mlp, scale_mlp, gate_mlp)."""
+    def __init__(self, d):
         super().__init__()
+        self.lin = nn.Linear(d, 6 * d)
+        self.norm = nn.LayerNorm(d, elementwise_affine=False, eps=1e-6)
+
+    def forward(self, x, emb=None):
+        sm, cm, gm, s2, c2, g2 = self.lin(torch.nn.functional.silu(emb)).chunk(6, -1)
+        return self.norm(x) * (1 + cm[:, None]) + sm[:, None], gm, s2, c2, g2
+
+
+class MockDualAttn(nn.Module):
+    def __init__(self, d, heads):
+        super().__init__()
+        from tests.test_sparse_math_mock import MockRMSNorm
         self.heads = heads
-        self.q = nn.Linear(d, d); self.k = nn.Linear(d, d); self.v = nn.Linear(d, d)
-        self.o = nn.Linear(d, d)
-        self.ln = nn.LayerNorm(d)
+        self.to_q = nn.Linear(d, d); self.to_k = nn.Linear(d, d); self.to_v = nn.Linear(d, d)
+        self.add_q_proj = nn.Linear(d, d); self.add_k_proj = nn.Linear(d, d)
+        self.add_v_proj = nn.Linear(d, d)
+        hd = d // heads
+        self.norm_q = MockRMSNorm(hd); self.norm_k = MockRMSNorm(hd)
+        self.norm_added_q = MockRMSNorm(hd); self.norm_added_k = MockRMSNorm(hd)
+        self.to_out = nn.ModuleList([nn.Linear(d, d)])
+        self.to_add_out = nn.Linear(d, d)
+
+
+class MockDualBlock(nn.Module):
+    """Full FluxTransformerBlock-shaped mock; stock forward delegates to the
+    manual _dual_block_dense so mock stock == manual by construction (the real
+    stock-vs-manual equivalence is Gate B0-dual's job)."""
+    def __init__(self, d=64, heads=4, mlp_ratio=2):
+        super().__init__()
+        self.norm1 = MockAdaLNZero(d)
+        self.norm1_context = MockAdaLNZero(d)
+        self.attn = MockDualAttn(d, heads)
+        self.norm2 = nn.LayerNorm(d, elementwise_affine=False, eps=1e-6)
+        self.norm2_context = nn.LayerNorm(d, elementwise_affine=False, eps=1e-6)
+        self.ff = nn.Sequential(nn.Linear(d, d * mlp_ratio), nn.GELU(approximate="tanh"),
+                                nn.Linear(d * mlp_ratio, d))
+        self.ff_context = nn.Sequential(nn.Linear(d, d * mlp_ratio),
+                                        nn.GELU(approximate="tanh"),
+                                        nn.Linear(d * mlp_ratio, d))
 
     def forward(self, hidden_states=None, encoder_hidden_states=None,
                 temb=None, image_rotary_emb=None):
-        x, ctx = hidden_states, encoder_hidden_states
-        T = ctx.shape[1]
-        h = torch.cat([ctx, x], dim=1)
-        n = self.ln(h + temb[:, None])
-        B, S, D = n.shape
-        H = self.heads
-        q = self.q(n).view(B, S, H, D // H).transpose(1, 2)
-        k = self.k(n).view(B, S, H, D // H).transpose(1, 2)
-        v = self.v(n).view(B, S, H, D // H).transpose(1, 2)
-        o = torch.nn.functional.scaled_dot_product_attention(q, k, v)
-        o = o.transpose(1, 2).reshape(B, S, D)
-        h = h + self.o(o)
-        return h[:, :T], h[:, T:]
+        from models.flux_sparse_transformer import _dual_block_dense
+        cos, sin = image_rotary_emb
+        return _dual_block_dense(self, hidden_states, encoder_hidden_states,
+                                 temb, cos, sin)
 
 
 class MockTimeTextEmbed(nn.Module):
@@ -172,4 +196,39 @@ def test_kv_cache_exact_at_anchor_step():
     d = (v_kv - v_nk).abs().max().item()
     print(f"kv staleness at different temb: max|d| = {d:.3e} (>0 expected)")
     assert d > 1e-8
+    torch.set_default_dtype(torch.float32)
+
+
+def test_dual_sparse_fresh_cache_exactness():
+    """Lever A: dual_sparse (exact 모드와 kv 모드 모두) fresh cache에서 dense와 일치."""
+    torch.manual_seed(2)
+    torch.set_default_dtype(torch.float64)
+    B, T, hp, wp = 1, 7, 4, 6
+    N = hp * wp
+    t = MockFluxTransformer(in_ch=32, joint_dim=48, pooled_dim=24)
+    runner = FluxSparseRunner(t)
+    x = torch.randn(B, N, 32); pe = torch.randn(B, T, 48); po = torch.randn(B, 24)
+    ts = torch.full((B,), 0.5); gd = torch.full((B,), 30.0)
+    img_ids = prepare_latent_image_ids(hp, wp, "cpu", torch.float64)
+    txt_ids = torch.zeros(T, 3)
+
+    cache = FluxAnchorCache()
+    v_dense, _ = runner.dense_forward(x, pe, po, ts, gd, img_ids, txt_ids,
+                                      cache=cache, step_index=0,
+                                      record_kv=True, record_dual=True)
+    assert len(cache.dual_block_inputs) == len(t.transformer_blocks)
+    assert len(cache.dual_block_kv) == len(t.transformer_blocks)
+
+    for ratio in (0.2, 0.6):
+        k = max(1, int(ratio * N))
+        hard = torch.sort(torch.randperm(N)[:k]).values[None]
+        ref = torch.gather(v_dense, 1, hard.unsqueeze(-1).expand(-1, -1, v_dense.shape[-1]))
+        for kv in (False, True):
+            v_hard, st = runner.sparse_forward(x, pe, po, ts, gd, img_ids, txt_ids,
+                                               cache, hard, kv_cache=kv,
+                                               dual_sparse=True)
+            err = (v_hard - ref).abs().max().item()
+            print(f"dual_sparse ratio={ratio} kv={kv}: max|dv| = {err:.3e} "
+                  f"(est MAC {st.est_transformer_mac_ratio:.3f})")
+            assert err < 1e-9
     torch.set_default_dtype(torch.float32)

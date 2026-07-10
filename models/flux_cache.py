@@ -64,6 +64,15 @@ class FluxAnchorCache:
         self.step_index = step_index
         self.single_block_inputs = []
         self.single_block_kv = []
+        self.dual_block_inputs = []
+        self.dual_block_kv = []
+
+    def record_dual_input(self, image_states: torch.Tensor):
+        self.dual_block_inputs.append(image_states.detach().contiguous())
+
+    def record_dual_kv(self, k_img: torch.Tensor, v_img: torch.Tensor):
+        self.dual_block_kv.append((k_img.detach().contiguous(),
+                                   v_img.detach().contiguous()))
 
     def record_single_kv(self, k_img: torch.Tensor, v_img: torch.Tensor):
         self.single_block_kv.append((k_img.detach().contiguous(),
@@ -81,8 +90,11 @@ class FluxAnchorCache:
 
     def vram_bytes(self) -> int:
         n = 0
-        for t in self.single_block_inputs:
+        for t in self.single_block_inputs + self.dual_block_inputs:
             n += t.numel() * t.element_size()
+        for kv in self.dual_block_kv:
+            n += kv[0].numel() * kv[0].element_size()
+            n += kv[1].numel() * kv[1].element_size()
         for kv in self.single_block_kv:
             n += kv[0].numel() * kv[0].element_size()
             n += kv[1].numel() * kv[1].element_size()

@@ -55,6 +55,14 @@ def _assert_structure(transformer):
             f"single block {j}: added KV projections (IP-Adapter?) — {PINNED_HINT}"
     heads = transformer.single_transformer_blocks[0].attn.heads
     assert heads == transformer.config.num_attention_heads, PINNED_HINT
+    # Lever A: manual dual path가 가정하는 서브모듈 (Gate B0-dual과 짝)
+    db = transformer.transformer_blocks[0]
+    for attr in ("norm1", "norm1_context", "attn", "norm2", "norm2_context",
+                 "ff", "ff_context"):
+        assert hasattr(db, attr), f"dual block missing .{attr}: {PINNED_HINT}"
+    for attr in ("add_q_proj", "add_k_proj", "add_v_proj", "to_add_out",
+                 "norm_added_q", "norm_added_k"):
+        assert hasattr(db.attn, attr), f"dual attn missing .{attr}: {PINNED_HINT}"
 
 
 @dataclass

@@ -46,6 +46,7 @@ def main():
     ap.add_argument("--text-len", type=int, default=512)
     ap.add_argument("--ratios", type=float, nargs="+", default=[0.1, 0.3, 0.5, 0.7])
     ap.add_argument("--kv-cache", action="store_true")
+    ap.add_argument("--dual-sparse", action="store_true")
     ap.add_argument("--iters", type=int, default=20)
     ap.add_argument("--out", default="latency.json")
     a = ap.parse_args()
@@ -70,7 +71,7 @@ def main():
 
     report = {"resolution": a.resolution, "tokens": N,
               "scope": "transformer-only (denoise loop, VAE, text enc excluded)",
-              "kv_cache": a.kv_cache}
+              "kv_cache": a.kv_cache, "dual_sparse": a.dual_sparse}
     cache = FluxAnchorCache()
     torch.cuda.reset_peak_memory_stats()
     report["dense"] = _timeit(lambda: runner.dense_forward(
@@ -79,7 +80,7 @@ def main():
     torch.cuda.reset_peak_memory_stats()
     report["anchor(record)"] = _timeit(lambda: runner.dense_forward(
         x, pe, po, ts, gd, img_ids, txt_ids, cache=cache, step_index=0,
-        record_kv=a.kv_cache), a.iters)
+        record_kv=a.kv_cache, record_dual=a.dual_sparse), a.iters)
     report["anchor(record)"]["peak_vram_gb"] = torch.cuda.max_memory_allocated() / 2**30
     report["cache_vram_gb"] = cache.vram_bytes() / 2**30
 
@@ -89,14 +90,14 @@ def main():
         torch.cuda.reset_peak_memory_stats()
         report[f"sparse_r{r}"] = _timeit(lambda: runner.sparse_forward(
             x, pe, po, ts, gd, img_ids, txt_ids, cache, hard,
-            kv_cache=a.kv_cache), a.iters)
+            kv_cache=a.kv_cache, dual_sparse=a.dual_sparse), a.iters)
         report[f"sparse_r{r}"]["peak_vram_gb"] = torch.cuda.max_memory_allocated() / 2**30
         D = (comps.transformer.config.num_attention_heads
              * comps.transformer.config.attention_head_dim)
         report[f"sparse_r{r}"]["est_mac_ratio"] = estimate_transformer_macs(
             a.text_len, N, k, len(comps.transformer.transformer_blocks),
             len(comps.transformer.single_transformer_blocks), D,
-            kv_cached=a.kv_cache)["mac_ratio"]
+            kv_cached=a.kv_cache, dual_sparse=a.dual_sparse)["mac_ratio"]
         report[f"sparse_r{r}"]["speedup_vs_dense"] = (
             report["dense"]["median_ms"] / report[f"sparse_r{r}"]["median_ms"])
 

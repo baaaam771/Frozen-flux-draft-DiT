@@ -110,6 +110,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                method: str, cache_period: int, ratio: float, selector: str,
                block: int, mask_px: torch.Tensor, freq_source: str,
                dense_head: int = 0, dense_tail: int = 0, kv_cache: bool = False,
+               dual_sparse: bool = False,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
     stats dict (target evals, sparse fraction, per-step records)."""
@@ -141,7 +142,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                                         timestep, state.guidance, state.img_ids,
                                         state.txt_ids, cache=model_input_cache,
                                         step_index=i,
-                                        record_kv=kv_cache and is_anchor)
+                                        record_kv=kv_cache and is_anchor,
+                                        record_dual=dual_sparse and is_anchor)
             n_anchor += 1
             if is_anchor:
                 # Fix 1: precompute the TRUE anchor clean estimate x0_a = z_a - s_a*v_a
@@ -169,7 +171,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
             v_hard, st = runner.sparse_forward(model_input, state.prompt_embeds,
                                                state.pooled, timestep, state.guidance,
                                                state.img_ids, state.txt_ids,
-                                               cache, hard_idx, kv_cache=kv_cache)
+                                               cache, hard_idx, kv_cache=kv_cache,
+                                               dual_sparse=dual_sparse)
             v = runner.merge_prediction(cache, hard_idx, v_hard)
             n_sparse += 1
             attn_fracs.append(st.single_attn_fraction)
@@ -240,6 +243,8 @@ def main():
                     help="added to each sample's manifest latent_seed (Stage 8 multi-seed)")
     ap.add_argument("--draft-ckpt", default="",
                     help="CNN router checkpoint for mbfd_draft (Stage 6)")
+    ap.add_argument("--dual-sparse", action="store_true",
+                    help="Lever A: dual stream image 토큰도 sparse (fresh cache에서 exact)")
     ap.add_argument("--kv-cache", action="store_true",
                     help="Lever B: easy 토큰 K/V를 anchor에서 동결 (temb-staleness 근사)")
     ap.add_argument("--dense-head", type=int, default=0,
@@ -300,7 +305,8 @@ def main():
                    selector=a.selector, block=a.block,
                    mask_px=s["mask"].unsqueeze(0).to(dev), freq_source=a.freq_source,
                    dense_head=a.dense_head, dense_tail=a.dense_tail,
-                   kv_cache=a.kv_cache, draft=draft, log=log)
+                   kv_cache=a.kv_cache, dual_sparse=a.dual_sparse,
+                   draft=draft, log=log)
         img = decode_latents(pipe, state)
         torch.cuda.synchronize()
         log.update({"sample_id": s["sample_id"], "bucket": s["bucket"],

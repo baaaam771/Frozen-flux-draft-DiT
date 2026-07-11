@@ -110,7 +110,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                method: str, cache_period: int, ratio: float, selector: str,
                block: int, mask_px: torch.Tensor, freq_source: str,
                dense_head: int = 0, dense_tail: int = 0, kv_cache: bool = False,
-               dual_sparse: bool = False,
+               dual_sparse: bool = False, dump_selection: list | None = None,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
     stats dict (target evals, sparse fraction, per-step records)."""
@@ -174,6 +174,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                                                cache, hard_idx, kv_cache=kv_cache,
                                                dual_sparse=dual_sparse)
             v = runner.merge_prediction(cache, hard_idx, v_hard)
+            if dump_selection is not None:
+                dump_selection.append({"step": i, "hard_idx": hard_idx[0].cpu()})
             n_sparse += 1
             attn_fracs.append(st.single_attn_fraction)
             mac_ratios.append(st.est_transformer_mac_ratio)
@@ -243,6 +245,8 @@ def main():
                     help="added to each sample's manifest latent_seed (Stage 8 multi-seed)")
     ap.add_argument("--draft-ckpt", default="",
                     help="CNN router checkpoint for mbfd_draft (Stage 6)")
+    ap.add_argument("--dump-selection", action="store_true",
+                    help="step별 hard 토큰 인덱스 저장 (selection map figure용)")
     ap.add_argument("--dual-sparse", action="store_true",
                     help="Lever A: dual stream image 토큰도 sparse (fresh cache에서 exact)")
     ap.add_argument("--kv-cache", action="store_true",
@@ -306,6 +310,7 @@ def main():
                    mask_px=s["mask"].unsqueeze(0).to(dev), freq_source=a.freq_source,
                    dense_head=a.dense_head, dense_tail=a.dense_tail,
                    kv_cache=a.kv_cache, dual_sparse=a.dual_sparse,
+                   dump_selection=(sel_dump := [] if a.dump_selection else None),
                    draft=draft, log=log)
         img = decode_latents(pipe, state)
         torch.cuda.synchronize()
@@ -325,6 +330,9 @@ def main():
         inp = s["image"].to(img.device, img.dtype)              # [3,H,W]
         _save_img(m_px * img + (1 - m_px) * inp, out / f"{stem}_pasted.png")
         torch.save(s["mask"], out / f"{stem}_mask.pt")
+        if a.dump_selection and sel_dump:
+            torch.save({"selection": sel_dump, "token_hw": state.grid.token_hw},
+                       out / f"{stem}_selection.pt")
 
     cfg = vars(a)
     json.dump({"config": cfg, "rows": rows}, open(out / "run.json", "w"), indent=1)

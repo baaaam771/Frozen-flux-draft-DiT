@@ -73,6 +73,41 @@ def build_manifest(
     return out_json
 
 
+def build_manifest_imagedir(
+    image_dir: str,
+    out_path: str,
+    prompt: str,
+    n: int = 200,
+    resolution: int = 1024,
+    mask_seed: int = 0,
+    shuffle_seed: int = 1234,
+    exts=(".png", ".jpg", ".jpeg"),
+):
+    """Caption 없는 데이터셋(FFHQ 등)용 frozen manifest — 고정 prompt 사용.
+    COCO manifest와 동일 스키마이므로 전체 파이프라인이 그대로 동작."""
+    d = Path(image_dir)
+    files = sorted(p.name for p in d.iterdir() if p.suffix.lower() in exts)
+    assert files, f"no images under {image_dir}"
+    random.Random(shuffle_seed).shuffle(files)
+    files = files[:n]
+    items = []
+    for i, fn in enumerate(files):
+        spec = spec_for_index(sample_id=fn, index=i, seed=mask_seed)
+        items.append({
+            "sample_id": fn,
+            "image": str(d / fn),
+            "prompt": prompt,
+            "mask_type": spec.mask_type,
+            "bucket": spec.bucket,
+            "mask_seed": spec.seed,
+            "latent_seed": 10000 + i,
+        })
+    manifest = {"resolution": resolution, "items": items}
+    Path(out_path).write_text(json.dumps(manifest, indent=1))
+    print(f"manifest: {len(items)} items -> {out_path}")
+    return manifest
+
+
 class FluxFillBenchmark(torch.utils.data.Dataset):
     """Reads the frozen manifest; returns tensors ready for the sampler."""
 

@@ -63,17 +63,34 @@ def main():
         it = items.get(stem)
         if it is None:
             continue
-        raw = np.asarray(Image.open(raw_p).convert("RGB").resize((R, R))).astype(np.float32)
-        inp = np.asarray(Image.open(it["image"]).convert("RGB").resize((R, R))).astype(np.float32)
+        # 반드시 생성 파이프라인과 동일 전처리(load_image_rgb=LANCZOS) 사용 —
+        # default-filter resize(BICUBIC)를 쓰면 known region 전체에 10~30 레벨의
+        # 가짜 오차가 생긴다 (smoke에서 실측된 16~31 오차의 원인).
+        from data.dataset import load_image_rgb
+        raw = np.asarray(Image.open(raw_p).convert("RGB")).astype(np.float32)
+        inp = np.asarray(load_image_rgb(it["image"], R)).astype(np.float32)
         m = torch.load(mask_p).squeeze().numpy()
         if m.shape != (R, R):
-            m = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).resize((R, R))) / 255.0
+            m = np.asarray(Image.fromarray((m * 255).astype(np.uint8))
+                           .resize((R, R), Image.NEAREST)) / 255.0
         m = m[..., None]
         recon = m * raw + (1 - m) * inp
         pasted = np.asarray(Image.open(pasted_p).convert("RGB").resize((R, R))).astype(np.float32)
-        err = np.abs(recon - pasted).max()
-        print(f"[3] {stem}: composited recon max err = {err:.1f} "
-              f"{'OK' if err < 12 else 'CHECK'} (8-bit 양자화 여유)")
+        diff = np.abs(recon - pasted)
+        # 진단 분포 + 경계 집중도 (경계 집중=soft mask/resize, 전역=전처리 불일치)
+        try:
+            from scipy import ndimage
+            hard = m[..., 0] > 0.5
+            edge = ndimage.binary_dilation(hard, iterations=3) ^ \
+                   ndimage.binary_erosion(hard, iterations=3)
+        except ImportError:
+            edge = np.zeros(m.shape[:2], dtype=bool)
+        frac_gt2 = float((diff > 2).mean())
+        on_edge = float((diff[edge] > 2).mean()) if edge.any() else 0.0
+        print(f"[3] {stem}: max={diff.max():.0f} mean={diff.mean():.2f} "
+              f"p99={np.percentile(diff, 99):.0f} >2={frac_gt2:.4f} "
+              f"(경계부 >2 비율={on_edge:.3f}) "
+              f"{'OK' if diff.max() < 3 else 'CHECK'}")
         checked += 1
     if not checked:
         print("[3] composited 재구성: 파일 없음(skip)")

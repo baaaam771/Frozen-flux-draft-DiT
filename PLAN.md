@@ -313,3 +313,14 @@ speedup 상한은 dense step 수가 결정.
    가능 (metrics.json도 개별 확인).
 3. eval-set hash 검사: fidkid.json 0개면 WARN+skip (FID 패키지 누락 시
    StopIteration 방지).
+
+### Smoke 결과 (성공) + composited 오차 원인 규명
+Smoke 전 항목 통과: validator OK, control 4종 (MBD .0349 vs random .0482,
+same 27/23/0 counts), thresh sweep 정상 dedup (0.20/0.30->0.15와 동일 패턴),
+self-FID 0.0000, fid_vs_dense50 2.7e-05, eval-set hash 일치.
+composited recon 오차 16~31의 원인: sanity_eval_sets.py가 원본 재로드 시
+default-filter resize(BICUBIC)를 사용 — 생성 파이프라인의 LANCZOS와 불일치.
+합성 재현으로 증명 (구 방식 max 32, load_image_rgb 통일 후 0.0). 수정:
+sanity도 load_image_rgb 공유 + mask resize NEAREST 명시 + 진단 강화
+(mean/p99/>2 비율/경계 집중도, scipy fallback). 파이프라인·저장물은 무결.
+N=100: THRESHES="0.03 0.025 0.02 0.015 0.01"로 wall-match 구간 촘촘히.

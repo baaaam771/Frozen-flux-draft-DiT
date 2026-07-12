@@ -51,7 +51,8 @@ ctrl --method cache_sparse --selector mask   --tag ctrl_maskonly_c2_r03
 # (mbd/oracle은 Stage 5에 이미 있음 → 표에서 재사용)
 
 # ---------- B) ADAPTED temporal-threshold: wall-matched sweep ----------
-for TH in 0.03 0.05 0.08 0.10 0.15 0.20 0.30; do
+THRESHES=${THRESHES:-"0.03 0.05 0.08 0.10 0.15 0.20 0.30"}
+for TH in $THRESHES; do
   python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N --steps 50 \
     --method temporal_thresh --cache-period 2 --dense-tail 4 --teacache-thresh $TH \
     "${PCARG[@]}" --tag adapt_thresh_t${TH/./}

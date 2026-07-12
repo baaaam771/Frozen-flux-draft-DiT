@@ -215,12 +215,12 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     n_anchor = n_sparse = 0
     n_forced_dense = n_thresh_reuse = 0
     last_anchor_sigma = None
-    tc = {"cnt": 0, "num_steps": n_steps, "rel_l1_thresh": teacache_rel_l1,
-          "accumulated": 0.0, "prev_mod": None, "prev_residual": None}
     attn_fracs, mac_ratios, actual_ratios = [], [], []
     hetero_rows = []
     v_prev = None
     n_steps = len(state.timesteps)
+    tc = {"cnt": 0, "num_steps": n_steps, "rel_l1_thresh": teacache_rel_l1,
+          "accumulated": 0.0, "prev_mod": None, "prev_residual": None}
 
     for i, t in enumerate(state.timesteps):
         sigma = pipe.scheduler.sigmas[i]

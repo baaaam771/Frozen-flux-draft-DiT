@@ -106,20 +106,81 @@ class SelectorState:
 
 # ------------------------------------------------------------------ sampler ---
 @torch.no_grad()
-def _uniform_baseline_scores(method, n_tokens, grid, generator, device):
-    """mask-blind 예산 배분 baseline 점수. fora=고정 stride 격자(주기적, 공간 균등),
-    blockcache=연속 블록 우선. 둘 다 mask/boundary/delta를 전혀 쓰지 않음 — '공간
-    선택 제거'의 순수 대조군."""
+def get_model_provenance(pipe) -> dict:
+    """모델·스케줄러·코드 provenance (fix3 #1). paired 비교의 전제인 '같은
+    가중치·같은 스케줄러·같은 코드'를 run.json에 기록해 validator가 검증."""
+    import hashlib as _hl
+    import json as _js
+    import subprocess as _sp
+
+    def _cfg_sha(cfg):
+        return _hl.sha256(_js.dumps(dict(cfg), sort_keys=True,
+                                    default=str).encode()).hexdigest()
+
+    def _git(*args):
+        try:
+            return _sp.check_output(["git", *args], text=True,
+                                    stderr=_sp.DEVNULL).strip()
+        except Exception:
+            return None
+
+    t = pipe.transformer
+    status = _git("status", "--porcelain")
+    return {
+        "pipeline_name_or_path": getattr(pipe, "name_or_path", None),
+        "transformer_name_or_path": getattr(t, "name_or_path", None) or
+                                    getattr(t.config, "_name_or_path", None),
+        "model_revision": getattr(t.config, "_commit_hash", None),
+        "transformer_config_sha256": _cfg_sha(t.config),
+        "scheduler_class": type(pipe.scheduler).__name__,
+        "scheduler_config_sha256": _cfg_sha(pipe.scheduler.config),
+        "code_commit": _git("rev-parse", "HEAD"),
+        "git_dirty": bool(status) if status is not None else None,
+    }
+
+
+def _mask_blind_scores(method, n_tokens, grid, generator, device, seed=0):
+    """mask-blind 예산 배분 CONTROL 점수 (prior-work baseline 아님; 논문 명시).
+    - uniform_grid: 다중 stride 격자 순서로 전 프레임에 균등 확산 (어떤 ratio에서도
+      선택 토큰이 공간 전역에 고르게 퍼짐).
+    - contiguous_block: latent seed로 위치가 결정되는 직사각형 블록 (좌상단 편향 제거).
+    Unknown method는 즉시 에러 — silent misclassification 방지 (#1)."""
     import torch as _t
     hp, wp = grid.token_hw
-    if method == "fora":
-        # 격자 위상: 매 호출 같은 균등 패턴 (deterministic, 공간 균등)
-        s = _t.zeros(n_tokens, device=device)
-        s[:] = _t.arange(n_tokens, device=device) % 7 == 0
-        s = s + _t.rand(n_tokens, generator=generator, device=device) * 1e-3
-    else:  # blockcache: 좌상단부터 연속 블록 (공간 편중이지만 mask 무관)
-        s = _t.linspace(1.0, 0.0, n_tokens, device=device)
-    return s.unsqueeze(0)
+    assert hp * wp == n_tokens, (hp, wp, n_tokens)
+    if method == "uniform_grid":
+        # #2: 여러 offset 격자를 stride 4->2->1 순으로 채워 공간 균등 순서를 만든다.
+        order = []
+        seen = set()
+        for stride in (4, 2, 1):
+            for ro in range(stride):
+                for co in range(stride):
+                    for r in range(ro, hp, stride):
+                        for c in range(co, wp, stride):
+                            idx = r * wp + c
+                            if idx not in seen:
+                                seen.add(idx)
+                                order.append(idx)
+        order_t = _t.tensor(order, device=device)
+        scores = _t.empty(n_tokens, device=device)
+        scores[order_t] = _t.arange(len(order), 0, -1, device=device,
+                                    dtype=_t.float32)
+        return scores.unsqueeze(0)
+    elif method == "contiguous_block":
+        # #3: seed로 위치가 정해지는 실제 2D 직사각형 (좌상단 고정 편향 제거).
+        # 블록 크기 = ratio를 여기서 모르므로, 프레임의 절반 폭 블록을 기준으로 하고
+        # top-k가 필요한 만큼 인접 확장되도록 중심 거리 기반 점수를 준다.
+        gen = _t.Generator(device="cpu").manual_seed(seed)
+        # 중심을 프레임 안쪽으로 제한해 경계 wrap 없이 하나의 연속 블록이 되게
+        cy = int(_t.randint(hp // 4, 3 * hp // 4 + 1, (1,), generator=gen).item())
+        cx = int(_t.randint(wp // 4, 3 * wp // 4 + 1, (1,), generator=gen).item())
+        rr = _t.arange(hp, device=device).view(hp, 1).float()
+        cc = _t.arange(wp, device=device).view(1, wp).float()
+        dist = ((rr - cy).abs() + (cc - cx).abs()).view(-1)   # L1 -> 다이아몬드 블록
+        return (-dist).unsqueeze(0)          # 가까울수록 높음 -> top-k = 연속 블록
+    else:
+        raise ValueError(f"Unknown mask-blind control: {method!r} "
+                         "(uniform_grid | contiguous_block)")
 
 
 def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
@@ -127,7 +188,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                block: int, mask_px: torch.Tensor, freq_source: str,
                dense_head: int = 0, dense_tail: int = 0, kv_cache: bool = False,
                dual_sparse: bool = False, teacache_thresh: float = 0.15,
-               dump_selection: list | None = None,
+               sample_seed_offset: int = 0, dump_selection: list | None = None,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
     stats dict (target evals, sparse fraction, per-step records)."""
@@ -138,7 +199,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     g = torch.Generator(state.latents.device).manual_seed(0)
 
     n_anchor = n_sparse = 0
-    n_forced_dense = 0
+    n_forced_dense = n_thresh_reuse = 0
+    last_anchor_sigma = None
     attn_fracs, mac_ratios, actual_ratios = [], [], []
     hetero_rows = []
     v_prev = None
@@ -149,7 +211,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
         # schedule-aware policy: hetero 측정에서 마지막 ~4 step은 변화가 mask 밖으로
         # 퍼지고(in/out 25x -> 0.4) energy가 튐 -> 그 구간은 무조건 dense(anchor).
         forced_dense = (i < dense_head) or (i >= n_steps - dense_tail)
-        _anchored = ("reuse", "cache_sparse", "teacache", "fora", "blockcache")
+        _anchored = ("reuse", "cache_sparse", "temporal_thresh",
+                     "uniform_grid", "contiguous_block")
         is_anchor = (method in _anchored) and \
                     (i % cache_period == 0 or forced_dense)
 
@@ -167,6 +230,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
             if is_anchor:
                 # Fix 1: precompute the TRUE anchor clean estimate x0_a = z_a - s_a*v_a
                 cache.set_anchor_context(state.latents, sigma)
+                last_anchor_sigma = float(sigma)
             if method == "hetero" and v_prev is not None:
                 d = (v.float() - v_prev.float()).pow(2).mean(-1)        # [B, N]
                 m = sel_mask(mask_px, grid, d.device)
@@ -174,20 +238,24 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
             v_prev = v
         elif method == "reuse":
             v = cache.final_prediction                                   # r = 0
-        elif method == "teacache":
-            # timestep-embedding 기반 조건부 재사용의 단순화: anchor 이후 sigma의
-            # 상대 변화가 임계 미만이면 재사용, 넘으면 강제 dense. rescale 계수 없이
-            # FLUX Fill에 맞춘 adapted 버전(적응 세부는 논문 명시).
-            sig_a = float(pipe.scheduler.sigmas[(i // cache_period) * cache_period])
-            rel = abs(float(sigma) - sig_a) / max(abs(sig_a), 1e-6)
+        elif method == "temporal_thresh":
+            # Adapted timestep-threshold reuse (NOT faithful TeaCache): 마지막 dense
+            # anchor 이후 sigma 상대변화가 임계 미만이면 전 토큰 재사용, 넘으면 dense.
+            # #4: threshold-triggered dense는 새 anchor로 기록 (방식 A — baseline에
+            # 유리, "일부러 약화" 공격 회피). 원 방법의 rescaling은 재현 안 함(명시).
+            rel = abs(float(sigma) - last_anchor_sigma) / max(abs(last_anchor_sigma), 1e-6)
             if rel < teacache_thresh:
                 v = cache.final_prediction
+                n_thresh_reuse += 1
             else:
                 model_input = torch.cat([state.latents, state.cond], dim=2)
                 timestep = t.expand(1).to(state.latents.dtype) / 1000
                 v, _ = runner.dense_forward(model_input, state.prompt_embeds,
                                             state.pooled, timestep, state.guidance,
-                                            state.img_ids, state.txt_ids)
+                                            state.img_ids, state.txt_ids,
+                                            cache=cache, step_index=i)
+                cache.set_anchor_context(state.latents, sigma)
+                last_anchor_sigma = float(sigma)
                 n_forced_dense += 1
         elif ratio == 0.0:
             v = cache.final_prediction                                   # r = 0
@@ -199,11 +267,13 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                 v_dense_now, _ = runner.dense_forward(
                     model_input, state.prompt_embeds, state.pooled, timestep,
                     state.guidance, state.img_ids, state.txt_ids)
-            if method in ("fora", "blockcache"):
-                # baseline: 같은 예산 r을 spatially-UNIFORM하게 배분(mask 미사용).
-                # fora=고정 격자 stride 선택, blockcache=연속 블록 선택.
-                scores = _uniform_baseline_scores(
-                    method, state.latents.shape[1], grid, g, state.latents.device)
+            if method in ("uniform_grid", "contiguous_block"):
+                # CONTROL (not a prior-work baseline): 같은 예산 r을 mask-blind로
+                # 배분. uniform_grid=고정 격자 stride, contiguous_block=연속 블록.
+                # "동일 anchored backend에서 mask-aware 선택의 이득"만 격리한다.
+                scores = _mask_blind_scores(
+                    method, state.latents.shape[1], grid, g,
+                    state.latents.device, seed=sample_seed_offset + i)
             else:
                 scores = sel.scores(state.latents, sigma, cache, t, generator=g,
                                     v_dense_now=v_dense_now)
@@ -226,6 +296,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
         state.latents = scheduler_step(pipe, v, t, state.latents)
 
     stats = {"anchor_evals": n_anchor, "sparse_steps": n_sparse,
+             "thresh_dense": n_forced_dense, "thresh_reuse": n_thresh_reuse,
              "mean_single_attn_fraction": (sum(attn_fracs) / len(attn_fracs))
              if attn_fracs else None,
              # Fix 3: with block > 1 the realized refresh ratio != requested ratio
@@ -271,7 +342,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--method",
                     choices=["dense", "reuse", "cache_sparse", "hetero",
-                             "teacache", "fora", "blockcache"],
+                             "temporal_thresh", "uniform_grid", "contiguous_block"],
                     required=True)
     ap.add_argument("--selector", default="mask",
                     choices=list(PRESETS) + ["random", "oracle"])
@@ -357,6 +428,7 @@ def main():
                    dense_head=a.dense_head, dense_tail=a.dense_tail,
                    kv_cache=a.kv_cache, dual_sparse=a.dual_sparse,
                    teacache_thresh=a.teacache_thresh,
+                   sample_seed_offset=(s["latent_seed"] + a.seed_offset) * 131 + i,
                    dump_selection=(sel_dump := [] if a.dump_selection else None),
                    draft=draft, log=log)
         img = decode_latents(pipe, state)
@@ -382,6 +454,20 @@ def main():
                        out / f"{stem}_selection.pt")
 
     cfg = vars(a)
+    # #3: provenance — 재사용 시 validate_run_compat이 비교할 근거
+    import hashlib as _hl
+    def _sha(p):
+        h = _hl.sha256()
+        with open(p, "rb") as f:
+            for c in iter(lambda: f.read(1 << 20), b""):
+                h.update(c)
+        return h.hexdigest()
+    cfg["manifest_sha256"] = _sha(a.manifest)
+    cfg["resolution"] = json.load(open(a.manifest)).get("resolution")
+    import torch as _th, diffusers as _df, transformers as _tf
+    cfg["versions"] = {"torch": _th.__version__, "diffusers": _df.__version__,
+                       "transformers": _tf.__version__}
+    cfg["provenance"] = get_model_provenance(pipe)
     json.dump({"config": cfg, "rows": rows}, open(out / "run.json", "w"), indent=1)
     print(f"[{a.tag}] {n} samples -> {out}")
 

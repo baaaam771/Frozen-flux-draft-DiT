@@ -221,3 +221,65 @@ unbiased) 확보. `run_stage8_n500.sh`, ~11h. 판정: N=500 mask-LPIPS가 N=100
    5k는 `run_stage9b_5k.sh` (별도 manifest, overnight×2).
 Baseline은 sample_one에 method 3종(teacache/fora/blockcache) 추가 + _uniform_baseline_scores.
 FORA/blockcache는 우리 anchor 프레임 위 adapted 버전(세부 논문 명시) — mask를 안 본다는 점만 다름.
+
+### Stage 9 수정 (리뷰 재지적 반영)
+1. FID/KID reference 오류 수정: dense-50 대비(=trajectory fidelity)만이 아니라
+   REAL COCO 대비(=생성 품질)를 추가. raw + composited + dense50 3refs 분리 필드.
+   eval/kid.py 재작성. sanity: dense50 vs 자기자신 FID≈0 체크 포함.
+2. baseline 정직한 명명: fora/blockcache/teacache -> uniform_grid/contiguous_block/
+   temporal_thresh (control ablation + adapted, prior-work faithful 아님을 명시).
+   두 그룹 분리: A) selector-control(동일 backend), B) adapted temporal(wall-matched sweep).
+3. CLIPScore: batched + paired ΔCLIP vs dense-50 + bootstrap 95% CI (full-image는
+   known region 지배로 둔감할 수 있음을 논문 명시).
+4. 실행 순서: N=100 smoke -> N=500 (out_n500 재사용) -> 5k. Stage 9b는 sanity 후.
+남은 P0: 실제 5k real-FID 실행. P1(2nd backbone)은 여전히 미착수 — scope 제한 옵션 유지.
+
+### Stage 9 재수정 (fix.docx 9개 지적 반영)
+1. _mask_blind_scores unknown method -> ValueError (silent misclassification 방지).
+2. uniform_grid: stride 4->2->1 다중격자 순서 -> 어떤 ratio에서도 공간 균등
+   (16/16 coarse cell 커버 검증). '% 7' periodic+random 방식 폐기.
+3. contiguous_block: seed로 위치 이동하는 L1 다이아몬드 연속블록 (좌상단 편향 제거).
+4. temporal_thresh: threshold-triggered dense를 새 anchor로 기록(방식 A) +
+   last_anchor_sigma 추적 (periodic anchor 가정 버그 수정).
+5. wallmatch.py: threshold sweep에서 목표 wall 자동 선택 + 중복 execution pattern
+   제거. run.json에 thresh_dense/thresh_reuse 카운트 기록.
+6. kid.py: 모든 집합을 raw stem 교집합으로 강제, n_raw==n_real==n_dense assert.
+7. empty/mismatch 방어 (n_raw==0 -> RuntimeError 등) + eval_set_hash 기록.
+8. tools/sanity_eval_sets.py: dense50 self-FID≈0 + stem 동일성 + composited 재구성.
+9. tools/validate_run_compat.py: 재사용 run의 manifest/steps/limit/guidance/seed 검사.
+실행 순서: validate -> (control/thresh 생성) -> wallmatch -> sanity -> FID/KID/CLIP.
+
+### fix2 반영 (N=12 smoke 전 마지막 4개)
+1. wallmatch._pattern: 전 non-warmup row 집계 + 이미지 간 동일성 assert
+   (sigma-only 정책이므로 달라지면 정책 버그).
+2. wallmatch None-safe: q is not None 비교 + "N/A" 표기 (0.0 유효 처리).
+3. provenance: run.json에 manifest_sha256/resolution/versions 저장;
+   validator가 sha 우선 비교, 구버전 run은 basename+WARN (out_n500 재사용 가능).
+4. 전처리 단일화: data.dataset.load_image_rgb를 loader와 kid._stage_real이 공유
+   — real-FID가 전처리 차이를 측정하는 것을 구조적으로 차단.
+실행 사다리: N=12 smoke -> N=100 -> N=500 -> 5K. smoke 확인 항목: raw/pasted
+개수=12, stem set 동일, self-FID≈0, threshold별 count 상이, uniform/contiguous
+!= reuse, validation 통과.
+
+### fix3 반영 + 추가 실험 우선순위
+코드 (반영 완료):
+1. get_model_provenance: model_id/revision/transformer·scheduler config sha/
+   git commit·dirty -> run.json. Validator STRICT_PROV 상호비교 (구run WARN).
+2. BOOTSTRAP_CORE=1: 새 OUT에서 core arm 자동 생성 -> smoke 한 명령.
+3. Stage 9 말미 eval_set_hash 동일성 assert (전 arm).
+4. assemble에 Evals(a/s/d) 컬럼 — anchor/sparse/thresh-dense 실제 계산 횟수.
+정책: 최종 논문 표·5K는 새 provenance 형식으로 재생성 권장 (기존 N=500은
+smoke/방향 확인용).
+
+추가 실험 우선순위 (fix3 §4):
+P0-1 faithful prior baseline 1~2개 (TeaCache/FORA 공식 코드 FLUX Fill 이식
+     시도, 불가 시 구조적 이유 문서화) — 다음 구현 대상.
+P0-2 human study (100~200 pairs, 3 raters, 질문 3분리, bootstrap CI;
+     large box/polygon multimodal subset 별도 분석) — 도구 제작 예정.
+P1-2 tail sweep 확장 K∈{0..8} + 조건별 collapse + adaptive tail 대조
+     (fixed가 비슷하면 "robust simplification" 주장).
+P1-4 budget calibration r∈{0.05..0.5} + mask-relative budget.
+P1-3 memory 표 (peak alloc/reserved/cache/activation × res × ratio).
+P2-1 router transfer matrix (r0.15/0.5, c3, FFHQ, 768/1536, g10/50 중 3~4개).
+P2-2 kernel breakdown (proj/attn/FFN/gather-scatter/cache IO 프로파일).
+P1-1 2nd backbone은 인페인팅 ckpt 가용성 확인 후 결정 (없으면 P0-1/P0-2 우선).

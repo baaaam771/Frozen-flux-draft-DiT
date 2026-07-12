@@ -108,6 +108,15 @@ def build_manifest_imagedir(
     return manifest
 
 
+def load_image_rgb(path: str, resolution: int):
+    """생성 파이프라인과 FID real-reference staging이 공유하는 유일한 전처리:
+    정사각 LANCZOS resize (aspect 무시 — manifest 기록과 일치). 두 경로가 다른
+    전처리를 쓰면 FID가 모델이 아닌 전처리 차이를 측정하게 되므로 반드시 공유."""
+    from PIL import Image
+    return Image.open(path).convert("RGB").resize(
+        (resolution, resolution), Image.LANCZOS)
+
+
 class FluxFillBenchmark(torch.utils.data.Dataset):
     """Reads the frozen manifest; returns tensors ready for the sampler."""
 
@@ -123,7 +132,7 @@ class FluxFillBenchmark(torch.utils.data.Dataset):
     def __getitem__(self, i: int):
         it = self.items[i]
         R = it.get("resolution", self.resolution)
-        img = Image.open(it["image"]).convert("RGB").resize((R, R), Image.LANCZOS)
+        img = load_image_rgb(it["image"], R)
         image = torch.from_numpy(__import__("numpy").array(img)).permute(2, 0, 1).float() / 255.0
         spec = MaskSpec(it["sample_id"], it["mask_type"], it["bucket"], it["mask_seed"])
         mask = make_mask(R, R, spec)                                  # [1, R, R]

@@ -18,8 +18,8 @@ from pathlib import Path
 
 COLS = ["Method", "Steps", "Anchor c", "Ratio r(req)", "r(actual)", "Block",
         "Selector", "Tail", "KV", "Dual", "MaskLPIPS→ref", "BndLPIPS→ref", "LPIPS→ref",
-        "KnownPSNR→input", "MACratio(est)", "Wall(s)", "VRAM(GB)",
-        "Imgs", "Seeds"]
+        "KnownPSNR→input", "MACratio(est)", "Evals(a/s/d)", "Wall(s)",
+        "VRAM(GB)", "Imgs", "Seeds"]
 
 MET_KEYS = {"MaskLPIPS→ref": "mask_lpips_to_ref",
             "BndLPIPS→ref": "boundary_lpips_to_ref",
@@ -53,7 +53,11 @@ def _load(run_dir: Path):
            cfg.get("selector") if cfg["method"] == "cache_sparse" else None,
            tail, bool(cfg.get("kv_cache", False)),
            bool(cfg.get("dual_sparse", False)))
+    r0 = next((r for r in run["rows"] if not r.get("warmup")), run["rows"][0])
+    evals = (r0.get("anchor_evals", 0), r0.get("sparse_steps", 0),
+             r0.get("thresh_dense", 0))
     return {"sig": sig, "wall": wall, "vram": vram, "met_n": met_n,
+            "evals": evals,
             "r_actual": statistics.mean(ratios) if ratios else None,
             "mac": statistics.mean(macs) if macs else None,
             "met": {k: met.get(v) for k, v in MET_KEYS.items()}}
@@ -98,6 +102,8 @@ def main():
                         ("0" if tail is not None else "-")),
                "MACratio(est)": _fmt([L["mac"] for L in Ls], 3),
                "Wall(s)": _fmt([L["wall"] for L in Ls], 2),
+               # 실제 계산 횟수: anchor/sparse/threshold-dense (I/O 아닌 진짜 연산량 증거)
+               "Evals(a/s/d)": "/".join(str(x) for x in Ls[0]["evals"]),
                "VRAM(GB)": _fmt([L["vram"] for L in Ls], 1),
                # Imgs: metrics.json이 평가한 이미지 수 (seed별 동일해야 정상)
                "Imgs": "/".join(str(L["met_n"]) for L in Ls)

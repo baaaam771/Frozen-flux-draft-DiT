@@ -1,41 +1,95 @@
 #!/usr/bin/env bash
-# Stage 9: 리뷰 대응 (P0 품질평가 + P0 baseline). N=500 재사용 + 5k 생성.
-#  A) 기존 acceleration baseline (mask-blind, latency-matched): fora / blockcache / uniform
-#     + mask-only / random (이미 있음) — 전부 headline과 같은 wall에서 비교
-#  B) FID/KID @ N=500 (이미 out_n500) + CLIPScore (raw)
-#  C) [대용량] 5k FID/KID: dense-50 ref vs {dense-30, reuse_c2_t4, headline, kv-only}
+# Stage 9 (수정판): selector-control ablation + adapted temporal baseline + real-ref 품질.
+# 두 그룹을 분리 (리뷰 4번):
+#  A) CONTROL (동일 anchored backend, selector만 교체): mask-aware 이득 격리
+#  B) ADAPTED temporal-threshold (faithful TeaCache 아님, 명시) + wall-matched sweep
+#  C) real-COCO FID/KID (raw+composited) + dense-50 fidelity + batched CLIPScore
 set -e
 cd "$(dirname "$0")/.."; export PYTHONPATH=.
-MAN=${MAN:-data/coco_manifest_1024.json}; OUT=${OUT:?set OUT}; N=${N:-500}
+MAN=${MAN:-data/coco_manifest_1024.json}; OUT=${OUT:?set OUT}; N=${N:-500}; RES=${RES:-1024}
 PC=${PC:-}; PCARG=(); [ -n "$PC" ] && PCARG=(--prompt-cache "$PC")
+DREF=$OUT/dense_s50
 
-# ---------- A) baseline matrix (같은 c/r/tail, selector/method만 교체) ----------
-bl() { python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N \
-       --steps 50 --cache-period 2 --dense-tail 4 --dual-sparse --kv-cache \
-       "${PCARG[@]}" "$@"; }
-bl --method fora       --ratio 0.3 --tag base_fora_c2_r03
-bl --method blockcache --ratio 0.3 --tag base_blockcache_c2_r03
-bl --method cache_sparse --selector random --ratio 0.3 --tag base_random_c2_r03
-bl --method cache_sparse --selector mask   --ratio 0.3 --tag base_maskonly_c2_r03
-# teacache는 예산이 threshold로 정해지므로 별도 (latency는 forced-dense 수로 결정)
-python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N --steps 50 \
-  --method teacache --cache-period 2 --dense-tail 4 --teacache-thresh 0.15 \
-  "${PCARG[@]}" --tag base_teacache_t015
-for D in base_fora_c2_r03 base_blockcache_c2_r03 base_random_c2_r03 \
-         base_maskonly_c2_r03 base_teacache_t015; do
-  python -m eval.region_metrics --run $OUT/$D --ref $OUT/dense_s50 --manifest $MAN \
-    --out $OUT/$D/metrics.json
+# fix3-A: 새 OUT에서 한 명령으로 smoke 가능하게 core arm 자동 생성
+BOOTSTRAP_CORE=${BOOTSTRAP_CORE:-0}
+if [[ "$BOOTSTRAP_CORE" == "1" && ! -d "$DREF" ]]; then
+  core() { python -m samplers.cached_flux_fill --manifest $MAN --out $OUT \
+           --limit $N --steps 50 "${PCARG[@]}" "$@"; }
+  core --method dense --tag dense_s50
+  core --method dense --steps 30 --tag dense_s30
+  core --method reuse --cache-period 2 --dense-tail 4 --tag reuse_c2_t4
+  core --method cache_sparse --selector mbd --cache-period 2 --ratio 0.3 \
+       --dense-tail 4 --dual-sparse --kv-cache --tag mbd_c2_r03_t4_dualkv
+  core --method cache_sparse --selector mbd --cache-period 2 --ratio 0.3 \
+       --dense-tail 4 --kv-cache --tag mbd_c2_r03_t4_kv
+  for D in dense_s30 reuse_c2_t4 mbd_c2_r03_t4_dualkv mbd_c2_r03_t4_kv; do
+    python -m eval.region_metrics --run $OUT/$D --ref $DREF --manifest $MAN \
+      --out $OUT/$D/metrics.json
+  done
+fi
+
+# #9: 재사용할 기존 run들이 같은 config인지 먼저 검증 (다르면 비교 무효)
+python -m tools.validate_run_compat --manifest "$MAN" --limit "$N" --guidance 30 \
+  $DREF $OUT/dense_s30 $OUT/reuse_c2_t4 $OUT/mbd_c2_r03_t4_dualkv $OUT/mbd_c2_r03_t4_kv
+
+# ---------- A) CONTROL: selector ablation (동일 c/r/tail/backend) ----------
+ctrl() { python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N \
+         --steps 50 --cache-period 2 --ratio 0.3 --dense-tail 4 --dual-sparse --kv-cache \
+         "${PCARG[@]}" "$@"; }
+ctrl --method uniform_grid      --tag ctrl_uniform_grid_c2_r03
+ctrl --method contiguous_block  --tag ctrl_contiguous_block_c2_r03
+ctrl --method cache_sparse --selector random --tag ctrl_random_c2_r03
+ctrl --method cache_sparse --selector mask   --tag ctrl_maskonly_c2_r03
+# (mbd/oracle은 Stage 5에 이미 있음 → 표에서 재사용)
+
+# ---------- B) ADAPTED temporal-threshold: wall-matched sweep ----------
+for TH in 0.03 0.05 0.08 0.10 0.15 0.20 0.30; do
+  python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N --steps 50 \
+    --method temporal_thresh --cache-period 2 --dense-tail 4 --teacache-thresh $TH \
+    "${PCARG[@]}" --tag adapt_thresh_t${TH/./}
+  python -m eval.region_metrics --run $OUT/adapt_thresh_t${TH/./} --ref $DREF \
+    --manifest $MAN --out $OUT/adapt_thresh_t${TH/./}/metrics.json
 done
-python -m eval.assemble --runs $OUT/mbd_c2_r03_t4_dualkv \
-  $OUT/base_fora_c2_r03 $OUT/base_blockcache_c2_r03 $OUT/base_random_c2_r03 \
-  $OUT/base_maskonly_c2_r03 $OUT/base_teacache_t015 \
-  --out $OUT/table_baselines.md --csv $OUT/pareto_baselines.csv
 
-# ---------- B) CLIPScore (raw) + FID/KID @ N=500 ----------
+for D in ctrl_uniform_grid_c2_r03 ctrl_contiguous_block_c2_r03 \
+         ctrl_random_c2_r03 ctrl_maskonly_c2_r03; do
+  python -m eval.region_metrics --run $OUT/$D --ref $DREF --manifest $MAN --out $OUT/$D/metrics.json
+done
+# #5: threshold sweep에서 headline(12.12s)에 wall-match되는 점 자동 선택 + 중복 제거
+python -m eval.wallmatch --runs $OUT/adapt_thresh_t* --target-wall 12.12 \
+  --out $OUT/table_thresh_sweep.md
+
+python -m eval.assemble --runs $OUT/ctrl_uniform_grid_c2_r03 \
+  $OUT/ctrl_contiguous_block_c2_r03 $OUT/ctrl_random_c2_r03 $OUT/ctrl_maskonly_c2_r03 \
+  $OUT/mbd_c2_r03_t4_dualkv \
+  --out $OUT/table_control.md --csv $OUT/pareto_control.csv
+
+# ---------- #8 SANITY: eval 시작 전 필수 검사 ----------
+python -m tools.sanity_eval_sets --runs $DREF $OUT/dense_s30 $OUT/reuse_c2_t4 \
+  $OUT/mbd_c2_r03_t4_dualkv $OUT/mbd_c2_r03_t4_kv \
+  --manifest $MAN --resolution $RES --dense-ref $DREF
+
+# ---------- C) real-COCO FID/KID + CLIPScore (N=500 arms) ----------
 for D in dense_s50 dense_s30 reuse_c2_t4 mbd_c2_r03_t4_dualkv mbd_c2_r03_t4_kv; do
-  python -m eval.clipscore --run $OUT/$D --manifest $MAN --out $OUT/$D/clip.json || \
-    { echo "clipscore skipped (pip install open_clip_torch)"; break; }
+  python -m eval.kid --run $OUT/$D --manifest $MAN --resolution $RES \
+    --dense-ref $DREF --out $OUT/$D/fidkid.json || \
+    { echo "FID skipped (pip install clean-fid)"; break; }
+  python -m eval.clipscore --run $OUT/$D --manifest $MAN --dense-ref $DREF \
+    --out $OUT/$D/clip.json || { echo "CLIP skipped (pip install open_clip_torch)"; break; }
 done
-for D in dense_s30 reuse_c2_t4 mbd_c2_r03_t4_dualkv mbd_c2_r03_t4_kv; do
-  python -m eval.kid --run $OUT/$D --ref $OUT/dense_s50 --out $OUT/$D/fidkid.json || break
-done
+
+
+
+# fix3-B: 모든 arm의 FID eval set이 정확히 동일했는지 최종 assert
+python - << 'PY'
+import json, glob, sys, os
+out = os.environ["OUT"]
+hs = {}
+for p in glob.glob(f"{out}/*/fidkid.json"):
+    d = json.load(open(p))
+    hs[p.split("/")[-2]] = (d.get("eval_set_hash"), d.get("eval_set_size"))
+if len(set(hs.values())) > 1:
+    print("EVAL-SET MISMATCH:", hs); sys.exit(1)
+print(f"eval-set identity OK: {len(hs)} arms, "
+      f"hash={next(iter(hs.values()))[0]} size={next(iter(hs.values()))[1]}")
+PY

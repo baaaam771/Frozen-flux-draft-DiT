@@ -28,7 +28,7 @@ def _freq_map(sel, hw, lo, hi):
 
 def _heat(freq, size):
     import matplotlib.cm as cm
-    rgba = cm.get_cmap("inferno")(np.clip(freq, 0, 1))
+    rgba = plt.get_cmap("inferno")(np.clip(freq, 0, 1))
     img = Image.fromarray((rgba[..., :3] * 255).astype(np.uint8))
     return np.array(img.resize((size, size), Image.NEAREST))
 

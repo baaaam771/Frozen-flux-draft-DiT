@@ -106,11 +106,28 @@ class SelectorState:
 
 # ------------------------------------------------------------------ sampler ---
 @torch.no_grad()
+def _uniform_baseline_scores(method, n_tokens, grid, generator, device):
+    """mask-blind 예산 배분 baseline 점수. fora=고정 stride 격자(주기적, 공간 균등),
+    blockcache=연속 블록 우선. 둘 다 mask/boundary/delta를 전혀 쓰지 않음 — '공간
+    선택 제거'의 순수 대조군."""
+    import torch as _t
+    hp, wp = grid.token_hw
+    if method == "fora":
+        # 격자 위상: 매 호출 같은 균등 패턴 (deterministic, 공간 균등)
+        s = _t.zeros(n_tokens, device=device)
+        s[:] = _t.arange(n_tokens, device=device) % 7 == 0
+        s = s + _t.rand(n_tokens, generator=generator, device=device) * 1e-3
+    else:  # blockcache: 좌상단부터 연속 블록 (공간 편중이지만 mask 무관)
+        s = _t.linspace(1.0, 0.0, n_tokens, device=device)
+    return s.unsqueeze(0)
+
+
 def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                method: str, cache_period: int, ratio: float, selector: str,
                block: int, mask_px: torch.Tensor, freq_source: str,
                dense_head: int = 0, dense_tail: int = 0, kv_cache: bool = False,
-               dual_sparse: bool = False, dump_selection: list | None = None,
+               dual_sparse: bool = False, teacache_thresh: float = 0.15,
+               dump_selection: list | None = None,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
     stats dict (target evals, sparse fraction, per-step records)."""
@@ -121,6 +138,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     g = torch.Generator(state.latents.device).manual_seed(0)
 
     n_anchor = n_sparse = 0
+    n_forced_dense = 0
     attn_fracs, mac_ratios, actual_ratios = [], [], []
     hetero_rows = []
     v_prev = None
@@ -131,7 +149,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
         # schedule-aware policy: hetero 측정에서 마지막 ~4 step은 변화가 mask 밖으로
         # 퍼지고(in/out 25x -> 0.4) energy가 튐 -> 그 구간은 무조건 dense(anchor).
         forced_dense = (i < dense_head) or (i >= n_steps - dense_tail)
-        is_anchor = (method in ("reuse", "cache_sparse")) and \
+        _anchored = ("reuse", "cache_sparse", "teacache", "fora", "blockcache")
+        is_anchor = (method in _anchored) and \
                     (i % cache_period == 0 or forced_dense)
 
         if method in ("dense", "hetero") or is_anchor:
@@ -153,7 +172,24 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                 m = sel_mask(mask_px, grid, d.device)
                 hetero_rows.append(_hetero_row(i, d, m, v))
             v_prev = v
-        elif ratio == 0.0 or method == "reuse":
+        elif method == "reuse":
+            v = cache.final_prediction                                   # r = 0
+        elif method == "teacache":
+            # timestep-embedding 기반 조건부 재사용의 단순화: anchor 이후 sigma의
+            # 상대 변화가 임계 미만이면 재사용, 넘으면 강제 dense. rescale 계수 없이
+            # FLUX Fill에 맞춘 adapted 버전(적응 세부는 논문 명시).
+            sig_a = float(pipe.scheduler.sigmas[(i // cache_period) * cache_period])
+            rel = abs(float(sigma) - sig_a) / max(abs(sig_a), 1e-6)
+            if rel < teacache_thresh:
+                v = cache.final_prediction
+            else:
+                model_input = torch.cat([state.latents, state.cond], dim=2)
+                timestep = t.expand(1).to(state.latents.dtype) / 1000
+                v, _ = runner.dense_forward(model_input, state.prompt_embeds,
+                                            state.pooled, timestep, state.guidance,
+                                            state.img_ids, state.txt_ids)
+                n_forced_dense += 1
+        elif ratio == 0.0:
             v = cache.final_prediction                                   # r = 0
         else:
             v_dense_now = None
@@ -163,8 +199,14 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                 v_dense_now, _ = runner.dense_forward(
                     model_input, state.prompt_embeds, state.pooled, timestep,
                     state.guidance, state.img_ids, state.txt_ids)
-            scores = sel.scores(state.latents, sigma, cache, t, generator=g,
-                                v_dense_now=v_dense_now)
+            if method in ("fora", "blockcache"):
+                # baseline: 같은 예산 r을 spatially-UNIFORM하게 배분(mask 미사용).
+                # fora=고정 격자 stride 선택, blockcache=연속 블록 선택.
+                scores = _uniform_baseline_scores(
+                    method, state.latents.shape[1], grid, g, state.latents.device)
+            else:
+                scores = sel.scores(state.latents, sigma, cache, t, generator=g,
+                                    v_dense_now=v_dense_now)
             hard_idx, _, r_actual = select_hard_tokens(scores, grid, ratio, block=block)
             model_input = torch.cat([state.latents, state.cond], dim=2)
             timestep = t.expand(1).to(state.latents.dtype) / 1000
@@ -227,12 +269,16 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--method", choices=["dense", "reuse", "cache_sparse", "hetero"],
+    ap.add_argument("--method",
+                    choices=["dense", "reuse", "cache_sparse", "hetero",
+                             "teacache", "fora", "blockcache"],
                     required=True)
     ap.add_argument("--selector", default="mask",
                     choices=list(PRESETS) + ["random", "oracle"])
     ap.add_argument("--steps", type=int, default=50)
     ap.add_argument("--cache-period", type=int, default=3)
+    ap.add_argument("--teacache-thresh", type=float, default=0.15,
+                    help="TeaCache adapted: anchor 이후 sigma 상대변화 임계")
     ap.add_argument("--ratio", type=float, default=0.3)
     ap.add_argument("--block", type=int, default=1,
                     help="structured selection window in tokens (Stage 7): 1, 2, 4")
@@ -310,6 +356,7 @@ def main():
                    mask_px=s["mask"].unsqueeze(0).to(dev), freq_source=a.freq_source,
                    dense_head=a.dense_head, dense_tail=a.dense_tail,
                    kv_cache=a.kv_cache, dual_sparse=a.dual_sparse,
+                   teacache_thresh=a.teacache_thresh,
                    dump_selection=(sel_dump := [] if a.dump_selection else None),
                    draft=draft, log=log)
         img = decode_latents(pipe, state)

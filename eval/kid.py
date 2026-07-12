@@ -38,7 +38,8 @@ def main():
         ra, rb = Path(td) / "run", Path(td) / "ref"
         na, nb = _stage_raw(Path(a.run), ra), _stage_raw(Path(a.ref), rb)
         kid = fid.compute_kid(str(ra), str(rb))
-    res = {"kid_run_vs_ref": kid, "n_run": na, "n_ref": nb}
+        fid_score = fid.compute_fid(str(ra), str(rb))
+    res = {"kid_run_vs_ref": kid, "fid_run_vs_ref": fid_score, "n_run": na, "n_ref": nb}
     json.dump(res, open(a.out, "w"), indent=1)
     print(json.dumps(res, indent=1))
 

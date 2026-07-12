@@ -211,3 +211,13 @@ frontier 핵심 5 arm (dense 40/30, reuse_c2_t4, headline dualkv, kv-only)만
 N=500 단일 seed로 재실행 — N=100 cherry-pick 공격 방어 + KID(N=500에서
 unbiased) 확보. `run_stage8_n500.sh`, ~11h. 판정: N=500 mask-LPIPS가 N=100
 3-seed mean의 ±1 std 안이면 표본 안정성 입증 문장 1개 + KID 표를 appendix에.
+
+### Stage 9 (리뷰 대응) 설계
+리뷰 P0 두 구멍을 메움:
+1. Acceleration baseline (mask-blind, latency-matched): fora(격자 주기), blockcache(연속),
+   random, mask-only, teacache(sigma-임계 조건부 dense) — 전부 headline과 같은 c/r/tail/wall.
+   핵심 대비: "공간 선택 제거" 순수 대조군. `run_stage9_rebuttal.sh`.
+2. 품질평가: CLIPScore(raw, open_clip ViT-B/32) + FID/KID. N=500는 out_n500 재사용,
+   5k는 `run_stage9b_5k.sh` (별도 manifest, overnight×2).
+Baseline은 sample_one에 method 3종(teacache/fora/blockcache) 추가 + _uniform_baseline_scores.
+FORA/blockcache는 우리 anchor 프레임 위 adapted 버전(세부 논문 명시) — mask를 안 본다는 점만 다름.

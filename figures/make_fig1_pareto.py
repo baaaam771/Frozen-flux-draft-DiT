@@ -17,12 +17,12 @@ DENSE = [(4.97, .1226, .0020), (6.61, .0846, .0032), (8.24, .0616, .0040),
 REUSE = {"reuse $c{=}3$+tail": (6.61, .0730, .0031),
          "reuse $c{=}2$":      (8.24, .0585, .0018),
          "reuse $c{=}2$+tail": (8.90, .0469, .0017)}
-DUALKV = {"$c3\\,r.3$":  (10.69, .0449, .0026),
-          "$c2\\,r.15$": (11.33, .0357, .0015),
-          "$c2\\,r.3$":  (12.12, .0300, .0031),
-          "$c2\\,r.5$":  (13.44, .0251, .0045)}
-KVONLY = {"$c2\\,r.3$ KV": (13.47, .0269, .0016)}
-DRAFT = {"$c2\\,r.3$ +router": (12.11, .0288, .0003)}
+DUALKV = {"$r{=}.15$": (11.33, .0357, .0015),
+          "$r{=}.3$":  (12.12, .0300, .0031),
+          "$r{=}.5$":  (13.44, .0251, .0045),
+          "$c3\\,r.3$": (10.69, .0449, .0026)}
+KVONLY = {"KV": (13.47, .0269, .0016)}
+DRAFT = {"router": (12.11, .0288, .0003)}
 
 C_DENSE, C_REUSE, C_DUAL, C_KV, C_DRAFT = \
     "#8c8c8c", "#1f77b4", "#d62728", "#9467bd", "#e07b00"
@@ -63,18 +63,21 @@ def main():
         scatter(DRAFT, C_DRAFT, "*", "+ learned router")
 
     # 라벨 (수동 오프셋으로 겹침 방지)
+    # 라벨 최소화(AAAI 가독성): 마커/legend로 충분한 점은 라벨 생략
     offs = {"reuse $c{=}3$+tail": (-2, -9), "reuse $c{=}2$": (4, 3),
-            "reuse $c{=}2$+tail": (4, 2), "$c3\\,r.3$": (4, 3),
-            "$c2\\,r.15$": (3, 4), "$c2\\,r.3$": (-6, -10),
-            "$c2\\,r.5$": (-14, 6), "$c2\\,r.3$ KV": (4, -3),
-            "$c2\\,r.3$ +router": (5, 4)}
+            "reuse $c{=}2$+tail": (4, 2),
+            "$r{=}.3$": (-42, -10), "KV": (6, -2), "router": (6, 6)}
+    SKIP = {"$c3\\,r.3$", "$r{=}.15$", "$r{=}.5$"}
     for d in ([REUSE, DUALKV, KVONLY] + ([DRAFT] if a.draft else [])):
         for name, (x, y, e) in d.items():
-            ax.annotate(name, (x, y), textcoords="offset points",
+            if name in SKIP:
+                continue
+            lbl = "ours" if name == "$r{=}.3$" else name
+            ax.annotate(lbl, (x, y), textcoords="offset points",
                         xytext=offs.get(name, (4, 3)), fontsize=6.5)
 
     # headline 강조
-    hx, hy, _ = DUALKV["$c2\\,r.3$"]
+    hx, hy, _ = DUALKV["$r{=}.3$"]
     dx, dy, _ = DENSE[-1]
     ax.annotate("", xy=(hx, hy), xytext=(dx, dy),
                 arrowprops=dict(arrowstyle="->", lw=0.7, color=C_DUAL, ls=":"))

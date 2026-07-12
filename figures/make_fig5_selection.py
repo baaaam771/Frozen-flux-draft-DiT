@@ -22,13 +22,22 @@ def _freq_map(sel, hw, lo, hi):
     m = torch.zeros(hp * wp)
     steps = [r for r in sel if lo <= r["step"] < hi]
     for r in steps:
-        m[r["hard_idx"]] += 1
+        idx = torch.as_tensor(r["hard_idx"]).reshape(-1).long()
+        m[idx] += 1
     return (m / max(len(steps), 1)).view(hp, wp).numpy()
 
 
+def _get_cmap(name):
+    import matplotlib
+    try:                                    # matplotlib >= 3.9
+        return matplotlib.colormaps[name]
+    except (AttributeError, KeyError):       # older
+        import matplotlib.cm as cm
+        return cm.get_cmap(name)
+
+
 def _heat(freq, size):
-    import matplotlib.cm as cm
-    rgba = plt.get_cmap("inferno")(np.clip(freq, 0, 1))
+    rgba = _get_cmap("inferno")(np.clip(freq, 0.0, 1.0))
     img = Image.fromarray((rgba[..., :3] * 255).astype(np.uint8))
     return np.array(img.resize((size, size), Image.NEAREST))
 
@@ -48,14 +57,22 @@ def main():
     sys.path.insert(0, ".")
     from data.dataset import FluxFillBenchmark
     ds = FluxFillBenchmark(a.manifest)
-    idx = next(i for i in range(len(ds))
-               if Path(ds[i]["sample_id"]).stem == a.sample)
-    s = ds[idx]
+    matches = [i for i in range(len(ds))
+               if Path(ds[i]["sample_id"]).stem == a.sample]
+    if not matches:
+        raise SystemExit(f"sample '{a.sample}' not in manifest {a.manifest}; "
+                         f"stem은 selection.pt 파일명과 같아야 합니다.")
+    s = ds[matches[0]]
 
     pack = torch.load(Path(a.run) / f"{a.sample}_selection.pt")
     sel, hw = pack["selection"], pack["token_hw"]
+    hw = tuple(int(x) for x in hw)
     n_steps = max(r["step"] for r in sel) + 1
-    bounds = a.bands + [n_steps]
+    # band 경계를 실제 step 범위로 클램프하고 빈 band 제거
+    bands = sorted(set(b for b in a.bands if b < n_steps))
+    if not bands or bands[0] != 0:
+        bands = [0] + bands
+    bounds = bands + [n_steps]
 
     C = a.cell
     cols = 1 + (len(bounds) - 1) + 1
@@ -68,7 +85,9 @@ def main():
         font = ImageFont.load_default()
 
     img = (s["image"].permute(1, 2, 0).numpy() * 255).astype(np.uint8)
-    m = s["mask"][0].numpy()[..., None]
+    mask_t = s["mask"]
+    mask_np = (mask_t[0] if mask_t.ndim == 3 else mask_t).numpy()
+    m = mask_np[..., None]
     over = (img * (1 - 0.45 * m) + np.array([255, 40, 40]) * 0.45 * m).astype(np.uint8)
     canvas.paste(Image.fromarray(over).resize((C, C), Image.LANCZOS), (0, 24))
     draw.text((6, 4), "input+mask", fill="black", font=font)

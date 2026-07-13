@@ -114,8 +114,13 @@ def get_model_provenance(pipe) -> dict:
     import subprocess as _sp
     from pathlib import Path as _P
 
-    RUNTIME_KEYS = ("timesteps", "sigmas", "num_inference_steps",
-                    "_step_index", "_begin_index")
+    RUNTIME_KEYS = ("timesteps", "sigmas", "num_inference_steps")
+
+    def _is_base_key(k):
+        # '_' 프리픽스는 diffusers 내부 메타데이터 (_use_default_values,
+        # _step_index, _begin_index, _class_name 등) — set 유래 list의 순서
+        # 비결정성이 있고 모델 설정이 아니므로 base config에서 제외.
+        return not str(k).startswith("_") and k not in RUNTIME_KEYS
 
     def _canonicalize(x):
         """프로세스 간 결정적 직렬화: set/frozenset의 순서 비결정성,
@@ -171,10 +176,10 @@ def get_model_provenance(pipe) -> dict:
         # base config: 실행 중 변하는 runtime 필드 제거 후 hash (전 arm 동일해야)
         "scheduler_base_config": _canonicalize({
             k: v for k, v in dict(pipe.scheduler.config).items()
-            if k not in RUNTIME_KEYS}),
+            if _is_base_key(k)}),
         "scheduler_base_config_sha256": _cfg_sha({
             k: v for k, v in dict(pipe.scheduler.config).items()
-            if k not in RUNTIME_KEYS}),
+            if _is_base_key(k)}),
         # runtime schedule: 같은 step 수 arm끼리만 같아야 (30 vs 50은 달라야 정상)
         "timesteps_sha256": _tensor_sha(getattr(pipe.scheduler, "timesteps", None)),
         "sigmas_sha256": _tensor_sha(getattr(pipe.scheduler, "sigmas", None)),

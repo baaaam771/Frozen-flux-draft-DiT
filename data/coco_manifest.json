@@ -1,0 +1,5005 @@
+{
+ "resolution": 512,
+ "items": [
+  {
+   "sample_id": "000000229997.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000229997.jpg",
+   "prompt": "A bear sitting in the grass surrounded by five vultures.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10000,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000104119.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000104119.jpg",
+   "prompt": "A large chicken walking through a grass covered landscape.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10001,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000007784.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000007784.jpg",
+   "prompt": "This is a large kite flying high in the sky.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10002,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000464824.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000464824.jpg",
+   "prompt": "A person is bending over to pick something off the ground.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10003,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000577149.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000577149.jpg",
+   "prompt": "there are many zebras walking on the side of this road",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10004,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000029393.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000029393.jpg",
+   "prompt": "A large brown dog standing on the side of a white wood fence.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10005,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000149222.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000149222.jpg",
+   "prompt": "The computer monitor has a framed picture near it.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10006,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000082986.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000082986.jpg",
+   "prompt": "Two men watch another throw a Frisbee in a field.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10007,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000426203.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000426203.jpg",
+   "prompt": "A skateboarder is riding along the top of a rail.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10008,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000166521.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000166521.jpg",
+   "prompt": "A room that has two televisions in it.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10009,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000491008.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000491008.jpg",
+   "prompt": "A man and a woman holding up a pizza in a seating area.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10010,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000239717.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000239717.jpg",
+   "prompt": "a man is holding a plate and smiling happily",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10011,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000473974.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000473974.jpg",
+   "prompt": "A group of zebra standing in the tall grass.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10012,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000370486.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000370486.jpg",
+   "prompt": "a woman holding a colorful striped umbrella",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10013,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000302536.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000302536.jpg",
+   "prompt": "a person wearing a green hat playing nintendo wii",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10014,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000222455.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000222455.jpg",
+   "prompt": "A filtered image of a microwave available to use in a store.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10015,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000174123.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000174123.jpg",
+   "prompt": "A huge plate of yummy food with fork to eat.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10016,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000116208.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000116208.jpg",
+   "prompt": "A very large pizza covered in cheese and toppings.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10017,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000259625.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000259625.jpg",
+   "prompt": "An elephant messing with a tree trunk.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10018,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000091406.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000091406.jpg",
+   "prompt": "Several women gathered together posing with 6 pizzas in take out boxes.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10019,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000315450.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000315450.jpg",
+   "prompt": "Two large buses traveling down a busy city street.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10020,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000248752.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000248752.jpg",
+   "prompt": "A person on a field with a baseball bat.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10021,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000244833.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000244833.jpg",
+   "prompt": "A yellow and a green motorcycle in the back of an auditorium.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10022,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000333237.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000333237.jpg",
+   "prompt": "There is a room with rose wallpaper and a large bed.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10023,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000156372.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000156372.jpg",
+   "prompt": "A chair in the corner on a boat.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10024,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000269632.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000269632.jpg",
+   "prompt": "A bright yellow transit bus is making it's way down a street in the dark.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10025,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000488251.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000488251.jpg",
+   "prompt": "A man standing in front of a brown horse near a small building",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10026,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000331075.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000331075.jpg",
+   "prompt": "a dog that's been playing in the water",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10027,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000244181.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000244181.jpg",
+   "prompt": "A plate holding a sandwich on a blue mat.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10028,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000279769.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000279769.jpg",
+   "prompt": "A peeled banana on a table next to an unpeeled banana.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10029,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000273420.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000273420.jpg",
+   "prompt": "a man on his phone in some kind of room",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10030,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000234660.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000234660.jpg",
+   "prompt": "Two white bullet trains parked at a train station.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10031,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000323895.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000323895.jpg",
+   "prompt": "A man in yellow shirt and black shorts playing a game of tennis.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10032,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000013729.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000013729.jpg",
+   "prompt": "a group of people that are playing some wii",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10033,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000294695.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000294695.jpg",
+   "prompt": "two girls walk off the windy beach while a kite flies overhead",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10034,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000068765.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000068765.jpg",
+   "prompt": "A keyboard, mouse, and wires on a desk.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10035,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000210032.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000210032.jpg",
+   "prompt": "Two birds preparing to eat food off of a plate that was left on a table outside by the ocean.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10036,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000002149.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000002149.jpg",
+   "prompt": "A large white bowl of many green apples.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10037,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000262487.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000262487.jpg",
+   "prompt": "The man is trying to hit the baseball during the game.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10038,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000500565.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000500565.jpg",
+   "prompt": "A woman holding a child wrapped in a towel brushing her teeth.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10039,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000303499.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000303499.jpg",
+   "prompt": "Two people riding on the back of horses near a tall building.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10040,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000170613.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000170613.jpg",
+   "prompt": "Surfers holding boards standing in water at ocean.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10041,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000432553.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000432553.jpg",
+   "prompt": "A couple of dogs viewing something as a person sits in a chair.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10042,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000172946.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000172946.jpg",
+   "prompt": "A group of people standing around holding Nintendo Wii controllers.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10043,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000143572.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000143572.jpg",
+   "prompt": "a tennis player swings his tennis racket",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10044,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000453841.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000453841.jpg",
+   "prompt": "Cars and trucks stopped at an intersection at twilight.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10045,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000161799.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000161799.jpg",
+   "prompt": "A man flying through the air while riding a skateboard.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10046,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000248111.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000248111.jpg",
+   "prompt": "This basic kitchen has tools sitting on the floor",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10047,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000556193.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000556193.jpg",
+   "prompt": "One guy is showing another guy the intricacies of the Wii.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10048,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000196754.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000196754.jpg",
+   "prompt": "There is a stop sign outside of a bus window.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10049,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000275198.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000275198.jpg",
+   "prompt": "A group of people holding umbrellas eating a meal outdoors.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10050,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000189310.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000189310.jpg",
+   "prompt": "A living area with a red couch, mirror, window and painting.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10051,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000353180.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000353180.jpg",
+   "prompt": "A group of people that are behind a bus.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10052,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000566042.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000566042.jpg",
+   "prompt": "Six giraffe are standing looking in the same direction.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10053,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000226058.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000226058.jpg",
+   "prompt": "teddy bears dressed up in clothing sitting on a loveseat together",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10054,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000384527.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000384527.jpg",
+   "prompt": "The furniture is posed in the room with a sign that says do not touch.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10055,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000136355.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000136355.jpg",
+   "prompt": "A kitchen with a bright window and house plants",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10056,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000123131.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000123131.jpg",
+   "prompt": "A large black semi parked in a parking lot.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10057,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000189436.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000189436.jpg",
+   "prompt": "A carved bear that has a ribbon around the neck.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10058,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000384808.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000384808.jpg",
+   "prompt": "A man taking his picture in a bathroom mirror.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10059,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000514376.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000514376.jpg",
+   "prompt": "A trolley is going down the street while a car passes it.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10060,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000335954.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000335954.jpg",
+   "prompt": "two cups filled with veggies and nuts",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10061,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000174371.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000174371.jpg",
+   "prompt": "A woman in camouflage showing a device to young women.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10062,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000062353.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000062353.jpg",
+   "prompt": "Two giraffe walking next to each other in a forest.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10063,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000459954.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000459954.jpg",
+   "prompt": "A woman peaking around a pile of old refrigerators.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10064,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000492968.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000492968.jpg",
+   "prompt": "A snowboarder with black and white clothes finishing a run.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10065,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000357748.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000357748.jpg",
+   "prompt": "A pink city bus at a bus stop.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10066,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000520659.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000520659.jpg",
+   "prompt": "A white tent with a row of surfboards sitting under it.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10067,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000006818.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000006818.jpg",
+   "prompt": "a couple of buckets in a white room",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10068,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000450686.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000450686.jpg",
+   "prompt": "A hand holding a smart phone with apps on a screen.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10069,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000308328.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000308328.jpg",
+   "prompt": "Some people in high visibility jackets putting suitcases onto a conveyer belt from a container",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10070,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000152870.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000152870.jpg",
+   "prompt": "A giraffe standing on a grass covered field.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10071,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000022705.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000022705.jpg",
+   "prompt": "The woman in the dress is holding her drink.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10072,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000108244.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000108244.jpg",
+   "prompt": "A black cat with a hat on the ground.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10073,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000223955.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000223955.jpg",
+   "prompt": "A man holding a red frisbee while standing on lush green field.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10074,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000531135.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000531135.jpg",
+   "prompt": "A group of men on a field playing baseball.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10075,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000395575.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000395575.jpg",
+   "prompt": "THERE IS A BENCH IN FRONT OF TE LAKE",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10076,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000015751.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000015751.jpg",
+   "prompt": "A few birds are on the roof of a house.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10077,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000499181.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000499181.jpg",
+   "prompt": "A street scene of a self service parking lot.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10078,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000484029.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000484029.jpg",
+   "prompt": "A stop sign with a street sign above it.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10079,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000409867.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000409867.jpg",
+   "prompt": "A tall clear glass window with two cats sitting at the base of it.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10080,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000430973.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000430973.jpg",
+   "prompt": "Large whole pizza pie with cheese and olive toppings.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10081,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000238410.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000238410.jpg",
+   "prompt": "A group of people sitting around a table next to each other.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10082,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000262227.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000262227.jpg",
+   "prompt": "A computer monitor sitting on top of a desk.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10083,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000269316.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000269316.jpg",
+   "prompt": "four men playing frisbee in a fenced park",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10084,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000453584.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000453584.jpg",
+   "prompt": "A red bench on a slanted floor has the Coca-Cola symbol on it.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10085,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000186422.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000186422.jpg",
+   "prompt": "a brown bear is walking away from a river",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10086,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000304404.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000304404.jpg",
+   "prompt": "A batter swings at the ball during a baseball game",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10087,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000499109.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000499109.jpg",
+   "prompt": "A plate of food that includes pickles and a sandwich.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10088,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000177893.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000177893.jpg",
+   "prompt": "a red and white passenger bus with a 'final destination 5' billboard on the side of it",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10089,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000559842.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000559842.jpg",
+   "prompt": "Group of small children running down the field playing soccer.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10090,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000161978.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000161978.jpg",
+   "prompt": "Different people are doing skateboard tricks and riding.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10091,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000493566.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000493566.jpg",
+   "prompt": "An orange and green train reads \"BNSF\" on the side.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10092,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000208901.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000208901.jpg",
+   "prompt": "A large passenger jet flying through a gray sky.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10093,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000035770.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000035770.jpg",
+   "prompt": "a couple of pans you would use to pee in",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10094,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000244750.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000244750.jpg",
+   "prompt": "A man sitting at a table with wine glasses lined up in front of him.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10095,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000246883.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000246883.jpg",
+   "prompt": "Two men holding their surfboards near an ocean.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10096,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000306136.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000306136.jpg",
+   "prompt": "A bus stopped in front of a building with the Apple logo on it.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10097,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000366141.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000366141.jpg",
+   "prompt": "a cat laying on top of a chair in the living room",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10098,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000478721.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000478721.jpg",
+   "prompt": "Two people carrying a kite to be flown later.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10099,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000009448.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000009448.jpg",
+   "prompt": "A little girl holds up a big blue umbrella.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10100,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000529148.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000529148.jpg",
+   "prompt": "Young children sharing a laptop in a messy room with several laptops, books, and papers.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10101,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000282912.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000282912.jpg",
+   "prompt": "A giraffe next to a stone fence staring off into the distance.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10102,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000511599.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000511599.jpg",
+   "prompt": "Several people are standing outside a large boat.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10103,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000303566.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000303566.jpg",
+   "prompt": "A bunch of boxes that have fruit inside of them.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10104,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000291490.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000291490.jpg",
+   "prompt": "A cat peeking it's head out of the blankets.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10105,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000347163.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000347163.jpg",
+   "prompt": "Traffic stop sign with dilapidated building behind it.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10106,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000501523.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000501523.jpg",
+   "prompt": "A black cat is sitting in a bathroom sink.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10107,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000533855.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000533855.jpg",
+   "prompt": "A white frosted donut with sprinkles and a jump rope with leather roping next to it.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10108,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000543528.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000543528.jpg",
+   "prompt": "A big plane flying low  on a cloudy sky",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10109,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000369081.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000369081.jpg",
+   "prompt": "A group of horses are grazing in the field.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10110,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000047112.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000047112.jpg",
+   "prompt": "A dining table has a large pizza and wine glasses.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10111,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000039405.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000039405.jpg",
+   "prompt": "Spectators watching as competitors play a double tennis game.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10112,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000097988.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000097988.jpg",
+   "prompt": "Man standing under banner that reads \"Run for Rights\"",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10113,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000535156.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000535156.jpg",
+   "prompt": "A large elephant scratching it's back on the side of a pole.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10114,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000286507.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000286507.jpg",
+   "prompt": "A long red train traveling through snow covered country side.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10115,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000129492.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000129492.jpg",
+   "prompt": "Two small children holding remote controls while sitting on a floor.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10116,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000249786.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000249786.jpg",
+   "prompt": "a man jumping skis at a ski area",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10117,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000328683.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000328683.jpg",
+   "prompt": "A parking meter decorated with different colors of paper.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10118,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000285349.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000285349.jpg",
+   "prompt": "Multiple colors of origami birds in a heat shaped vase.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10119,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000005992.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000005992.jpg",
+   "prompt": "A small group of sheep standing together next to a building.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10120,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000432898.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000432898.jpg",
+   "prompt": "The man is flying his kite in the sky.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10121,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000481582.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000481582.jpg",
+   "prompt": "a group of people are with a horse in a stable",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10122,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000157046.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000157046.jpg",
+   "prompt": "A Nintendo Wii remote is being used to control a projector",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10123,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000212072.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000212072.jpg",
+   "prompt": "A stop sign in front of some buildings.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10124,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000577182.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000577182.jpg",
+   "prompt": "A bird sitting on top of a park bench.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10125,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000240754.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000240754.jpg",
+   "prompt": "A black goat with its mouth open next to a white goat.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10126,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000118594.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000118594.jpg",
+   "prompt": "A Texas Longhorn bull grazing on grass.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10127,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000096427.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000096427.jpg",
+   "prompt": "A young boy holding a tennis racquet on a court.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10128,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000079031.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000079031.jpg",
+   "prompt": "A kid on a surboard riding a little wave",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10129,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000256192.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000256192.jpg",
+   "prompt": "A yellow BMW touring motorcycle parked in the street as people look on from behind a steel rail on the sidewalk.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10130,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000437351.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000437351.jpg",
+   "prompt": "A woman in a hat sitting next to luggage.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10131,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000128476.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000128476.jpg",
+   "prompt": "a bunch of heart shaped cakes are on display",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10132,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000565012.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000565012.jpg",
+   "prompt": "a digitally manipulated image of cars on a highway at night in the city",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10133,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000154644.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000154644.jpg",
+   "prompt": "Woman listening on her phone while smoking a cigarette.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10134,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000121673.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000121673.jpg",
+   "prompt": "a person riding a surf board on a wave",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10135,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000036936.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000036936.jpg",
+   "prompt": "Two people play video games while sitting on a couch.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10136,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000284743.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000284743.jpg",
+   "prompt": "A group of people staring at a woman holding a bat.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10137,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000571264.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000571264.jpg",
+   "prompt": "a man is standing next to a motorcycle outside",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10138,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000382111.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000382111.jpg",
+   "prompt": "A man riding on the back of a brown horse.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10139,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000383384.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000383384.jpg",
+   "prompt": "A baseball player holding a bat next to home plate.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10140,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000131138.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000131138.jpg",
+   "prompt": "a desk with a cup plate laptop monitor and keyboard",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10141,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000081738.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000081738.jpg",
+   "prompt": "Someone about to cut and birthday cake with blue and yellow frosting.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10142,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000230983.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000230983.jpg",
+   "prompt": "A person is doing a trick over a trash can.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10143,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000271457.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000271457.jpg",
+   "prompt": "A bench sitting on to of a field of tall grass near water.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10144,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000345356.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000345356.jpg",
+   "prompt": "A man in a gray shirt holds his phone as he sits by a man in a white t-shirt.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10145,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000424521.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000424521.jpg",
+   "prompt": "A shirtless man doing skateboarding tricks near a stream",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10146,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000377814.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000377814.jpg",
+   "prompt": "A box of six pastries containing two chocolate doughnuts, one strawberry, one glaze, and two glazed crullers.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10147,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000354753.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000354753.jpg",
+   "prompt": "A street with traffic lights and cars at night.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10148,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000368752.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000368752.jpg",
+   "prompt": "A young boy sitting in front of a plate of food.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10149,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000271116.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000271116.jpg",
+   "prompt": "Two men sitting in chairs at a table with cell phones in their hands.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10150,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000013177.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000013177.jpg",
+   "prompt": "a man is working on a hub cap on the ground",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10151,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000166426.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000166426.jpg",
+   "prompt": "Beef and vegetables on a plate sitting on a table.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10152,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000217219.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000217219.jpg",
+   "prompt": "A made up bed with a pile of newspapers on it.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10153,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000286182.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000286182.jpg",
+   "prompt": "there is a man that is sitting at a table with lots of food",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10154,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000280918.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000280918.jpg",
+   "prompt": "Two beautiful young women baking a turkey in a pan..",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10155,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000221754.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000221754.jpg",
+   "prompt": "There is very little traffic at this city intersection.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10156,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000127182.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000127182.jpg",
+   "prompt": "A kitchen filled with metal appliances and a window.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10157,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000533145.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000533145.jpg",
+   "prompt": "A hand holding a Nintendo Wii game controller.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10158,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000166478.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000166478.jpg",
+   "prompt": "A young guy using his computer and talking on his phone.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10159,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000411754.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000411754.jpg",
+   "prompt": "A man checks his cell phone in a waiting area.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10160,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000420472.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000420472.jpg",
+   "prompt": "Two giraffes are eating a leafy branch together.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10161,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000513580.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000513580.jpg",
+   "prompt": "A motorcycle driving by a red and white biplane.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10162,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000532481.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000532481.jpg",
+   "prompt": "A person kitesurfing over the waves of the ocean's shore.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10163,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000130566.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000130566.jpg",
+   "prompt": "A yellow train on the tracks with several cars",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10164,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000017905.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000017905.jpg",
+   "prompt": "A man standing next to a light and a sign.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10165,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000150265.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000150265.jpg",
+   "prompt": "A group of people walking down a sidewalk.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10166,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000565853.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000565853.jpg",
+   "prompt": "A man playing Wii on a large flat screen tv",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10167,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000454750.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000454750.jpg",
+   "prompt": "A larger zebra resting its head on a smaller zebra.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10168,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000559547.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000559547.jpg",
+   "prompt": "Men stand in uniforms, expressionless, in an historic photo.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10169,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000100428.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000100428.jpg",
+   "prompt": "A man is grabbing the tie of another person that appears in the mirror.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10170,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000300155.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000300155.jpg",
+   "prompt": "A bird is perched on the twig of a tree.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10171,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000376278.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000376278.jpg",
+   "prompt": "A zebra is lying on the ground with other zebras.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10172,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000334521.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000334521.jpg",
+   "prompt": "Giraffes and a bird behind a chain link fence at a zoo",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10173,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000297681.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000297681.jpg",
+   "prompt": "A car that is trying to drive through a flood.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10174,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000092839.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000092839.jpg",
+   "prompt": "A polar bear with his chin raised lies on a rock.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10175,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000017959.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000017959.jpg",
+   "prompt": "A large kite with three orange, white and black fish.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10176,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000236592.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000236592.jpg",
+   "prompt": "A dog eyeballing something cooking in the oven.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10177,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000139099.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000139099.jpg",
+   "prompt": "A street scene with a person on a motorcycle.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10178,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000375278.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000375278.jpg",
+   "prompt": "An hand pets a cat in a suitcase.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10179,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000270297.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000270297.jpg",
+   "prompt": "A small train going down a steel track.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10180,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000261706.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000261706.jpg",
+   "prompt": "A black and white cat laying on a couch.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10181,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000411774.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000411774.jpg",
+   "prompt": "A woman holding a tennis racquet while wearing glasses.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10182,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000376310.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000376310.jpg",
+   "prompt": "A small bathroom with a mirror and sinks.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10183,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000335800.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000335800.jpg",
+   "prompt": "A street sign with flags on it and a building in the background.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10184,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000165351.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000165351.jpg",
+   "prompt": "Sliced bananas sit on top of a pastry dish on a plate.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10185,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000189820.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000189820.jpg",
+   "prompt": "A blue office chair sitting next to a wooden desk.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10186,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000293474.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000293474.jpg",
+   "prompt": "a yellow and black fire hydrant on the sidewalk",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10187,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000500613.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000500613.jpg",
+   "prompt": "An old firetruck sits empty in a parking lot.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10188,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000460927.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000460927.jpg",
+   "prompt": "A majestic bear looks out across a grass plain.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10189,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000356261.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000356261.jpg",
+   "prompt": "A small buckskin horse walking slowly down a hill.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10190,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000512403.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000512403.jpg",
+   "prompt": "A vase of feathers on a shelf by some art.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10191,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000513688.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000513688.jpg",
+   "prompt": "A chair next to a desk with a laptop and phone sitting on it.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10192,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000344614.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000344614.jpg",
+   "prompt": "A clock town sits in the middle of a city.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10193,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000174231.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000174231.jpg",
+   "prompt": "A dark cat hiding in between a laptop.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10194,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000378673.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000378673.jpg",
+   "prompt": "A man riding a skateboard down the side of a ramp.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10195,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000259382.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000259382.jpg",
+   "prompt": "Giraffe inside rock walls standing and bowing its head.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10196,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000160556.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000160556.jpg",
+   "prompt": "A young girl sits in front of a computer holding a phone.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10197,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000274687.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000274687.jpg",
+   "prompt": "A bicycle is standing next to a bed in a room.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10198,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000054967.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000054967.jpg",
+   "prompt": "A city street with cars and street lights.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10199,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000441553.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000441553.jpg",
+   "prompt": "A crows of people standing outside of a train.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10200,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000142238.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000142238.jpg",
+   "prompt": "A group of young people playing a game of soccer.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10201,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000134034.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000134034.jpg",
+   "prompt": "A pair of horses grazing in a field behind a fence.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10202,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000428111.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000428111.jpg",
+   "prompt": "A man riding a skateboard up the side of a ramp.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10203,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000207728.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000207728.jpg",
+   "prompt": "A mother sheep and a baby sheep pictured here.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10204,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000438269.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000438269.jpg",
+   "prompt": "There is a bird standing in the sand.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10205,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000315001.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000315001.jpg",
+   "prompt": "A flock of birds flying over the ocean next to a beach.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10206,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000481567.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000481567.jpg",
+   "prompt": "A man stands beside his black and red motorcycle near a park.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10207,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000267537.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000267537.jpg",
+   "prompt": "A black and white scene with two couples under umbrellas and rain jackets sitting at a stadium.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10208,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000357742.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000357742.jpg",
+   "prompt": "A person on skis sliding up down a path.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10209,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000094614.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000094614.jpg",
+   "prompt": "A person in a green jacket skiing down a slope",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10210,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000222991.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000222991.jpg",
+   "prompt": "An umbrella and rain boots sitting on a rug in a corner.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10211,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000182611.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000182611.jpg",
+   "prompt": "A man making his plate with a table full of food.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10212,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000546011.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000546011.jpg",
+   "prompt": "A trio of zebras stand together in the grass.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10213,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000302165.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000302165.jpg",
+   "prompt": "A herd of cows laying on dry grass.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10214,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000023781.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000023781.jpg",
+   "prompt": "An assortment of fruits and vegetable all set together",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10215,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000234757.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000234757.jpg",
+   "prompt": "A parking meter sitting in the middle of a flooded street.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10216,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000056545.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000056545.jpg",
+   "prompt": "A gray bird is standing on small brown branch.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10217,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000185472.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000185472.jpg",
+   "prompt": "The train is approaching and a man is getting off his bicycle.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10218,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000061333.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000061333.jpg",
+   "prompt": "A orange and white cat sleeping on top of a blanket on a bed.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10219,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000529966.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000529966.jpg",
+   "prompt": "Two glass bowls of oranges add up to more than enough.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10220,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000489611.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000489611.jpg",
+   "prompt": "A young boy holding Nintendo Wii game controllers.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10221,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000312263.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000312263.jpg",
+   "prompt": "A clock is at the bottom of a very tall building.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10222,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000361268.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000361268.jpg",
+   "prompt": "A cow grazing on the grass on the side of a side walk.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10223,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000363072.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000363072.jpg",
+   "prompt": "this trains station has a white building in the background",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10224,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000199551.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000199551.jpg",
+   "prompt": "A picture of a young boy laying on top of a bed.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10225,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000023359.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000023359.jpg",
+   "prompt": "A man flying through the air while riding a snowboard.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10226,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000112626.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000112626.jpg",
+   "prompt": "a metallic suit case in front of a couch",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10227,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000469246.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000469246.jpg",
+   "prompt": "A commuter train stops at a train station for passengers.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10228,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000098853.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000098853.jpg",
+   "prompt": "A man playing a game of tennis on a tennis court.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10229,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000183716.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000183716.jpg",
+   "prompt": "Two little girls are dressed in uniform preparing for the day",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10230,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000369771.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000369771.jpg",
+   "prompt": "Arrows show what to do with the bowls of food.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10231,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000414034.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000414034.jpg",
+   "prompt": "A kid sitting on a bed with a remote.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10232,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000051309.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000051309.jpg",
+   "prompt": "Small horse standing behind a large group of horses eating.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10233,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000224051.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000224051.jpg",
+   "prompt": "A bike is perched on a concrete girder on the road.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10234,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000449406.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000449406.jpg",
+   "prompt": "A zebra standing on a dirty rocky field.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10235,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000415727.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000415727.jpg",
+   "prompt": "A couple of men standing next to each other.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10236,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000033368.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000033368.jpg",
+   "prompt": "A man that is on a tennis court with a racquet.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10237,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000523807.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000523807.jpg",
+   "prompt": "A foot long hot dog sitting on top of a bun.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10238,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000549220.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000549220.jpg",
+   "prompt": "A dog on a leash trying to ride a skateboard.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10239,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000015746.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000015746.jpg",
+   "prompt": "A fire hydrant is standing amid some grass.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10240,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000522940.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000522940.jpg",
+   "prompt": "a close up of a vandalized stop sign",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10241,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000351559.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000351559.jpg",
+   "prompt": "A traffic light in front of a tall building with red lights at the top.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10242,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000008021.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000008021.jpg",
+   "prompt": "A presenter projected on a large screen at a conference.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10243,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000063047.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000063047.jpg",
+   "prompt": "Man with food items walking on sidewalk while listening to audio.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10244,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000544811.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000544811.jpg",
+   "prompt": "Two birds flying in the sky over a lake",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10245,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000268996.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000268996.jpg",
+   "prompt": "A green street sign on a pole in front of a tall building.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10246,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000167128.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000167128.jpg",
+   "prompt": "A couple of adult elephants with a baby one following along.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10247,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000143961.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000143961.jpg",
+   "prompt": "A group of people standing and sitting on top of a field.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10248,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000292415.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000292415.jpg",
+   "prompt": "A person on a skateboard on a skate ramp.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10249,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000280710.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000280710.jpg",
+   "prompt": "A group of people walking down a city street near a bus.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10250,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000473118.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000473118.jpg",
+   "prompt": "a skateboarder in a blue jacket is doing a trick",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10251,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000320425.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000320425.jpg",
+   "prompt": "A group of giraffe standing next to each other on a dirt field.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10252,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000237928.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000237928.jpg",
+   "prompt": "This kitchen has a black stove, stainless steel refrigerator and white cupboards.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10253,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000183049.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000183049.jpg",
+   "prompt": "A book shelf filled with lots of colorful books.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10254,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000563349.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000563349.jpg",
+   "prompt": "A person on a board holding a para sail rope over a snow field.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10255,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000099114.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000099114.jpg",
+   "prompt": "A group of people crossing a street next to tall buildings.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10256,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000309452.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000309452.jpg",
+   "prompt": "The bird has a black head and yellow feathers.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10257,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000515077.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000515077.jpg",
+   "prompt": "a lady playing with a wii on a large screen",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10258,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000117525.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000117525.jpg",
+   "prompt": "A man in front of a Christmas tree with his dog.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10259,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000239347.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000239347.jpg",
+   "prompt": "A picture of a recently married couple displayed behind glass.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10260,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000025394.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000025394.jpg",
+   "prompt": "Bartender opening a bottle of wine while patron waits patiently",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10261,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000525600.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000525600.jpg",
+   "prompt": "a number of giraffes near one another",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10262,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000179653.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000179653.jpg",
+   "prompt": "A tall clock sitting next to a fence and a forest.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10263,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000523782.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000523782.jpg",
+   "prompt": "A cardinal perches on the side window mirror of a parked sedan.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10264,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000495146.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000495146.jpg",
+   "prompt": "A train crosses as a bunch of gathered vehicles watch.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10265,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000118367.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000118367.jpg",
+   "prompt": "Hot dog on a roll with cheese, onions, and herbs.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10266,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000428218.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000428218.jpg",
+   "prompt": "A couple of people standing on top of a green yard.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10267,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000072852.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000072852.jpg",
+   "prompt": "A dilapidated bicycle frame underneath a Pedestrian Zone Sign.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10268,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000433204.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000433204.jpg",
+   "prompt": "a person riding a motorcycle on a city road with a sky background",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10269,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000398438.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000398438.jpg",
+   "prompt": "A person cutting a multi layer cake with a knife.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10270,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000485895.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000485895.jpg",
+   "prompt": "The giraffe is standing in the shade of the tree.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10271,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000459467.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000459467.jpg",
+   "prompt": "A small wheeled airplane on an open runway.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10272,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000008762.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000008762.jpg",
+   "prompt": "Street lights and a lit up street sign at an intersection.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10273,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000166747.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000166747.jpg",
+   "prompt": "A group of people riding on a double decker bus on a bridge.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10274,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000402118.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000402118.jpg",
+   "prompt": "A person riding a snow board while flying through the air.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10275,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000335427.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000335427.jpg",
+   "prompt": "A bowl filled with broccoli soup next to a spoon and fork.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10276,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000478136.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000478136.jpg",
+   "prompt": "A plate of assorted donuts, muffins, and danishes.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10277,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000177861.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000177861.jpg",
+   "prompt": "Pedestrians walking on sidewalk with umbrella on rainy day.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10278,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000169356.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000169356.jpg",
+   "prompt": "A man flying through the air while riding a skateboard.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10279,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000229753.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000229753.jpg",
+   "prompt": "Two tall giraffes are next to bare trees.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10280,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000029397.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000029397.jpg",
+   "prompt": "A person wearing orange pants standing on a bench",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10281,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000451435.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000451435.jpg",
+   "prompt": "A man with a tennis racket and ball is on a tennis court.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10282,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000550939.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000550939.jpg",
+   "prompt": "A green street sign sitting on top of a pole.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10283,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000244496.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000244496.jpg",
+   "prompt": "A person with a tie and a suit.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10284,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000172571.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000172571.jpg",
+   "prompt": "A very thick pizza is on a plate with one piece taken.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10285,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000376206.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000376206.jpg",
+   "prompt": "A man is surfing in the ocean on a large wave.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10286,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000016228.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000016228.jpg",
+   "prompt": "There is a white horse pulling a trolley behind it.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10287,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000334767.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000334767.jpg",
+   "prompt": "a group of beginner snow skiers having class",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10288,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000170099.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000170099.jpg",
+   "prompt": "a person wearing a suit and tie next to a couch",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10289,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000284725.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000284725.jpg",
+   "prompt": "a public transit bus on a city street",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10290,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000118921.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000118921.jpg",
+   "prompt": "A woman riding skis down a snow covered slope.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10291,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000560880.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000560880.jpg",
+   "prompt": "Two horses plowing the land as a man directs them",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10292,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000035963.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000035963.jpg",
+   "prompt": "A statue with two stuffed animals on top of it sitting in a patch of dirt.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10293,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000171740.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000171740.jpg",
+   "prompt": "A couch in a living room with walls lined with a bookcase and pictures.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10294,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000395801.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000395801.jpg",
+   "prompt": "A street lined with cones with people up and down the sidewalk.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10295,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000181303.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000181303.jpg",
+   "prompt": "A young child holding onto a kite while standing on a green grass covered field.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10296,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000572408.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000572408.jpg",
+   "prompt": "A cow standing in a field with a smaller cow.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10297,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000139260.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000139260.jpg",
+   "prompt": "There is a banana split with whipped cream and a cherry.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10298,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000271997.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000271997.jpg",
+   "prompt": "A photo of a young male in a suit jacket and tie.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10299,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000293625.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000293625.jpg",
+   "prompt": "The women are playing a video game together.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10300,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000173383.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000173383.jpg",
+   "prompt": "A two layer cake sitting on top of a table.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10301,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000154425.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000154425.jpg",
+   "prompt": "A small boy trying to fly a small kite",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10302,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000216296.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000216296.jpg",
+   "prompt": "a couple of guys with tennis rackets waiting on a ball",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10303,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000372260.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000372260.jpg",
+   "prompt": "A car parked by a clock and some flowers.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10304,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000429598.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000429598.jpg",
+   "prompt": "An interesting kitchen renovation with brick and wood",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10305,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000048396.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000048396.jpg",
+   "prompt": "A woman standing next to a young boy holding a knife.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10306,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000245513.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000245513.jpg",
+   "prompt": "A giraffe standing in a field next to a fence.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10307,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000333745.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000333745.jpg",
+   "prompt": "A woman with an umbrella is walking past a bus.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10308,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000007108.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000007108.jpg",
+   "prompt": "A herd of elephants walking away from a watering hole.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10309,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000076625.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000076625.jpg",
+   "prompt": "A train with headlights traveling on a track past pedestrians.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10310,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000112798.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000112798.jpg",
+   "prompt": "A cat is on papers on a computer desk.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10311,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000439715.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000439715.jpg",
+   "prompt": "A man riding a brown horse in uniform next to tall green trees.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10312,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000240023.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000240023.jpg",
+   "prompt": "A tennis player using his shirt to dry his face during a tournament game.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10313,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000198489.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000198489.jpg",
+   "prompt": "Small girl reaching for her umbrella on a driveway.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10314,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000270677.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000270677.jpg",
+   "prompt": "A young man standing in front of a fence holding a skateboard.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10315,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000042276.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000042276.jpg",
+   "prompt": "A toilet sitting in a room surrounded by personal items.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10316,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000471869.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000471869.jpg",
+   "prompt": "A teddy bear sitting on a blue chair.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10317,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000506178.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000506178.jpg",
+   "prompt": "Blurry image of men in living room playing a stand-up video game.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10318,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000418961.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000418961.jpg",
+   "prompt": "Closeup of a decorative gold and grey clock.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10319,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000399205.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000399205.jpg",
+   "prompt": "A group of men standing around a sidewalk together.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10320,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000524280.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000524280.jpg",
+   "prompt": "A cat outside looking straight ahead with a tree behind it.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10321,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000570539.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000570539.jpg",
+   "prompt": "An older man is sitting on the bus above a movie advertisement.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10322,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000203389.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000203389.jpg",
+   "prompt": "A group of young people riding motorcycles near a river.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10323,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000265777.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000265777.jpg",
+   "prompt": "A woman sitting at a table with a pizza on a plate.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10324,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000577864.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000577864.jpg",
+   "prompt": "Three people are playing with a red kick ball.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10325,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000111207.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000111207.jpg",
+   "prompt": "Two pictures of a guy with a black shirt and hat on with a skateboard.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10326,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000252507.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000252507.jpg",
+   "prompt": "A cross country skier on the slopes on a sunny day",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10327,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000282296.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000282296.jpg",
+   "prompt": "Old refrigerator in dark, messy store room with tiled floor.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10328,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000029187.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000029187.jpg",
+   "prompt": "A man riding a horse drawn carriage on a race track.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10329,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000369370.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000369370.jpg",
+   "prompt": "A sandwich on a plate served with garnish.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10330,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000032817.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000032817.jpg",
+   "prompt": "A man climbing on a toilet bowl in a closet",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10331,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000404805.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000404805.jpg",
+   "prompt": "A woman on a boogie board riding a wave.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10332,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000475572.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000475572.jpg",
+   "prompt": "There are is a picture of a couple, a beany baby bear, and pot of grass on a mantle.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10333,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000003934.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000003934.jpg",
+   "prompt": "A young girl in the foreground and a woman in a bridal dress and other adults in the background.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10334,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000228214.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000228214.jpg",
+   "prompt": "A Marine that is looking at his cell phone.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10335,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000061471.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000061471.jpg",
+   "prompt": "Puppy chewing on toilet paper in the bathroom.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10336,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000154213.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000154213.jpg",
+   "prompt": "Scissors are next to a pie crust in a dish.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10337,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000541664.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000541664.jpg",
+   "prompt": "A laptop computer sitting on top of a lego desk.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10338,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000066038.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000066038.jpg",
+   "prompt": "The father and daughter are under an umbrella on the beach.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10339,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000106235.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000106235.jpg",
+   "prompt": "A living room featuring a comfortable seating arrangement of chairs and tables.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10340,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000062355.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000062355.jpg",
+   "prompt": "A baseball player holding a bat standing next to home plate.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10341,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000516677.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000516677.jpg",
+   "prompt": "People standing and sitting on snow with skis and mountain",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10342,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000449909.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000449909.jpg",
+   "prompt": "A young boy standing on a field next to a giraffe.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10343,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000040036.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000040036.jpg",
+   "prompt": "A person jumping a horse over a box.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10344,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000225532.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000225532.jpg",
+   "prompt": "A highway filled with lots of traffic nest to a traffic light.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10345,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000006040.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000006040.jpg",
+   "prompt": "A blue and white train is moving on the rails.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10346,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000089697.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000089697.jpg",
+   "prompt": "The man is sitting on the arm of a bench near a woman.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10347,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000540466.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000540466.jpg",
+   "prompt": "A woman is walking and carrying an umbrella over her head.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10348,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000168883.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000168883.jpg",
+   "prompt": "A woman wearing a creepy  mask standing next to a child.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10349,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000568290.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000568290.jpg",
+   "prompt": "A red extra long bus driving down a stone covered walkway.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10350,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000127135.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000127135.jpg",
+   "prompt": "Small black and white pig on wheeled cart with protest sign.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10351,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000017627.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000017627.jpg",
+   "prompt": "Several cars are parked in front of a building.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10352,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000550349.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000550349.jpg",
+   "prompt": "A bus about to stop to pick up passengers.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10353,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000347456.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000347456.jpg",
+   "prompt": "A mother and baby elephant walking in green grass in front of a bond.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10354,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000567432.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000567432.jpg",
+   "prompt": "A colorful plane flying over head and telephone wires",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10355,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000564023.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000564023.jpg",
+   "prompt": "A public restroom with a toilet in the floor.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10356,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000274708.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000274708.jpg",
+   "prompt": "Several people in skis standing on a snow covered incline.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10357,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000210099.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000210099.jpg",
+   "prompt": "An orange cat sunning itself on a lawn chair.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10358,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000022479.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000022479.jpg",
+   "prompt": "The skateboarder wears headphones while jumping to grab his board.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10359,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000348481.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000348481.jpg",
+   "prompt": "A desk with various items that include cellphone, mouse and pocket change.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10360,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000523033.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000523033.jpg",
+   "prompt": "A group of people riding waves in the ocean.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10361,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000436551.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000436551.jpg",
+   "prompt": "two black birds are swimming  in some water",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10362,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000251572.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000251572.jpg",
+   "prompt": "Nothing is quite as soft as a young puppy.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10363,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000211674.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000211674.jpg",
+   "prompt": "Red double decker bus with people standing on top.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10364,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000348216.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000348216.jpg",
+   "prompt": "Your guess is as good as mine as to what these objects are.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10365,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000213445.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000213445.jpg",
+   "prompt": "a big cat sitting in a little bowl",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10366,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000363875.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000363875.jpg",
+   "prompt": "A man that is sitting on a moped.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10367,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000468954.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000468954.jpg",
+   "prompt": "A man with glasses on playing wii with a wii remote in his hand.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10368,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000082821.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000082821.jpg",
+   "prompt": "Paddle boats parked at the edge of a river or lake",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10369,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000054592.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000054592.jpg",
+   "prompt": "Two people with snow gear on, carrying equipment.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10370,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000184611.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000184611.jpg",
+   "prompt": "Guy pedals a bike through a small village.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10371,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000335081.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000335081.jpg",
+   "prompt": "A group of stuffed animals are arranged together.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10372,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000574702.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000574702.jpg",
+   "prompt": "Several motor scooters are jammed into a small market street.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10373,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000117492.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000117492.jpg",
+   "prompt": "A group of families with lots of children in a park.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10374,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000031620.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000031620.jpg",
+   "prompt": "A bride and groom cutting their wedding cake.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10375,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000371677.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000371677.jpg",
+   "prompt": "A couple of computer monitors sitting on top of a wooden desk.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10376,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000182923.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000182923.jpg",
+   "prompt": "A woman swinging a tennis racquet on a tennis court.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10377,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000565045.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000565045.jpg",
+   "prompt": "Blue bathroom with two white towels hanging by the shower.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10378,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000377000.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000377000.jpg",
+   "prompt": "A cat sitting by a window watching the rain.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10379,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000232348.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000232348.jpg",
+   "prompt": "Toaster and blender plugged in on a kitchen counter.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10380,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000528977.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000528977.jpg",
+   "prompt": "Street signs, graffiti, old buildings and a bridge.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10381,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000198805.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000198805.jpg",
+   "prompt": "A group of trucks and cars parked in a parking lot.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10382,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000122046.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000122046.jpg",
+   "prompt": "A woman is sitting in a chair with an umbrella.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10383,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000230362.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000230362.jpg",
+   "prompt": "Dark clouds moving in over a harbor full of moored sailboats.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10384,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000277197.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000277197.jpg",
+   "prompt": "A living room with colored windows, sofas and chairs.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10385,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000115245.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000115245.jpg",
+   "prompt": "A table topped with bags of luggage and purses.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10386,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000172977.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000172977.jpg",
+   "prompt": "A zebra chews a flower in a fenced in field.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10387,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000296224.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000296224.jpg",
+   "prompt": "A city bus is parked on the curb waiting for people",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10388,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000546659.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000546659.jpg",
+   "prompt": "A train traveling past tall white buildings on train tracks.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10389,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000290592.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000290592.jpg",
+   "prompt": "A cluster of black and white sheep hang out by a fence.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10390,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000414261.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000414261.jpg",
+   "prompt": "Baby bear climbing large rock near pine tree.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10391,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000515445.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000515445.jpg",
+   "prompt": "A group of people walking on top of a beach.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10392,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000039480.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000039480.jpg",
+   "prompt": "a woman walking on a tennis court holding a tennis racket.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10393,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000182805.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000182805.jpg",
+   "prompt": "A woman and a dog sitting on the ground.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10394,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000257478.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000257478.jpg",
+   "prompt": "a close up of a baseball player holding a glove on the field",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10395,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000519039.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000519039.jpg",
+   "prompt": "A white dump truck is going around a corner.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10396,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000333069.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000333069.jpg",
+   "prompt": "Two giraffes in the trees, one standing up.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10397,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000216497.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000216497.jpg",
+   "prompt": "Some chairs sit at an island near an open door.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10398,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000455085.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000455085.jpg",
+   "prompt": "The side of a bus parked on the side of a street.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10399,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000312586.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000312586.jpg",
+   "prompt": "This is a picture of three bears in a field.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10400,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000401244.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000401244.jpg",
+   "prompt": "a person playing frisbee on a field in sport wear",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10401,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000124636.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000124636.jpg",
+   "prompt": "A baby cow standing in a pen next to another cow.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10402,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000284296.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000284296.jpg",
+   "prompt": "Three giraffe's leaning over to get a sip of water.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10403,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000002153.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000002153.jpg",
+   "prompt": "Batter preparing to swing at pitch during major game.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10404,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000290248.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000290248.jpg",
+   "prompt": "A crowd of people standing in the middle of a street.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10405,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000052565.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000052565.jpg",
+   "prompt": "a cow stares as it stands next to a body of water",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10406,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000050811.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000050811.jpg",
+   "prompt": "am empty bowl and three empty beer bottles in front of a man",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10407,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000177489.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000177489.jpg",
+   "prompt": "Two people that are sitting on a table.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10408,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000172856.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000172856.jpg",
+   "prompt": "a stop sign and two brown and white street signs",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10409,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000080340.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000080340.jpg",
+   "prompt": "A boy in a tie holding a small suit case.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10410,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000455555.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000455555.jpg",
+   "prompt": "a little boy sitting on a skateboard and riding it",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10411,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000375078.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000375078.jpg",
+   "prompt": "A dried black flower in a long, tall black & white vase.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10412,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000257624.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000257624.jpg",
+   "prompt": "there is a young girl playing with soccer balls",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10413,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000397639.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000397639.jpg",
+   "prompt": "A large white sheep next to a small black one",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10414,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000161609.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000161609.jpg",
+   "prompt": "A brown dog sitting in a mans back pack.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10415,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000578967.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000578967.jpg",
+   "prompt": "A monorail is going down the track with people on it.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10416,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000106266.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000106266.jpg",
+   "prompt": "Steak and crab cakes served with grilled peaches.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10417,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000569917.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000569917.jpg",
+   "prompt": "A small bathroom has a sink and a storage rack over the toilet.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10418,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000016439.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000016439.jpg",
+   "prompt": "A small desk with lamp, phone, and laptop on it.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10419,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000451879.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000451879.jpg",
+   "prompt": "Baseball players in action, one person dressed in green running while the others in white are looking and reaching toward the ball.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10420,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000085478.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000085478.jpg",
+   "prompt": "There is a polar bear swimming in the water.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10421,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000369751.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000369751.jpg",
+   "prompt": "Parking meters and signage are on the side of the street",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10422,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000083113.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000083113.jpg",
+   "prompt": "Animals trying to either move or go around fallen tree branches",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10423,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000160772.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000160772.jpg",
+   "prompt": "A boat on the water with a lighthouse in the background.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10424,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000391648.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000391648.jpg",
+   "prompt": "A white clock tower next to a brown building at night.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10425,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000427256.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000427256.jpg",
+   "prompt": "A man holding a baseball bat while standing next to home plate.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10426,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000067310.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000067310.jpg",
+   "prompt": "A male skater jumps in the air at a skate park.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10427,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000119038.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000119038.jpg",
+   "prompt": "A herd of cows standing on a grass covered hillside.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10428,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000260105.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000260105.jpg",
+   "prompt": "A white plate topped with eggs and potatoes",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10429,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000286660.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000286660.jpg",
+   "prompt": "A girl holding a stuffed teddy bear that has large teeth to her face.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10430,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000296634.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000296634.jpg",
+   "prompt": "Three white bowls of food that include soup and vegetables.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10431,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000149375.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000149375.jpg",
+   "prompt": "A young person riding a skateboard at a skate park.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10432,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000467776.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000467776.jpg",
+   "prompt": "A mother and it's calf standing in a field.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10433,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000498286.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000498286.jpg",
+   "prompt": "a vety cute furry dog posing near a big sign.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10434,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000395388.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000395388.jpg",
+   "prompt": "some people and some white sheep in their pens",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10435,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000227044.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000227044.jpg",
+   "prompt": "A black and white cat standing in a white bathroom sink.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10436,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000534601.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000534601.jpg",
+   "prompt": "A stuffed, white bear is on the bed with a person.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10437,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000322211.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000322211.jpg",
+   "prompt": "A box full of matching, ridged donuts with glaze.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10438,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000136466.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000136466.jpg",
+   "prompt": "a stove with a tea kettle and cooking pot on top",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10439,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000210394.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000210394.jpg",
+   "prompt": "A city passenger bus stopping to take on passengers.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10440,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000548524.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000548524.jpg",
+   "prompt": "The person is surfing through the long wave in the ocean.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10441,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000364166.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000364166.jpg",
+   "prompt": "2 Zebras standing next to each other in plaines",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10442,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000409630.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000409630.jpg",
+   "prompt": "A computer keyboard sitting next to a mouse.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10443,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000453722.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000453722.jpg",
+   "prompt": "room with wood floors and a stone fire place",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10444,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000458325.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000458325.jpg",
+   "prompt": "A person on a skateboard rides down the road.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10445,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000053529.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000053529.jpg",
+   "prompt": "A dog with a hat and a person in a truck.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10446,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000275749.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000275749.jpg",
+   "prompt": "A group of people standing in a room.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10447,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000125072.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000125072.jpg",
+   "prompt": "Cattle grazing on grass near a lake surrounded by mountain..",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10448,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000452784.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000452784.jpg",
+   "prompt": "A plate of food that includes lentils and leafy greens.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10449,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000186938.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000186938.jpg",
+   "prompt": "A small bird standing on a rocky ground.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10450,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000102644.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000102644.jpg",
+   "prompt": "A white toilet sitting in a bathroom next to a shower.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10451,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000427649.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000427649.jpg",
+   "prompt": "A small white boat sits on some calm water under a snow capped mountain.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10452,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000146457.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000146457.jpg",
+   "prompt": "two children being entertained by preparing pizza at home.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10453,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000383289.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000383289.jpg",
+   "prompt": "A security officer using a segway as a footrest",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10454,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000345261.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000345261.jpg",
+   "prompt": "Two giraffe standing on to of a dry grass covered field.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10455,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000180188.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000180188.jpg",
+   "prompt": "A long black train sitting on top of railroad tracks.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10456,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000461573.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000461573.jpg",
+   "prompt": "A metal park bench sitting next to a small road.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10457,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000410612.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000410612.jpg",
+   "prompt": "A red boat is along the waters edge with houses on the land.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10458,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000297427.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000297427.jpg",
+   "prompt": "A man holding a cheeseburger made out of donuts.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10459,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000482970.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000482970.jpg",
+   "prompt": "A laptop computer sitting on a desk with a speaker.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10460,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000288430.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000288430.jpg",
+   "prompt": "People flying kites in the sand on a windy beach.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10461,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000261712.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000261712.jpg",
+   "prompt": "Two giraffes at the zoo during the day.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10462,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000297022.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000297022.jpg",
+   "prompt": "a man and his friends are standing outside next to a truck",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10463,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000135890.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000135890.jpg",
+   "prompt": "A large stone building with a clock on it",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10464,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000197004.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000197004.jpg",
+   "prompt": "The sandwich features a large portion of meat.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10465,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000129812.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000129812.jpg",
+   "prompt": "A man riding skis while flying through the air.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10466,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000275727.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000275727.jpg",
+   "prompt": "Yellow and grey train near platform at railway station.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10467,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000001761.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000001761.jpg",
+   "prompt": "Two planes flying in the sky over a bridge.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10468,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000527427.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000527427.jpg",
+   "prompt": "a female is talking on the phone and a laptop on a table",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10469,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000522889.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000522889.jpg",
+   "prompt": "Venus Williams is swinging at the tennis ball at the game.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10470,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000555597.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000555597.jpg",
+   "prompt": "Many cars parked on a city street with tall buildings in the background.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10471,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000309964.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000309964.jpg",
+   "prompt": "The people are sitting outside under a large umbrella.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10472,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000084477.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000084477.jpg",
+   "prompt": "A woman walks out of the ocean towards a beach chair and umbrella.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10473,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000447465.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000447465.jpg",
+   "prompt": "Skiers line up for the starting gate at a race.",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10474,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000095786.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000095786.jpg",
+   "prompt": "there are three vases made of clay on a table",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10475,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000021839.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000021839.jpg",
+   "prompt": "a person walking across the street with a traffic light above",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10476,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000362682.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000362682.jpg",
+   "prompt": "A cartoon dog is painted on the side of the passenger bus.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10477,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000459153.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000459153.jpg",
+   "prompt": "A young male sitting on a park bench typing on a laptop.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10478,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000543043.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000543043.jpg",
+   "prompt": "There is a red car parked next to an old bus.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10479,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000280930.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000280930.jpg",
+   "prompt": "there is a young girl putting food in to a oven",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10480,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000236730.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000236730.jpg",
+   "prompt": "A zebra staring blankly near a watering hole.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10481,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000355257.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000355257.jpg",
+   "prompt": "A woman laying in a hospital bed hooded up to machines.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10482,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000084752.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000084752.jpg",
+   "prompt": "a jet on three pillars in front of a building",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10483,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000559707.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000559707.jpg",
+   "prompt": "A plate of broccoli, ham, pasta and parmesan.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10484,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000231527.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000231527.jpg",
+   "prompt": "The oranges are picked to make fresh jams.",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10485,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000314541.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000314541.jpg",
+   "prompt": "A large green field with a bench in the foreground.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10486,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000476258.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000476258.jpg",
+   "prompt": "A person in a helmet is riding a skateboard.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10487,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000541634.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000541634.jpg",
+   "prompt": "A bowl that has food inside of it.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10488,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000350679.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000350679.jpg",
+   "prompt": "A newly married couple cutting up a  giant hot dog cake.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10489,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000161032.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000161032.jpg",
+   "prompt": "A woman holding a red and white umbrella while standing in a cave.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10490,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000492282.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000492282.jpg",
+   "prompt": "A man who is riding a horse down a brick street.",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10491,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000177383.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000177383.jpg",
+   "prompt": "a yellow and red trains engine on its track",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10492,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000509258.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000509258.jpg",
+   "prompt": "A street sign shows directions to highways and towns.",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10493,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000567011.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000567011.jpg",
+   "prompt": "A person riding a beautiful wave very smooth",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10494,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000011760.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000011760.jpg",
+   "prompt": "A group of zebras walking away from trees.",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10495,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000026926.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000026926.jpg",
+   "prompt": "An orange fire hydrant with a face and bow tie drawn on it.",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10496,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000021604.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000021604.jpg",
+   "prompt": "A man in a suit is wearing a lit up tie.",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10497,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000237118.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000237118.jpg",
+   "prompt": "A middle aged man takes a selfie in a mirror.",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10498,
+   "resolution": 512
+  },
+  {
+   "sample_id": "000000304396.jpg",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/coco2017/val2017/000000304396.jpg",
+   "prompt": "A very tall pink and white clock tower.",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10499,
+   "resolution": 512
+  }
+ ]
+}

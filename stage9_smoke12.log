@@ -1,0 +1,835 @@
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.49it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.39it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  4.73it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  3.47it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  6.82it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  9.45it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.41it/s]
+[dense_s50] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/dense_s50
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  5.80it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.31it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.30it/s]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00,  5.27it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  7.64it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  9.92it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.27it/s]
+[dense_s30] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/dense_s30
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 13.10it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00, 19.27it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.78it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.61it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.29it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.63it/s]
+[reuse_c2_t4] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/reuse_c2_t4
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 11.70it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.84it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.84it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00, 10.45it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  6.55it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.22it/s]
+[mbd_c2_r03_t4_dualkv] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/mbd_c2_r03_t4_dualkv
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.13it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.62it/s]
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  4.41it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  6.21it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  4.83it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.96it/s]
+[mbd_c2_r03_t4_kv] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/mbd_c2_r03_t4_kv
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.017452974105253816,
+  "boundary_lpips_to_ref": 0.023194182586545747,
+  "known_psnr_to_input": 30.273314317067463,
+  "known_psnr_to_ref": 46.925451596577965,
+  "known_ssim_to_input": 0.9318752735853195,
+  "known_ssim_to_ref": 0.9965436408917109,
+  "lpips_to_ref": 0.021158598402204614,
+  "mask_lpips_pasted_to_ref": 0.04576141208720704,
+  "mask_lpips_to_input": 0.5216269095738729,
+  "mask_lpips_to_ref": 0.04730421941106518
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01602365099824965,
+  "boundary_lpips_to_ref": 0.019101538656589884,
+  "known_psnr_to_input": 30.174617449442547,
+  "known_psnr_to_ref": 50.37732664744059,
+  "known_ssim_to_input": 0.929936816294988,
+  "known_ssim_to_ref": 0.9981977393229803,
+  "lpips_to_ref": 0.021385640371590853,
+  "mask_lpips_pasted_to_ref": 0.05142001939627031,
+  "mask_lpips_to_input": 0.5233774880568186,
+  "mask_lpips_to_ref": 0.052136073199411236
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.011847761420843502,
+  "boundary_lpips_to_ref": 0.013982884547052285,
+  "known_psnr_to_input": 30.158522923787434,
+  "known_psnr_to_ref": 51.49189122517904,
+  "known_ssim_to_input": 0.9298651317755381,
+  "known_ssim_to_ref": 0.9984349509080251,
+  "lpips_to_ref": 0.015046023356262594,
+  "mask_lpips_pasted_to_ref": 0.03442586091114208,
+  "mask_lpips_to_input": 0.5236505617698034,
+  "mask_lpips_to_ref": 0.03487857237147788
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.010949632754394164,
+  "boundary_lpips_to_ref": 0.013036695716436952,
+  "known_psnr_to_input": 30.145432472229004,
+  "known_psnr_to_ref": 51.63696479797363,
+  "known_ssim_to_input": 0.9297845959663391,
+  "known_ssim_to_ref": 0.9984795153141022,
+  "lpips_to_ref": 0.0137904147656324,
+  "mask_lpips_pasted_to_ref": 0.0323735941395474,
+  "mask_lpips_to_input": 0.5239242563645045,
+  "mask_lpips_to_ref": 0.03281583604014789
+ }
+}
+MISMATCH dense_s30: steps=30 != 50
+WARN dense_s50: git_dirty=True (커밋 안 된 코드로 생성)
+WARN dense_s30: git_dirty=True (커밋 안 된 코드로 생성)
+WARN reuse_c2_t4: git_dirty=True (커밋 안 된 코드로 생성)
+WARN mbd_c2_r03_t4_dualkv: git_dirty=True (커밋 안 된 코드로 생성)
+WARN mbd_c2_r03_t4_kv: git_dirty=True (커밋 안 된 코드로 생성)
+MISMATCH dense_s30: provenance.scheduler_config_sha256 != dense_s50의 값
+MISMATCH reuse_c2_t4: provenance.scheduler_config_sha256 != dense_s50의 값
+MISMATCH mbd_c2_r03_t4_dualkv: provenance.scheduler_config_sha256 != dense_s50의 값
+MISMATCH mbd_c2_r03_t4_kv: provenance.scheduler_config_sha256 != dense_s50의 값
+
+호환성 검사 실패 — 이 run들을 함께 비교하면 안 됩니다.
+WARN dense_s50: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN dense_s30: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN reuse_c2_t4: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN mbd_c2_r03_t4_dualkv: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN mbd_c2_r03_t4_kv: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+OK: 5 runs share manifest/limit/resolution/guidance/seed and compatible provenance.
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  7.88it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.80it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.79it/s]
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  6.82it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.77it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.61it/s]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/bam_ki/Frozen-flux-draft-DiT/samplers/cached_flux_fill.py", line 510, in <module>
+    main()
+  File "/home/bam_ki/Frozen-flux-draft-DiT/samplers/cached_flux_fill.py", line 457, in main
+    sample_one(pipe, runner, state, method=a.method,
+  File "/home/bam_ki/Frozen-flux-draft-DiT/samplers/cached_flux_fill.py", line 218, in sample_one
+    tc = {"cnt": 0, "num_steps": n_steps, "rel_l1_thresh": teacache_rel_l1,
+                                 ^^^^^^^
+UnboundLocalError: cannot access local variable 'n_steps' where it is not associated with a value
+WARN dense_s50: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN dense_s30: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN reuse_c2_t4: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN mbd_c2_r03_t4_dualkv: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+WARN mbd_c2_r03_t4_kv: git_dirty=True (smoke는 허용; 최종 표/5K는 clean commit에서 재생성)
+OK: 5 runs share manifest/limit/resolution/guidance/seed and compatible provenance.
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  4.83it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.03it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.90it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  6.28it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00, 10.06it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.52it/s]
+[ctrl_uniform_grid_c2_r03] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/ctrl_uniform_grid_c2_r03
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00, 20.10it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.93it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.74it/s]
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00, 11.93it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.73it/s]
+[ctrl_contiguous_block_c2_r03] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/ctrl_contiguous_block_c2_r03
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  8.50it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.32it/s]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00, 10.70it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  6.53it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  7.15it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.24it/s]
+[ctrl_random_c2_r03] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/ctrl_random_c2_r03
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  9.23it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.32it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.45it/s]
+Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00,  8.49it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  5.17it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  9.75it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.64it/s]
+[ctrl_maskonly_c2_r03] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/ctrl_maskonly_c2_r03
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  3.09it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  5.15it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.06it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.75it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  5.90it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.69it/s]
+[adapt_thresh_t003] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t003
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01388399590117236,
+  "boundary_lpips_to_ref": 0.016174354842708755,
+  "known_psnr_to_input": 30.132914702097576,
+  "known_psnr_to_ref": 52.673835118611656,
+  "known_ssim_to_input": 0.9294891109069189,
+  "known_ssim_to_ref": 0.9987218032280604,
+  "lpips_to_ref": 0.01979484295588918,
+  "mask_lpips_pasted_to_ref": 0.04804906183077643,
+  "mask_lpips_to_input": 0.5234713604052862,
+  "mask_lpips_to_ref": 0.04851467915189763
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 17.62it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 11.50it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 11.49it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  5.62it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  7.99it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.76it/s]
+[adapt_thresh_t005] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t005
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.013696091036157062,
+  "boundary_lpips_to_ref": 0.01592996862018481,
+  "known_psnr_to_input": 30.14802138010661,
+  "known_psnr_to_ref": 52.52651309967041,
+  "known_ssim_to_input": 0.9295932650566101,
+  "known_ssim_to_ref": 0.9987089286247889,
+  "lpips_to_ref": 0.01973868432105519,
+  "mask_lpips_pasted_to_ref": 0.04771967934599767,
+  "mask_lpips_to_input": 0.5232745160659155,
+  "mask_lpips_to_ref": 0.048194506710084774
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00, 25.80it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.06it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.10it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.66it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.71it/s]
+[adapt_thresh_t008] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t008
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.014379636714390168,
+  "boundary_lpips_to_ref": 0.016800146743965644,
+  "known_psnr_to_input": 30.15525738398234,
+  "known_psnr_to_ref": 52.02326170603434,
+  "known_ssim_to_input": 0.9297096182902654,
+  "known_ssim_to_ref": 0.9986186474561691,
+  "lpips_to_ref": 0.020172216444431495,
+  "mask_lpips_pasted_to_ref": 0.04882882190092156,
+  "mask_lpips_to_input": 0.5232359543442726,
+  "mask_lpips_to_ref": 0.04931284844254454
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 17.55it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  7.16it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.12it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.55it/s]
+Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  6.77it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.18it/s]
+[adapt_thresh_t010] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t010
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.014987384027335793,
+  "boundary_lpips_to_ref": 0.01759464208347102,
+  "known_psnr_to_input": 30.162172158559162,
+  "known_psnr_to_ref": 51.386765480041504,
+  "known_ssim_to_input": 0.9297614345947901,
+  "known_ssim_to_ref": 0.9984934329986572,
+  "lpips_to_ref": 0.02055591674676786,
+  "mask_lpips_pasted_to_ref": 0.04973990082119902,
+  "mask_lpips_to_input": 0.5232155323028564,
+  "mask_lpips_to_ref": 0.050318700804685555
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  9.77it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  9.94it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.86it/s]
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  6.23it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  7.18it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:00<00:00,  7.55it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.25it/s]
+[adapt_thresh_t015] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t015
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01602365099824965,
+  "boundary_lpips_to_ref": 0.019101538656589884,
+  "known_psnr_to_input": 30.174617449442547,
+  "known_psnr_to_ref": 50.37732664744059,
+  "known_ssim_to_input": 0.929936816294988,
+  "known_ssim_to_ref": 0.9981977393229803,
+  "lpips_to_ref": 0.021385640371590853,
+  "mask_lpips_pasted_to_ref": 0.05142001939627031,
+  "mask_lpips_to_input": 0.5233774880568186,
+  "mask_lpips_to_ref": 0.052136073199411236
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00, 14.39it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.40it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 10.39it/s]
+Loading pipeline components...:  57%|█████▋    | 4/7 [00:00<00:00,  7.98it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.53it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.92it/s]
+[adapt_thresh_t020] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t020
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01602365099824965,
+  "boundary_lpips_to_ref": 0.019101538656589884,
+  "known_psnr_to_input": 30.174617449442547,
+  "known_psnr_to_ref": 50.37732664744059,
+  "known_ssim_to_input": 0.929936816294988,
+  "known_ssim_to_ref": 0.9981977393229803,
+  "lpips_to_ref": 0.021385640371590853,
+  "mask_lpips_pasted_to_ref": 0.05142001939627031,
+  "mask_lpips_to_input": 0.5233774880568186,
+  "mask_lpips_to_ref": 0.052136073199411236
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  8.34it/s]Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00,  5.47it/s]You set `add_prefix_space`. The tokenizer needs to be converted from the slow tokenizers
+Loading pipeline components...:  71%|███████▏  | 5/7 [00:00<00:00,  8.21it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][A
+Loading checkpoint shards:  50%|█████     | 1/2 [00:00<00:00,  8.75it/s][ALoading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00,  9.65it/s]
+Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  8.49it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:00<00:00,  7.93it/s]
+[adapt_thresh_t030] 12 samples -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/adapt_thresh_t030
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01602365099824965,
+  "boundary_lpips_to_ref": 0.019101538656589884,
+  "known_psnr_to_input": 30.174617449442547,
+  "known_psnr_to_ref": 50.37732664744059,
+  "known_ssim_to_input": 0.929936816294988,
+  "known_ssim_to_ref": 0.9981977393229803,
+  "lpips_to_ref": 0.021385640371590853,
+  "mask_lpips_pasted_to_ref": 0.05142001939627031,
+  "mask_lpips_to_input": 0.5233774880568186,
+  "mask_lpips_to_ref": 0.052136073199411236
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.01514957845211029,
+  "boundary_lpips_to_ref": 0.017791179901299376,
+  "known_psnr_to_input": 30.14555788040161,
+  "known_psnr_to_ref": 50.94360891977946,
+  "known_ssim_to_input": 0.9296405712763468,
+  "known_ssim_to_ref": 0.9983755598465601,
+  "lpips_to_ref": 0.019436062953900546,
+  "mask_lpips_pasted_to_ref": 0.04829199860493342,
+  "mask_lpips_to_input": 0.5231922095020612,
+  "mask_lpips_to_ref": 0.048866942059248686
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.015091249719262123,
+  "boundary_lpips_to_ref": 0.01762624007339279,
+  "known_psnr_to_input": 30.1566055615743,
+  "known_psnr_to_ref": 51.1978562672933,
+  "known_ssim_to_input": 0.929808109998703,
+  "known_ssim_to_ref": 0.9984193493922552,
+  "lpips_to_ref": 0.019266404599572223,
+  "mask_lpips_pasted_to_ref": 0.046993804552281894,
+  "mask_lpips_to_input": 0.5235367814699808,
+  "mask_lpips_to_ref": 0.0475582480430603
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.015099878791564455,
+  "boundary_lpips_to_ref": 0.01782870936828355,
+  "known_psnr_to_input": 30.144127527872723,
+  "known_psnr_to_ref": 51.28934669494629,
+  "known_ssim_to_input": 0.9296811024347941,
+  "known_ssim_to_ref": 0.9984509944915771,
+  "lpips_to_ref": 0.0193955577754726,
+  "mask_lpips_pasted_to_ref": 0.047602126374840736,
+  "mask_lpips_to_input": 0.5231862713893255,
+  "mask_lpips_to_ref": 0.04821348128219446
+ }
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:207: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/torchvision/models/_utils.py:222: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=VGG16_Weights.IMAGENET1K_V1`. You can also use `weights=VGG16_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Setting up [LPIPS] perceptual loss: trunk [vgg], v[0.1], spatial [on]
+Loading model from: /home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/lpips/weights/v0.1/vgg.pth
+{
+ "n": 12,
+ "aggregate": {
+  "boundary_lpips_pasted_to_ref": 0.013211282959673554,
+  "boundary_lpips_to_ref": 0.01573830802226439,
+  "known_psnr_to_input": 30.15800682703654,
+  "known_psnr_to_ref": 50.70241355895996,
+  "known_ssim_to_input": 0.9297061314185461,
+  "known_ssim_to_ref": 0.9982712219158808,
+  "lpips_to_ref": 0.021374693761269253,
+  "mask_lpips_pasted_to_ref": 0.049193006416317075,
+  "mask_lpips_to_input": 0.5243150691191355,
+  "mask_lpips_to_ref": 0.04971508037609359
+ }
+}
+# temporal_thresh sweep (target wall 12.12s)
+
+| run | wall(s) | maskLPIPS | anchor/dense/reuse |
+|---|---|---|---|
+| adapt_thresh_t015 | 8.90 | 0.0521 | 27/0/23 |
+| adapt_thresh_t010 | 9.23 | 0.0503 | 27/1/22 |
+| adapt_thresh_t008 | 9.54 | 0.0493 | 27/2/21 |
+| adapt_thresh_t005 | 10.19 | 0.0482 | 27/4/19 |
+| adapt_thresh_t003 | 11.21 | 0.0485 | 27/7/16 |
+
+**Wall-matched pick** (12.12s): `adapt_thresh_t003` at 11.21s, maskLPIPS 0.0485
+| Method | Steps | Anchor c | Ratio r(req) | r(actual) | Block | Selector | Tail | KV | Dual | MaskLPIPS→ref | BndLPIPS→ref | LPIPS→ref | KnownPSNR→input | MACratio(est) | Evals(a/s/d) | Wall(s) | VRAM(GB) | Imgs | Seeds |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| uniform_grid | 50 | 2 | - | 0.300 | - | - | - | Y | Y | 0.0489 | 0.0178 | 0.0194 | 30.1456 | 0.378 | 27/23/0 | 11.85 | 27.0 | 12 | 1 |
+| contiguous_block | 50 | 2 | - | 0.300 | - | - | - | Y | Y | 0.0476 | 0.0176 | 0.0193 | 30.1566 | 0.378 | 27/23/0 | 12.12 | 27.0 | 12 | 1 |
+| cache_sparse | 50 | 2 | 0.3 | 0.300 | 1 | random | t4 | Y | Y | 0.0482 | 0.0178 | 0.0194 | 30.1441 | 0.378 | 27/23/0 | 12.13 | 27.0 | 12 | 1 |
+| cache_sparse | 50 | 2 | 0.3 | 0.300 | 1 | mask | t4 | Y | Y | 0.0497 | 0.0157 | 0.0214 | 30.1580 | 0.378 | 27/23/0 | 12.14 | 27.0 | 12 | 1 |
+| cache_sparse | 50 | 2 | 0.3 | 0.300 | 1 | mbd | t4 | Y | Y | 0.0349 | 0.0140 | 0.0150 | 30.1585 | 0.378 | 27/23/0 | 12.13 | 27.0 | 12 | 1 |
+pareto csv -> /mnt/HDD_12TB/bam_ki/flux_fill/stage9_smoke12/pareto_control.csv
+[2] stem-set identity: OK (12 images)
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmprrrtq6_x/a
+FID a :   0%|          | 0/1 [00:00<?, ?it/s]FID a : 100%|██████████| 1/1 [00:00<00:00,  2.02it/s]FID a : 100%|██████████| 1/1 [00:00<00:00,  1.97it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmprrrtq6_x/b
+FID b :   0%|          | 0/1 [00:00<?, ?it/s]FID b : 100%|██████████| 1/1 [00:01<00:00,  1.33s/it]FID b : 100%|██████████| 1/1 [00:01<00:00,  1.35s/it]
+[1] dense50 self-FID = 0.0000 OK
+[3] 000000239717: composited recon max err = 22.0 CHECK (8-bit 양자화 여유)
+[3] 000000491008: composited recon max err = 31.0 CHECK (8-bit 양자화 여유)
+[3] 000000149222: composited recon max err = 16.0 CHECK (8-bit 양자화 여유)
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.94it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.29it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/comp
+FID comp :   0%|          | 0/1 [00:00<?, ?it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.40it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.28it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/comp
+KID comp :   0%|          | 0/1 [00:00<?, ?it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.43it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.32it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.40it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.29it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/dref
+FID dref :   0%|          | 0/1 [00:00<?, ?it/s]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.12s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.23it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpw8ux_qc9/dref
+KID dref :   0%|          | 0/1 [00:00<?, ?it/s]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+{
+ "eval_set_size": 12,
+ "eval_set_hash": "029f3390dca18306",
+ "fid_vs_real_raw": 66.95581964383086,
+ "kid_vs_real_raw": -0.06410068273544312,
+ "fid_vs_real_composited": 68.50342827715826,
+ "kid_vs_real_composited": -0.0640190914273262,
+ "fid_vs_dense50": 2.694129852898186e-05,
+ "kid_vs_dense50": -0.0725456103682518,
+ "n_raw": 12,
+ "n_comp": 12,
+ "n_real": 12
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+{
+ "encoder": "open_clip ViT-B-32 laion2b_s34b_b79k",
+ "variant": "raw",
+ "clipscore_mean": 31.873153686523438,
+ "clipscore_std": 2.536475363296658,
+ "n": 12,
+ "delta_clip_vs_dense50_mean": 0.0,
+ "delta_clip_ci95": [
+  0.0,
+  0.0
+ ],
+ "n_paired": 12
+}
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.93it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.05s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.41it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/comp
+FID comp :   0%|          | 0/1 [00:00<?, ?it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.47it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.35it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/comp
+KID comp :   0%|          | 0/1 [00:00<?, ?it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.43it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.32it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.41it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.31it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/dref
+FID dref :   0%|          | 0/1 [00:00<?, ?it/s]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.37it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.28it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpk086a8qg/dref
+KID dref :   0%|          | 0/1 [00:00<?, ?it/s]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+{
+ "eval_set_size": 12,
+ "eval_set_hash": "029f3390dca18306",
+ "fid_vs_real_raw": 66.85316285428831,
+ "kid_vs_real_raw": -0.0645904392004013,
+ "fid_vs_real_composited": 69.60579073141747,
+ "kid_vs_real_composited": -0.06419453769922256,
+ "fid_vs_dense50": 3.283923242235403,
+ "kid_vs_dense50": -0.07235338538885117,
+ "n_raw": 12,
+ "n_comp": 12,
+ "n_real": 12
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+{
+ "encoder": "open_clip ViT-B-32 laion2b_s34b_b79k",
+ "variant": "raw",
+ "clipscore_mean": 32.04331970214844,
+ "clipscore_std": 2.5699197310387123,
+ "n": 12,
+ "delta_clip_vs_dense50_mean": 0.170166015625,
+ "delta_clip_ci95": [
+  -0.05592028299967448,
+  0.4586051305135091
+ ],
+ "n_paired": 12
+}
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.01it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.96it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.05s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.38it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.28it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/comp
+FID comp :   0%|          | 0/1 [00:00<?, ?it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.49it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.36it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/comp
+KID comp :   0%|          | 0/1 [00:00<?, ?it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.44it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.33it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.41it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/dref
+FID dref :   0%|          | 0/1 [00:00<?, ?it/s]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.38it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.27it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmpnu2ohyog/dref
+KID dref :   0%|          | 0/1 [00:00<?, ?it/s]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+{
+ "eval_set_size": 12,
+ "eval_set_hash": "029f3390dca18306",
+ "fid_vs_real_raw": 65.0597452412486,
+ "kid_vs_real_raw": -0.06428418308496475,
+ "fid_vs_real_composited": 67.25499344682197,
+ "kid_vs_real_composited": -0.06437593698501587,
+ "fid_vs_dense50": 4.100886088255606,
+ "kid_vs_dense50": -0.07186474651098251,
+ "n_raw": 12,
+ "n_comp": 12,
+ "n_real": 12
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+{
+ "encoder": "open_clip ViT-B-32 laion2b_s34b_b79k",
+ "variant": "raw",
+ "clipscore_mean": 31.990427494049072,
+ "clipscore_std": 2.5834475812752142,
+ "n": 12,
+ "delta_clip_vs_dense50_mean": 0.11727380752563477,
+ "delta_clip_ci95": [
+  -0.019271055857340496,
+  0.2836446762084961
+ ],
+ "n_paired": 12
+}
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.95it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.05s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.43it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.31it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/comp
+FID comp :   0%|          | 0/1 [00:00<?, ?it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.49it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.38it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/comp
+KID comp :   0%|          | 0/1 [00:00<?, ?it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.48it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.36it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/dref
+FID dref :   0%|          | 0/1 [00:00<?, ?it/s]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.31it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmp6zbhlv7q/dref
+KID dref :   0%|          | 0/1 [00:00<?, ?it/s]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+{
+ "eval_set_size": 12,
+ "eval_set_hash": "029f3390dca18306",
+ "fid_vs_real_raw": 68.47089352799458,
+ "kid_vs_real_raw": -0.06540368497371674,
+ "fid_vs_real_composited": 69.93262356180406,
+ "kid_vs_real_composited": -0.06545194238424301,
+ "fid_vs_dense50": 5.7762283623891335,
+ "kid_vs_dense50": -0.07268007844686508,
+ "n_raw": 12,
+ "n_comp": 12,
+ "n_real": 12
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+{
+ "encoder": "open_clip ViT-B-32 laion2b_s34b_b79k",
+ "variant": "raw",
+ "clipscore_mean": 31.905753135681152,
+ "clipscore_std": 2.68573909957375,
+ "n": 12,
+ "delta_clip_vs_dense50_mean": 0.032599449157714844,
+ "delta_clip_ci95": [
+  -0.17983007431030273,
+  0.2554025650024414
+ ],
+ "n_paired": 12
+}
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.02it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  1.97it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.04s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.06s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.44it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.32it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/comp
+FID comp :   0%|          | 0/1 [00:00<?, ?it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.47it/s]FID comp : 100%|██████████| 1/1 [00:00<00:00,  2.37it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/real
+FID real :   0%|          | 0/1 [00:00<?, ?it/s]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID real : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/comp
+KID comp :   0%|          | 0/1 [00:00<?, ?it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]KID comp : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/real
+KID real :   0%|          | 0/1 [00:00<?, ?it/s]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.07s/it]KID real : 100%|██████████| 1/1 [00:01<00:00,  1.09s/it]
+compute FID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/raw
+FID raw :   0%|          | 0/1 [00:00<?, ?it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]FID raw : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/dref
+FID dref :   0%|          | 0/1 [00:00<?, ?it/s]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]FID dref : 100%|██████████| 1/1 [00:01<00:00,  1.10s/it]
+compute KID between two folders
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/raw
+KID raw :   0%|          | 0/1 [00:00<?, ?it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.42it/s]KID raw : 100%|██████████| 1/1 [00:00<00:00,  2.30it/s]
+Found 12 images in the folder /mnt/HDD_12TB/bam_ki/tmp/tmptqxgma6z/dref
+KID dref :   0%|          | 0/1 [00:00<?, ?it/s]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.08s/it]KID dref : 100%|██████████| 1/1 [00:01<00:00,  1.11s/it]
+{
+ "eval_set_size": 12,
+ "eval_set_hash": "029f3390dca18306",
+ "fid_vs_real_raw": 68.49802123266312,
+ "kid_vs_real_raw": -0.06528478115797043,
+ "fid_vs_real_composited": 70.15798071540087,
+ "kid_vs_real_composited": -0.06526122987270355,
+ "fid_vs_dense50": 4.387691536181649,
+ "kid_vs_dense50": -0.07278338074684143,
+ "n_raw": 12,
+ "n_comp": 12,
+ "n_real": 12
+}
+/home/mrlab/miniforge3/envs/fluxspec/lib/python3.11/site-packages/transformers/utils/hub.py:128: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+{
+ "encoder": "open_clip ViT-B-32 laion2b_s34b_b79k",
+ "variant": "raw",
+ "clipscore_mean": 31.874125162760418,
+ "clipscore_std": 2.618940285340725,
+ "n": 12,
+ "delta_clip_vs_dense50_mean": 0.0009714762369791666,
+ "delta_clip_ci95": [
+  -0.11684258778889973,
+  0.12824503580729166
+ ],
+ "n_paired": 12
+}
+eval-set identity OK: 5 arms, hash=029f3390dca18306 size=12

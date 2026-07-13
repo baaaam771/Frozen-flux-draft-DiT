@@ -1,0 +1,905 @@
+{
+ "resolution": 1024,
+ "items": [
+  {
+   "sample_id": "32056.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/32056.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10000
+  },
+  {
+   "sample_id": "41689.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/41689.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10001
+  },
+  {
+   "sample_id": "34899.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/34899.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10002
+  },
+  {
+   "sample_id": "32410.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/32410.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10003
+  },
+  {
+   "sample_id": "43804.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/43804.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10004
+  },
+  {
+   "sample_id": "34846.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/34846.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10005
+  },
+  {
+   "sample_id": "30636.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/30636.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10006
+  },
+  {
+   "sample_id": "53112.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/53112.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10007
+  },
+  {
+   "sample_id": "50130.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/50130.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10008
+  },
+  {
+   "sample_id": "22424.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/22424.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10009
+  },
+  {
+   "sample_id": "38735.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/38735.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10010
+  },
+  {
+   "sample_id": "06673.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/06673.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10011
+  },
+  {
+   "sample_id": "68221.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/68221.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10012
+  },
+  {
+   "sample_id": "33894.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/33894.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10013
+  },
+  {
+   "sample_id": "65716.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/65716.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10014
+  },
+  {
+   "sample_id": "28655.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/28655.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10015
+  },
+  {
+   "sample_id": "00325.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/00325.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10016
+  },
+  {
+   "sample_id": "13239.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/13239.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10017
+  },
+  {
+   "sample_id": "18302.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/18302.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10018
+  },
+  {
+   "sample_id": "62863.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/62863.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10019
+  },
+  {
+   "sample_id": "51646.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/51646.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10020
+  },
+  {
+   "sample_id": "49734.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/49734.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10021
+  },
+  {
+   "sample_id": "37111.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/37111.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10022
+  },
+  {
+   "sample_id": "49687.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/49687.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10023
+  },
+  {
+   "sample_id": "25392.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/25392.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10024
+  },
+  {
+   "sample_id": "39721.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/39721.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10025
+  },
+  {
+   "sample_id": "06907.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/06907.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10026
+  },
+  {
+   "sample_id": "26520.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/26520.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10027
+  },
+  {
+   "sample_id": "30090.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/30090.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10028
+  },
+  {
+   "sample_id": "29414.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/29414.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10029
+  },
+  {
+   "sample_id": "55579.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/55579.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10030
+  },
+  {
+   "sample_id": "58604.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/58604.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10031
+  },
+  {
+   "sample_id": "08794.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/08794.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10032
+  },
+  {
+   "sample_id": "56573.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/56573.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10033
+  },
+  {
+   "sample_id": "39298.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/39298.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10034
+  },
+  {
+   "sample_id": "60491.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/60491.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10035
+  },
+  {
+   "sample_id": "11010.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/11010.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10036
+  },
+  {
+   "sample_id": "15892.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/15892.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10037
+  },
+  {
+   "sample_id": "05488.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/05488.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10038
+  },
+  {
+   "sample_id": "00709.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/00709.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10039
+  },
+  {
+   "sample_id": "54402.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/54402.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10040
+  },
+  {
+   "sample_id": "23395.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/23395.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10041
+  },
+  {
+   "sample_id": "09027.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/09027.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10042
+  },
+  {
+   "sample_id": "33178.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/33178.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10043
+  },
+  {
+   "sample_id": "02900.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/02900.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10044
+  },
+  {
+   "sample_id": "35268.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/35268.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10045
+  },
+  {
+   "sample_id": "49290.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/49290.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10046
+  },
+  {
+   "sample_id": "52095.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/52095.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10047
+  },
+  {
+   "sample_id": "12484.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/12484.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10048
+  },
+  {
+   "sample_id": "11287.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/11287.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10049
+  },
+  {
+   "sample_id": "15719.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/15719.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10050
+  },
+  {
+   "sample_id": "62112.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/62112.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10051
+  },
+  {
+   "sample_id": "55743.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/55743.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10052
+  },
+  {
+   "sample_id": "58122.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/58122.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10053
+  },
+  {
+   "sample_id": "06872.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/06872.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10054
+  },
+  {
+   "sample_id": "69917.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/69917.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10055
+  },
+  {
+   "sample_id": "04686.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/04686.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10056
+  },
+  {
+   "sample_id": "67062.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/67062.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10057
+  },
+  {
+   "sample_id": "12253.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/12253.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10058
+  },
+  {
+   "sample_id": "28668.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/28668.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10059
+  },
+  {
+   "sample_id": "09997.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/09997.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10060
+  },
+  {
+   "sample_id": "28216.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/28216.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10061
+  },
+  {
+   "sample_id": "66665.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/66665.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10062
+  },
+  {
+   "sample_id": "56604.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/56604.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10063
+  },
+  {
+   "sample_id": "38392.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/38392.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10064
+  },
+  {
+   "sample_id": "63455.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/63455.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10065
+  },
+  {
+   "sample_id": "30187.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/30187.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10066
+  },
+  {
+   "sample_id": "15045.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/15045.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10067
+  },
+  {
+   "sample_id": "29325.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/29325.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10068
+  },
+  {
+   "sample_id": "42599.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/42599.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10069
+  },
+  {
+   "sample_id": "20580.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/20580.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10070
+  },
+  {
+   "sample_id": "65207.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/65207.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10071
+  },
+  {
+   "sample_id": "24727.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/24727.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10072
+  },
+  {
+   "sample_id": "58003.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/58003.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10073
+  },
+  {
+   "sample_id": "50475.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/50475.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10074
+  },
+  {
+   "sample_id": "22266.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/22266.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10075
+  },
+  {
+   "sample_id": "63082.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/63082.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10076
+  },
+  {
+   "sample_id": "56240.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/56240.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10077
+  },
+  {
+   "sample_id": "29051.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/29051.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10078
+  },
+  {
+   "sample_id": "34407.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/34407.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10079
+  },
+  {
+   "sample_id": "46657.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/46657.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10080
+  },
+  {
+   "sample_id": "40945.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/40945.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10081
+  },
+  {
+   "sample_id": "27408.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/27408.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10082
+  },
+  {
+   "sample_id": "17798.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/17798.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10083
+  },
+  {
+   "sample_id": "17873.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/17873.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10084
+  },
+  {
+   "sample_id": "04101.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/04101.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10085
+  },
+  {
+   "sample_id": "23665.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/23665.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10086
+  },
+  {
+   "sample_id": "49111.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/49111.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10087
+  },
+  {
+   "sample_id": "58082.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/58082.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10088
+  },
+  {
+   "sample_id": "56110.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/56110.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10089
+  },
+  {
+   "sample_id": "34241.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/34241.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10090
+  },
+  {
+   "sample_id": "14536.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/14536.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10091
+  },
+  {
+   "sample_id": "31333.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/31333.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10092
+  },
+  {
+   "sample_id": "06385.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/06385.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10093
+  },
+  {
+   "sample_id": "29764.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/29764.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10094
+  },
+  {
+   "sample_id": "54903.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/54903.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "medium",
+   "mask_seed": 0,
+   "latent_seed": 10095
+  },
+  {
+   "sample_id": "12331.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/12331.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10096
+  },
+  {
+   "sample_id": "57557.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/57557.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "brush",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10097
+  },
+  {
+   "sample_id": "10714.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/10714.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "polygon",
+   "bucket": "large",
+   "mask_seed": 0,
+   "latent_seed": 10098
+  },
+  {
+   "sample_id": "48959.png",
+   "image": "/mnt/HDD_12TB/bam_ki/datasets/ffhq_hf/images/48959.png",
+   "prompt": "a high-quality photograph of a person's face",
+   "mask_type": "box",
+   "bucket": "small",
+   "mask_seed": 0,
+   "latent_seed": 10099
+  }
+ ]
+}

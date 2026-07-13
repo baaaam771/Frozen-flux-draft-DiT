@@ -1,0 +1,5 @@
+{
+ "prediction_max_abs_error(module_vs_runner)": 0.0,
+ "pixel_max_abs_error(module_vs_runner)": 0.0,
+ "pixel_max_abs_error(official_vs_custom)": 0.0
+}

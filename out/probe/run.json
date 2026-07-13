@@ -1,0 +1,92 @@
+{
+ "config": {
+  "manifest": "data/coco_manifest.json",
+  "out": "out",
+  "method": "dense",
+  "selector": "mask",
+  "steps": 50,
+  "cache_period": 3,
+  "ratio": 0.3,
+  "block": 1,
+  "freq_source": "anchor_x0",
+  "guidance": 30.0,
+  "limit": 5,
+  "prompt_cache": "/mnt/HDD_12TB/bam_ki/flux_fill/prompt_cache",
+  "seed_offset": 0,
+  "draft_ckpt": "",
+  "prefetch": true,
+  "tag": "probe"
+ },
+ "rows": [
+  {
+   "anchor_evals": 50,
+   "sparse_steps": 0,
+   "mean_single_attn_fraction": null,
+   "mean_actual_ratio": null,
+   "mean_est_transformer_mac_ratio": null,
+   "sample_id": "000000229997.jpg",
+   "bucket": "small",
+   "mask_type": "box",
+   "warmup": true,
+   "data_s": 0.019226870965212584,
+   "wall_s": 4.644511191174388,
+   "peak_vram_gb": 22.964177131652832
+  },
+  {
+   "anchor_evals": 50,
+   "sparse_steps": 0,
+   "mean_single_attn_fraction": null,
+   "mean_actual_ratio": null,
+   "mean_est_transformer_mac_ratio": null,
+   "sample_id": "000000104119.jpg",
+   "bucket": "small",
+   "mask_type": "brush",
+   "warmup": false,
+   "data_s": 2.6931054890155792e-05,
+   "wall_s": 4.5893056120257825,
+   "peak_vram_gb": 22.967839241027832
+  },
+  {
+   "anchor_evals": 50,
+   "sparse_steps": 0,
+   "mean_single_attn_fraction": null,
+   "mean_actual_ratio": null,
+   "mean_est_transformer_mac_ratio": null,
+   "sample_id": "000000007784.jpg",
+   "bucket": "small",
+   "mask_type": "polygon",
+   "warmup": false,
+   "data_s": 2.511986531317234e-05,
+   "wall_s": 4.604256365913898,
+   "peak_vram_gb": 22.967350959777832
+  },
+  {
+   "anchor_evals": 50,
+   "sparse_steps": 0,
+   "mean_single_attn_fraction": null,
+   "mean_actual_ratio": null,
+   "mean_est_transformer_mac_ratio": null,
+   "sample_id": "000000464824.jpg",
+   "bucket": "medium",
+   "mask_type": "box",
+   "warmup": false,
+   "data_s": 2.338993363082409e-05,
+   "wall_s": 4.621257578022778,
+   "peak_vram_gb": 22.967350959777832
+  },
+  {
+   "anchor_evals": 50,
+   "sparse_steps": 0,
+   "mean_single_attn_fraction": null,
+   "mean_actual_ratio": null,
+   "mean_est_transformer_mac_ratio": null,
+   "sample_id": "000000577149.jpg",
+   "bucket": "medium",
+   "mask_type": "brush",
+   "warmup": false,
+   "data_s": 8.210074156522751e-06,
+   "wall_s": 4.637305727927014,
+   "peak_vram_gb": 22.967350959777832
+  }
+ ]
+}

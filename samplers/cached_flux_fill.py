@@ -112,10 +112,39 @@ def get_model_provenance(pipe) -> dict:
     import hashlib as _hl
     import json as _js
     import subprocess as _sp
+    from pathlib import Path as _P
+
+    RUNTIME_KEYS = ("timesteps", "sigmas", "num_inference_steps",
+                    "_step_index", "_begin_index")
+
+    def _canonicalize(x):
+        """프로세스 간 결정적 직렬화: set/frozenset의 순서 비결정성,
+        Path/텐서 스칼라 등 비기본 타입을 재귀적으로 정규화 (fix: config에
+        set이 있으면 str(v)가 프로세스마다 다른 hash를 낼 수 있음)."""
+        if isinstance(x, dict):
+            return {str(k): _canonicalize(v)
+                    for k, v in sorted(x.items(), key=lambda kv: str(kv[0]))}
+        if isinstance(x, (set, frozenset)):
+            vals = [_canonicalize(v) for v in x]
+            return sorted(vals, key=lambda v: _js.dumps(v, sort_keys=True,
+                                                        default=str))
+        if isinstance(x, (list, tuple)):
+            return [_canonicalize(v) for v in x]
+        if isinstance(x, _P):
+            return str(x)
+        if isinstance(x, (str, int, float, bool)) or x is None:
+            return x
+        if hasattr(x, "item"):
+            try:
+                return x.item()
+            except Exception:
+                pass
+        return str(x)
 
     def _cfg_sha(cfg):
-        return _hl.sha256(_js.dumps(dict(cfg), sort_keys=True,
-                                    default=str).encode()).hexdigest()
+        payload = _js.dumps(_canonicalize(dict(cfg)), sort_keys=True,
+                            separators=(",", ":")).encode("utf-8")
+        return _hl.sha256(payload).hexdigest()
 
     def _tensor_sha(t):
         if t is None:
@@ -140,10 +169,12 @@ def get_model_provenance(pipe) -> dict:
         "transformer_config_sha256": _cfg_sha(t.config),
         "scheduler_class": type(pipe.scheduler).__name__,
         # base config: 실행 중 변하는 runtime 필드 제거 후 hash (전 arm 동일해야)
+        "scheduler_base_config": _canonicalize({
+            k: v for k, v in dict(pipe.scheduler.config).items()
+            if k not in RUNTIME_KEYS}),
         "scheduler_base_config_sha256": _cfg_sha({
             k: v for k, v in dict(pipe.scheduler.config).items()
-            if k not in ("timesteps", "sigmas", "num_inference_steps",
-                         "_step_index", "_begin_index")}),
+            if k not in RUNTIME_KEYS}),
         # runtime schedule: 같은 step 수 arm끼리만 같아야 (30 vs 50은 달라야 정상)
         "timesteps_sha256": _tensor_sha(getattr(pipe.scheduler, "timesteps", None)),
         "sigmas_sha256": _tensor_sha(getattr(pipe.scheduler, "sigmas", None)),
@@ -413,6 +444,10 @@ def main():
     out = Path(a.out) / a.tag
     out.mkdir(parents=True, exist_ok=True)
     comps = load_flux_fill(keep_text_encoders=not a.prompt_cache)
+    # provenance는 반드시 로드 직후(어떤 set_timesteps보다 전) 캡처 —
+    # set_timesteps가 scheduler config에 step-수 의존 runtime 항목을 남겨
+    # base hash가 arm마다 달라지는 오염을 원천 차단 (N=100 validator 실패 원인).
+    _prov_at_load = get_model_provenance(comps.pipe)
     pipe, dev, dtype = comps.pipe, comps.device, comps.dtype
     runner = FluxSparseRunner(pipe.transformer)
     draft = None
@@ -501,7 +536,10 @@ def main():
     import torch as _th, diffusers as _df, transformers as _tf
     cfg["versions"] = {"torch": _th.__version__, "diffusers": _df.__version__,
                        "transformers": _tf.__version__}
-    cfg["provenance"] = get_model_provenance(pipe)
+    _prov_end = get_model_provenance(pipe)          # schedule hash는 실행 후가 유의미
+    _prov_at_load["timesteps_sha256"] = _prov_end["timesteps_sha256"]
+    _prov_at_load["sigmas_sha256"] = _prov_end["sigmas_sha256"]
+    cfg["provenance"] = _prov_at_load
     json.dump({"config": cfg, "rows": rows}, open(out / "run.json", "w"), indent=1)
     print(f"[{a.tag}] {n} samples -> {out}")
 

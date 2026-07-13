@@ -57,10 +57,13 @@ def main():
     ax2b.plot(steps, er, color="#9467bd", lw=1.2, ls="--",
               label="$E_{\\mathrm{rel}}$")
     ax2b.set_ylabel("$E_{\\mathrm{rel}}$", color="#9467bd")
+    ax2b.tick_params(axis="y", colors="#9467bd", labelsize=7)
+    ax2.tick_params(axis="y", colors="#2ca02c", labelsize=7)
     ax2.set_xlabel("denoising step")
     fig.align_ylabels()
     fig.tight_layout(pad=0.3)
-    fig.savefig(a.out)
+    # twinx의 오른쪽 ylabel은 tight_layout이 잘라먹으므로 bbox_inches로 강제 포함
+    fig.savefig(a.out, bbox_inches="tight", pad_inches=0.02)
     print("saved", a.out)
 
 

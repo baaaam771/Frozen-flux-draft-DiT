@@ -102,6 +102,12 @@ def main():
                     continue
                 if gv != rv:
                     print(f"MISMATCH {n}: provenance.{k} != {ref_n}의 값")
+                    if k == "scheduler_base_config_sha256":
+                        da = provs[n].get("scheduler_base_config") or {}
+                        db = ref_p.get("scheduler_base_config") or {}
+                        for kk in sorted(set(da) | set(db)):
+                            if da.get(kk) != db.get(kk):
+                                print(f"    diff {kk}: {da.get(kk)!r} vs {db.get(kk)!r}")
                     bad = True
         # schedule: 같은 steps 그룹 내부에서만 비교
         from collections import defaultdict

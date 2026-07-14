@@ -47,7 +47,7 @@ def main():
         uniq.append((rp, _wall(rp), _quality(rp), pat))
 
     lines = [f"# temporal_thresh sweep (target wall {a.target_wall}s)\n",
-             "| run | wall(s) | maskLPIPS | anchor/dense/reuse |",
+             "| run | wall(s) | maskLPIPS | full/thr-dense/reuse |",
              "|---|---|---|---|"]
     for rp, w, q, pat in sorted(uniq, key=lambda x: x[1]):
         q_txt = f"{q:.4f}" if q is not None else "-"          # #2: 0.0도 유효

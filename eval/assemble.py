@@ -46,13 +46,17 @@ def _load(run_dir: Path):
             if r.get("mean_est_transformer_mac_ratio") is not None]
     tail = (cfg.get("dense_head", 0), cfg.get("dense_tail", 0)) \
         if cfg["method"] in ("reuse", "cache_sparse") else None
+    # fix_t #1: teacache는 rel-L1 threshold가 운영점을 정의 — sig에 없으면
+    # sweep의 4개 threshold가 같은 설정의 seed들처럼 평균돼 표가 오염됨.
+    tc_thresh = (cfg.get("teacache_rel_l1")
+                 if cfg["method"] == "teacache" else None)
     sig = (cfg["method"], cfg["steps"],
            cfg.get("cache_period") if cfg["method"] != "dense" else None,
            cfg.get("ratio") if cfg["method"] == "cache_sparse" else None,
            cfg.get("block", 1) if cfg["method"] == "cache_sparse" else None,
            cfg.get("selector") if cfg["method"] == "cache_sparse" else None,
            tail, bool(cfg.get("kv_cache", False)),
-           bool(cfg.get("dual_sparse", False)))
+           bool(cfg.get("dual_sparse", False)), tc_thresh)
     r0 = next((r for r in run["rows"] if not r.get("warmup")), run["rows"][0])
     evals = (r0.get("anchor_evals", 0), r0.get("sparse_steps", 0),
              r0.get("thresh_dense", 0))
@@ -87,7 +91,9 @@ def main():
 
     table, csv_rows = [], []
     for sig, Ls in groups.items():
-        method, steps, c, r, block, selector, tail, kv, dual = sig
+        method, steps, c, r, block, selector, tail, kv, dual, tc_thresh = sig
+        if method == "teacache":
+            selector = f"rel-L1={tc_thresh}"
         row = {"Method": method, "Steps": steps,
                "Anchor c": c if c is not None else "-",
                "Ratio r(req)": r if r is not None else "-",

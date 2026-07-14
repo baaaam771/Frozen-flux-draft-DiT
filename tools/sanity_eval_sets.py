@@ -24,13 +24,21 @@ def main():
     ap.add_argument("--dense-ref", required=True)
     a = ap.parse_args()
 
-    # (2) stem set 동일성
+    failed = False
+
+    # (2) stem set 동일성 + manifest 기대 개수 일치
     sets = {Path(r).name: _raw_stems(Path(r)) for r in a.runs}
+    expected = len(json.load(open(a.manifest))["items"])
+    for name, stems in sets.items():
+        if len(stems) != expected:
+            print(f"[2] {name}: {len(stems)}/{expected} images -> FAIL")
+            failed = True
     ref = next(iter(sets.values()))
     all_same = all(v == ref for v in sets.values())
     print(f"[2] stem-set identity: {'OK' if all_same else 'FAIL'} "
-          f"({len(ref)} images)")
+          f"({len(ref)}/{expected} images)")
     if not all_same:
+        failed = True
         for n, v in sets.items():
             print(f"    {n}: {len(v)} (diff {len(v ^ ref)})")
 
@@ -46,7 +54,10 @@ def main():
                 continue
             shutil.copy(p, d1 / p.name); shutil.copy(p, d2 / p.name)
         f = fid.compute_fid(str(d1), str(d2))
-        print(f"[1] dense50 self-FID = {f:.4f} {'OK' if f < 1.0 else 'SUSPICIOUS'}")
+        ok1 = np.isfinite(f) and abs(f) < 1.0
+        print(f"[1] dense50 self-FID = {f:.4f} {'OK' if ok1 else 'FAIL'}")
+        if not ok1:
+            failed = True
 
     # (3) composited 재구성 일치 (첫 3장)
     items = {Path(it["sample_id"]).stem: it for it in
@@ -87,13 +98,21 @@ def main():
             edge = np.zeros(m.shape[:2], dtype=bool)
         frac_gt2 = float((diff > 2).mean())
         on_edge = float((diff[edge] > 2).mean()) if edge.any() else 0.0
+        ok3 = diff.max() < 3
         print(f"[3] {stem}: max={diff.max():.0f} mean={diff.mean():.2f} "
               f"p99={np.percentile(diff, 99):.0f} >2={frac_gt2:.4f} "
               f"(경계부 >2 비율={on_edge:.3f}) "
-              f"{'OK' if diff.max() < 3 else 'CHECK'}")
+              f"{'OK' if ok3 else 'FAIL'}")
+        if not ok3:
+            failed = True
         checked += 1
     if not checked:
-        print("[3] composited 재구성: 파일 없음(skip)")
+        print("[3] composited 재구성: 검사할 파일 없음 -> FAIL")
+        failed = True
+
+    if failed:
+        raise SystemExit("Sanity gate FAILED — 위 항목을 해결 전 진행 금지.")
+    print("All sanity checks passed.")
 
 
 if __name__ == "__main__":

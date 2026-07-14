@@ -38,7 +38,12 @@ def _load(run_dir: Path):
         met_n = mj.get("n", 0)          # 평가된 이미지 수 (metrics.json 기준)
     cfg = run["config"]
     rows = [r for r in run["rows"] if not r.get("warmup")]      # Fix 7
-    wall = sum(r["wall_s"] for r in rows) / max(len(rows), 1)
+    # edge case: 이미지 저장 완료 직후 run.json 직전에 죽은 arm을 --skip-existing
+    # 으로 재실행하면 rows가 빈 리스트가 됨 (fresh=0). wall은 None으로.
+    wall = (sum(r["wall_s"] for r in rows) / len(rows)) if rows else None
+    # resume된 run의 wall은 마지막 세션 fresh subset만 대표 — 표에 별표 표기.
+    # (최종 latency 주장에는 clean 단일 세션 run 사용)
+    wall_partial = bool(cfg.get("resumed"))
     vram = max((r.get("peak_vram_gb", 0) for r in run["rows"]), default=0)
     ratios = [r["mean_actual_ratio"] for r in run["rows"]
               if r.get("mean_actual_ratio") is not None]
@@ -57,10 +62,15 @@ def _load(run_dir: Path):
            cfg.get("selector") if cfg["method"] == "cache_sparse" else None,
            tail, bool(cfg.get("kv_cache", False)),
            bool(cfg.get("dual_sparse", False)), tc_thresh)
-    r0 = next((r for r in run["rows"] if not r.get("warmup")), run["rows"][0])
-    evals = (r0.get("anchor_evals", 0), r0.get("sparse_steps", 0),
-             r0.get("thresh_dense", 0))
-    return {"sig": sig, "wall": wall, "vram": vram, "met_n": met_n,
+    if run["rows"]:
+        r0 = next((r for r in run["rows"] if not r.get("warmup")),
+                  run["rows"][0])
+        evals = (r0.get("anchor_evals", 0), r0.get("sparse_steps", 0),
+                 r0.get("thresh_dense", 0))
+    else:
+        evals = ("-", "-", "-")
+    return {"sig": sig, "wall": wall, "wall_partial": wall_partial,
+            "vram": vram, "met_n": met_n,
             "evals": evals,
             "r_actual": statistics.mean(ratios) if ratios else None,
             "mac": statistics.mean(macs) if macs else None,
@@ -107,9 +117,12 @@ def main():
                         if tail and (tail[0] or tail[1]) else
                         ("0" if tail is not None else "-")),
                "MACratio(est)": _fmt([L["mac"] for L in Ls], 3),
-               "Wall(s)": _fmt([L["wall"] for L in Ls], 2),
+               "Wall(s)": _fmt([L["wall"] for L in Ls], 2)
+                          + ("*" if any(L.get("wall_partial") for L in Ls)
+                             else ""),
                # 실제 계산 횟수: anchor/sparse/threshold-dense (I/O 아닌 진짜 연산량 증거)
                "Evals(a/s/d)": "/".join(str(x) for x in Ls[0]["evals"]),
+               # (아래 Wall은 partial 여부 별표 처리 위해 후처리)
                "VRAM(GB)": _fmt([L["vram"] for L in Ls], 1),
                # Imgs: metrics.json이 평가한 이미지 수 (seed별 동일해야 정상)
                "Imgs": "/".join(str(L["met_n"]) for L in Ls)
@@ -118,17 +131,22 @@ def main():
         for col in MET_KEYS:
             row[col] = _fmt([L["met"][col] for L in Ls])
         table.append(row)
-        walls = [L["wall"] for L in Ls]
+        walls = [L["wall"] for L in Ls if L["wall"] is not None]
         mlp = [L["met"]["MaskLPIPS→ref"] for L in Ls
                if L["met"]["MaskLPIPS→ref"] is not None]
         csv_rows.append([method, steps, c, r, block, selector,
-                         statistics.mean(walls),
+                         statistics.mean(walls) if walls else "",
                          statistics.mean(mlp) if mlp else ""])
 
     lines = ["| " + " | ".join(COLS) + " |",
              "|" + "|".join("---" for _ in COLS) + "|"]
     for row in table:
         lines.append("| " + " | ".join(str(row[c]) for c in COLS) + " |")
+    if any(L.get("wall_partial") for L in loaded):
+        lines.append("")
+        lines.append("\\* Wall: resume된 run — 마지막 세션 fresh 샘플만의 "
+                     "평균이며 전체 run을 대표하지 않음 (latency 주장에는 "
+                     "clean 단일 세션 결과 사용).")
     Path(a.out).write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

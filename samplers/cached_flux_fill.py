@@ -427,6 +427,10 @@ def main():
     ap.add_argument("--guidance", type=float, default=30.0)
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--prompt-cache", default="")
+    ap.add_argument("--skip-existing", action="store_true",
+                    help="출력(raw+pasted png)이 이미 있는 샘플은 건너뜀 — "
+                         "장시간(5k) run의 중단 복구. wall 통계는 이번 세션 "
+                         "샘플만 집계되며 run.json에 resumed=true 기록.")
     ap.add_argument("--seed-offset", type=int, default=0,
                     help="added to each sample's manifest latent_seed (Stage 8 multi-seed)")
     ap.add_argument("--draft-ckpt", default="",
@@ -470,6 +474,8 @@ def main():
     pending = pool.submit(ds.__getitem__, 0) if pool else None
 
     rows = []
+    n_skipped = 0
+    n_fresh = 0
     for i in range(n):
         t_data = time.perf_counter()
         if pool:
@@ -478,6 +484,13 @@ def main():
                 pending = pool.submit(ds.__getitem__, i + 1)
         else:
             s = ds[i]
+        if a.skip_existing:
+            stem = Path(s["sample_id"]).stem
+            if ((out / f"{stem}.png").exists()
+                    and (out / f"{stem}_pasted.png").exists()
+                    and (out / f"{stem}_mask.pt").exists()):
+                n_skipped += 1
+                continue
         data_s = time.perf_counter() - t_data
         pe = po = None
         if a.prompt_cache:
@@ -508,11 +521,12 @@ def main():
         img = decode_latents(pipe, state)
         torch.cuda.synchronize()
         log.update({"sample_id": s["sample_id"], "bucket": s["bucket"],
-                    "mask_type": s["mask_type"], "warmup": i == 0,
+                    "mask_type": s["mask_type"], "warmup": n_fresh == 0,
                     "data_s": data_s,
                     "wall_s": time.perf_counter() - t0,
                     "peak_vram_gb": torch.cuda.max_memory_allocated() / 2**30})
         rows.append(log)
+        n_fresh += 1
 
         from samplers.dense_flux_fill import _save_img
         stem = Path(s["sample_id"]).stem
@@ -545,8 +559,14 @@ def main():
     _prov_at_load["timesteps_sha256"] = _prov_end["timesteps_sha256"]
     _prov_at_load["sigmas_sha256"] = _prov_end["sigmas_sha256"]
     cfg["provenance"] = _prov_at_load
+    cfg["resumed"] = bool(a.skip_existing and n_skipped)
+    cfg["n_skipped_existing"] = n_skipped
+    cfg["timing_scope"] = "fresh_session_only" if n_skipped else "full_run"
+    cfg["n_timing_samples"] = len(rows)
+    cfg["n_output_samples"] = n_skipped + len(rows)
     json.dump({"config": cfg, "rows": rows}, open(out / "run.json", "w"), indent=1)
-    print(f"[{a.tag}] {n} samples -> {out}")
+    print(f"[{a.tag}] target={n}, fresh={len(rows)}, "
+          f"skipped={n_skipped} -> {out}")
 
 
 if __name__ == "__main__":

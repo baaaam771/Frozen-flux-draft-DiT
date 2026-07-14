@@ -36,12 +36,16 @@ def build_cache(manifest_json: str, cache_dir: str, model_id: str, device: str =
         items = json.load(f)["items"]
     Path(cache_dir).mkdir(parents=True, exist_ok=True)
     seen = set()
+    n_new = n_existing = 0
     for it in items:
         p = it["prompt"]
-        out = cache_path(cache_dir, p)
-        if p in seen or out.exists():
+        if p in seen:
             continue
         seen.add(p)
+        out = cache_path(cache_dir, p)
+        if out.exists():
+            n_existing += 1
+            continue
         prompt_embeds, pooled = enc.encode(p)
         torch.save(
             {"prompt": p,
@@ -49,8 +53,10 @@ def build_cache(manifest_json: str, cache_dir: str, model_id: str, device: str =
              "pooled_prompt_embeds": pooled.to(torch.bfloat16).cpu()},
             out,
         )
+        n_new += 1
     enc.unload()
-    print(f"cached {len(seen)} prompts -> {cache_dir}")
+    print(f"unique prompts={len(seen)}, newly cached={n_new}, "
+          f"already existed={n_existing} -> {cache_dir}")
 
 
 def load_cached(cache_dir: str, prompt: str, device, dtype=torch.bfloat16):

@@ -12,11 +12,17 @@ RES=${RES:-1024}; PC=${PC:-}; PCARG=(); [ -n "$PC" ] && PCARG=(--prompt-cache "$
 
 test -f data/coco_manifest_5k.json || python - << 'PY'
 from data.dataset import build_manifest
-m = build_manifest("/mnt/HDD_12TB/bam_ki/datasets/coco2017",
-                   "data/coco_manifest_5k.json", n=5000, resolution=1024)
+build_manifest("/mnt/HDD_12TB/bam_ki/datasets/coco2017",
+               "data/coco_manifest_5k.json", n=5000, resolution=1024)
+PY
+python - << 'PY'
+import json
 from collections import Counter
+m = json.load(open("data/coco_manifest_5k.json"))
 c = Counter((it["bucket"], it["mask_type"]) for it in m["items"])
-print("5k manifest balance:", dict(c))
+print(f"5k manifest: {len(m['items'])} items")
+for k in sorted(c):
+    print(f"  {k[0]}/{k[1]}: {c[k]}")
 PY
 MAN=data/coco_manifest_5k.json; DREF=$OUT/dense_s50
 

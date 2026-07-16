@@ -236,7 +236,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                method: str, cache_period: int, ratio: float, selector: str,
                block: int, mask_px: torch.Tensor, freq_source: str,
                dense_head: int = 0, dense_tail: int = 0, kv_cache: bool = False,
-               dual_sparse: bool = False, teacache_thresh: float = 0.15,
+               dual_sparse: bool = False, adaptive_tail: float = 0.0,
+               teacache_thresh: float = 0.15,
                teacache_rel_l1: float = 0.4,
                sample_seed_offset: int = 0, dump_selection: list | None = None,
                draft=None, log: dict | None = None):
@@ -255,6 +256,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     hetero_rows = []
     v_prev = None
     n_steps = len(state.timesteps)
+    adaptive_switched = False
+    adaptive_switch_step = None
     tc = {"cnt": 0, "num_steps": n_steps, "rel_l1_thresh": teacache_rel_l1,
           "accumulated": 0.0, "prev_mod": None, "prev_residual": None}
 
@@ -262,7 +265,8 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
         sigma = pipe.scheduler.sigmas[i]
         # schedule-aware policy: hetero 측정에서 마지막 ~4 step은 변화가 mask 밖으로
         # 퍼지고(in/out 25x -> 0.4) energy가 튐 -> 그 구간은 무조건 dense(anchor).
-        forced_dense = (i < dense_head) or (i >= n_steps - dense_tail)
+        forced_dense = (i < dense_head) or (i >= n_steps - dense_tail) \
+            or adaptive_switched
         if method == "teacache":
             model_input = torch.cat([state.latents, state.cond], dim=2)
             timestep = t.expand(1).to(state.latents.dtype) / 1000
@@ -351,6 +355,13 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                                                cache, hard_idx, kv_cache=kv_cache,
                                                dual_sparse=dual_sparse)
             v = runner.merge_prediction(cache, hard_idx, v_hard)
+            if adaptive_tail > 0 and not adaptive_switched:
+                base = cache.final_prediction
+                rel = ((v - base).float().pow(2).mean()
+                       / base.float().pow(2).mean().clamp(min=1e-12)).sqrt().item()
+                if rel > adaptive_tail:
+                    adaptive_switched = True
+                    adaptive_switch_step = i + 1     # 다음 step부터 dense
             if dump_selection is not None:
                 dump_selection.append({"step": i, "hard_idx": hard_idx[0].cpu()})
             n_sparse += 1
@@ -362,6 +373,7 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
 
     stats = {"anchor_evals": n_anchor, "sparse_steps": n_sparse,
              "thresh_dense": n_forced_dense, "thresh_reuse": n_thresh_reuse,
+             "adaptive_switch_step": adaptive_switch_step,
              "mean_single_attn_fraction": (sum(attn_fracs) / len(attn_fracs))
              if attn_fracs else None,
              # Fix 3: with block > 1 the realized refresh ratio != requested ratio
@@ -513,6 +525,7 @@ def main():
                    mask_px=s["mask"].unsqueeze(0).to(dev), freq_source=a.freq_source,
                    dense_head=a.dense_head, dense_tail=a.dense_tail,
                    kv_cache=a.kv_cache, dual_sparse=a.dual_sparse,
+                   adaptive_tail=a.adaptive_tail,
                    teacache_thresh=a.teacache_thresh,
                    teacache_rel_l1=a.teacache_rel_l1,
                    sample_seed_offset=(s["latent_seed"] + a.seed_offset) * 131 + i,

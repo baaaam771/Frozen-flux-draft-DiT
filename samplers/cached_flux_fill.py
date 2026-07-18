@@ -457,6 +457,10 @@ def main():
                     help="처음 K step 강제 dense (anchor)")
     ap.add_argument("--dense-tail", type=int, default=0,
                     help="마지막 K step 강제 dense — hetero 곡선의 말기 붕괴 구간 방어")
+    ap.add_argument("--adaptive-tail", type=float, default=0.0,
+                    help=">0이면 fixed tail 대신: sparse step에서 anchor 대비 "
+                         "상대변화 에너지가 임계 초과 시 잔여 step 전부 dense "
+                         "(P1-2 adaptive-tail 대조군)")
     ap.add_argument("--prefetch", action=__import__("argparse").BooleanOptionalAction,
                     default=True, help="background next-sample loading (--no-prefetch로 끔)")
     ap.add_argument("--tag", default="run")

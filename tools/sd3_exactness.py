@@ -1,8 +1,9 @@
 """tools.sd3_exactness — 2nd MMDiT exactness gate (v2).
 
 P0 수정: (a) fp32 depth 검사는 official forward로 순차 진행하며 target 블록
-직전의 진짜 in-distribution 상태에서 비교, (b) transformer.float()를 embed
-전에 호출, (c) rel+max_abs 동시 판정, (d) 실패 시 SystemExit(1) 직접.
+직전의 실제 in-distribution 상태에서 비교, (b) 대상 블록만 fp32로
+일시 승격한 뒤 bf16으로 복원 (전체 float() 금지 — OOM), (c) rel+max_abs
+동시 판정, (d) 실패 시 SystemExit(1) 직접. 인코더/VAE는 encode 후 CPU로.
 
     python -m tools.sd3_exactness --model-id stabilityai/stable-diffusion-3.5-large
 """
@@ -13,6 +14,7 @@ import argparse
 import torch
 
 
+@torch.inference_mode()
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model-id",
@@ -34,6 +36,12 @@ def main():
     pe, _, pooled, _ = pipe.encode_prompt(
         prompt="a photo of a mountain lake at sunrise", prompt_2=None,
         prompt_3=None, device=dev)
+    # exactness에는 transformer만 필요 — 인코더/VAE는 내려서 VRAM 회수
+    for m in (pipe.text_encoder, pipe.text_encoder_2, pipe.text_encoder_3,
+              pipe.vae):
+        if m is not None:
+            m.to("cpu")
+    torch.cuda.empty_cache()
     lat_ch = pipe.transformer.config.in_channels
     H = a.resolution // pipe.vae_scale_factor
     g = torch.Generator(dev).manual_seed(0)
@@ -63,33 +71,37 @@ def main():
     print(f"[1] official vs manual dense (bf16 full): rel={rel:.3e} "
           f"max_abs={d.abs().max().item():.3e} {'OK' if ok else 'FAIL'}")
     failed |= not ok
+    del v_off, v_man_img, d          # v_man/cache는 [2]에서 필요 — 유지
+    torch.cuda.empty_cache()
 
-    # ---- (1b) fp32 블록별: official로 순차 진행, target에서 비교 ----
-    pipe.transformer.float()                     # P0-4: embed 전에 fp32 전환
-    img, ctx, temb = runner.embed(latents.float(), pe.float(), t,
-                                  pooled.float())
+    # ---- (1b) fp32 블록별: 대상 블록만 fp32 승격-검사-복원 (OOM 방지),
+    #      depth progression은 bf16 official 경로 ----
+    img, ctx, temb = runner.embed(latents, pe, t, pooled)
     n_blk = len(pipe.transformer.transformer_blocks)
     targets = {0, n_blk // 2, n_blk - 1}
     for bi, block in enumerate(pipe.transformer.transformer_blocks):
         if bi in targets:
-            # 같은 in-distribution 입력에서 manual 실행분 확보
-            rec = SD3AnchorCache()
-            man_out = _manual_one_block(runner, block, img, ctx, temb)
-        # official 진행 (경로의 진실은 항상 official)
+            block.float()
+            i32, c32, t32 = img.float(), ctx.float(), temb.float()
+            man_img, _ = _manual_one_block(runner, block, i32, c32, t32)
+            out32 = block(hidden_states=i32, encoder_hidden_states=c32,
+                          temb=t32)
+            off_img = out32[1] if isinstance(out32, tuple) else out32
+            r = ((man_img - off_img).norm()
+                 / off_img.norm().clamp_min(1e-12)).item()
+            ok = r < 1e-5
+            print(f"[1b] block {bi} fp32: rel={r:.3e} "
+                  f"{'OK' if ok else 'FAIL'}")
+            failed |= not ok
+            del man_img, off_img, out32, i32, c32, t32
+            block.to(dtype)
+            torch.cuda.empty_cache()
         out = block(hidden_states=img, encoder_hidden_states=ctx, temb=temb)
         if isinstance(out, tuple):
             ctx_n, img_n = out
         else:
             ctx_n, img_n = ctx, out
-        if bi in targets:
-            r = ((man_out[0] - img_n).norm()
-                 / img_n.norm().clamp_min(1e-12)).item()
-            ok = r < 1e-5
-            print(f"[1b] block {bi} fp32: rel={r:.3e} "
-                  f"{'OK' if ok else 'FAIL'}")
-            failed |= not ok
         img, ctx = img_n, (ctx_n if ctx_n is not None else ctx)
-    pipe.transformer.to(dtype)
 
     # ---- (2) fresh-cache sparse == dense (dual / dualkv, hard 행) ----
     N = cache.img_states[0].shape[1]

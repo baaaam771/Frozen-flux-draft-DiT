@@ -16,6 +16,7 @@ from pathlib import Path
 import torch
 
 
+@torch.inference_mode()
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model-id",
@@ -46,6 +47,11 @@ def main():
     pe, _, pooled, _ = pipe.encode_prompt(
         prompt="a photo", prompt_2=None, prompt_3=None, device=dev)
     arch["T"] = pe.shape[1]
+    for m in (pipe.text_encoder, pipe.text_encoder_2, pipe.text_encoder_3,
+              pipe.vae):
+        if m is not None:
+            m.to("cpu")
+    torch.cuda.empty_cache()
 
     def bench(fn):
         for _ in range(3):

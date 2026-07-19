@@ -108,24 +108,26 @@ def _single_block_dense(block, x: torch.Tensor, temb: torch.Tensor,
     (rope depends on position only), v raw — for the anchor K/V cache (Lever B).
     No extra GEMMs: the same k/v used for attention are sliced."""
     residual = x
-    normed, gate = block.norm(x, emb=temb)
-    mlp_h = block.act_mlp(block.proj_mlp(normed))
-
-    attn = block.attn
-    q = _heads(attn.to_q(normed), attn.heads)
-    k = _heads(attn.to_k(normed), attn.heads)
-    v = _heads(attn.to_v(normed), attn.heads)
-    if attn.norm_q is not None:
-        q = attn.norm_q(q)
-    if attn.norm_k is not None:
-        k = attn.norm_k(k)
-    q = _rope_apply(q, cos, sin)
-    k = _rope_apply(k, cos, sin)
-    o = F.scaled_dot_product_attention(q, k, v)
-    o = _unheads(o).to(x.dtype)
-
-    out = block.proj_out(torch.cat([o, mlp_h], dim=2))
-    hidden = residual + gate.unsqueeze(1) * out
+    with _rf("single_q_mlp"):
+        normed, gate = block.norm(x, emb=temb)
+        mlp_h = block.act_mlp(block.proj_mlp(normed))
+        attn = block.attn
+        q = _heads(attn.to_q(normed), attn.heads)
+        if attn.norm_q is not None:
+            q = attn.norm_q(q)
+    with _rf("single_kv_projection"):
+        k = _heads(attn.to_k(normed), attn.heads)
+        v = _heads(attn.to_v(normed), attn.heads)
+        if attn.norm_k is not None:
+            k = attn.norm_k(k)
+    with _rf("single_attention"):
+        q = _rope_apply(q, cos, sin)
+        k = _rope_apply(k, cos, sin)
+        o = F.scaled_dot_product_attention(q, k, v)
+        o = _unheads(o).to(x.dtype)
+    with _rf("single_q_mlp"):
+        out = block.proj_out(torch.cat([o, mlp_h], dim=2))
+        hidden = residual + gate.unsqueeze(1) * out
     if return_kv_img_from is not None:
         T = return_kv_img_from
         return hidden, k[:, :, T:], v[:, :, T:]
@@ -286,34 +288,39 @@ def _single_block_sparse_kv(
     approximation afterwards. Single-stream linear cost drops from
     D²(10·Sq + 2·S) to 12·Sq·D²."""
     residual = q_fresh
-    q_norm, gate = block.norm(q_fresh, emb=temb)
-    mlp_h = block.act_mlp(block.proj_mlp(q_norm))
-
-    attn = block.attn
-    q = _heads(attn.to_q(q_norm), attn.heads)
-    k_new = _heads(attn.to_k(q_norm), attn.heads)
-    v_new = _heads(attn.to_v(q_norm), attn.heads)
-    if attn.norm_q is not None:
-        q = attn.norm_q(q)
-    if attn.norm_k is not None:
-        k_new = attn.norm_k(k_new)
-    cos_q = cos[q_pos].unsqueeze(1)
-    sin_q = sin[q_pos].unsqueeze(1)
-    q = _rope_apply(q, cos_q, sin_q)
-    k_new = _rope_apply(k_new, cos_q, sin_q)          # text + hard rows, post-rope
-
-    # scatter fresh hard K/V into the anchor image cache (dim 2 = token axis)
-    idx = hard_idx[:, None, :, None].expand(-1, k_img_cache.shape[1], -1,
-                                            k_img_cache.shape[-1])
-    k_img = k_img_cache.scatter(2, idx, k_new[:, :, T:].to(k_img_cache.dtype))
-    v_img = v_img_cache.scatter(2, idx, v_new[:, :, T:].to(v_img_cache.dtype))
-    K = torch.cat([k_new[:, :, :T], k_img.to(k_new.dtype)], dim=2)
-    V = torch.cat([v_new[:, :, :T], v_img.to(v_new.dtype)], dim=2)
-
-    o = F.scaled_dot_product_attention(q, K, V)
-    o = _unheads(o).to(q_fresh.dtype)
-    out = block.proj_out(torch.cat([o, mlp_h], dim=2))
-    return residual + gate.unsqueeze(1) * out
+    with _rf("single_q_mlp"):
+        q_norm, gate = block.norm(q_fresh, emb=temb)
+        mlp_h = block.act_mlp(block.proj_mlp(q_norm))
+        attn = block.attn
+        q = _heads(attn.to_q(q_norm), attn.heads)
+        if attn.norm_q is not None:
+            q = attn.norm_q(q)
+    with _rf("single_kv_projection"):                 # Sq rows만 — Lever B 효과
+        k_new = _heads(attn.to_k(q_norm), attn.heads)
+        v_new = _heads(attn.to_v(q_norm), attn.heads)
+        if attn.norm_k is not None:
+            k_new = attn.norm_k(k_new)
+    with _rf("single_attention"):
+        cos_q = cos[q_pos].unsqueeze(1)
+        sin_q = sin[q_pos].unsqueeze(1)
+        q = _rope_apply(q, cos_q, sin_q)
+        k_new = _rope_apply(k_new, cos_q, sin_q)      # text + hard, post-rope
+    with _rf("single_kv_scatter"):
+        # scatter fresh hard K/V into the anchor image cache (dim 2 = token)
+        idx = hard_idx[:, None, :, None].expand(-1, k_img_cache.shape[1], -1,
+                                                k_img_cache.shape[-1])
+        k_img = k_img_cache.scatter(2, idx,
+                                    k_new[:, :, T:].to(k_img_cache.dtype))
+        v_img = v_img_cache.scatter(2, idx,
+                                    v_new[:, :, T:].to(v_img_cache.dtype))
+        K = torch.cat([k_new[:, :, :T], k_img.to(k_new.dtype)], dim=2)
+        V = torch.cat([v_new[:, :, :T], v_img.to(v_new.dtype)], dim=2)
+    with _rf("single_attention"):
+        o = F.scaled_dot_product_attention(q, K, V)
+        o = _unheads(o).to(q_fresh.dtype)
+    with _rf("single_q_mlp"):
+        out = block.proj_out(torch.cat([o, mlp_h], dim=2))
+        return residual + gate.unsqueeze(1) * out
 
 
 def _single_block_sparse(
@@ -326,27 +333,29 @@ def _single_block_sparse(
 ) -> torch.Tensor:
     """Hard-query single-stream block: attention Sq x S, MLP on Sq only."""
     residual = q_fresh
-    ctx_norm, gate = block.norm(ctx, emb=temb)              # per-token LN, batch-level mod
-    q_norm = _gather_tokens(ctx_norm, q_pos)                # == norm(q_fresh): ctx holds fresh
-    mlp_h = block.act_mlp(block.proj_mlp(q_norm))
-
-    attn = block.attn
-    q = _heads(attn.to_q(q_norm), attn.heads)
-    k = _heads(attn.to_k(ctx_norm), attn.heads)
-    v = _heads(attn.to_v(ctx_norm), attn.heads)
-    if attn.norm_q is not None:
-        q = attn.norm_q(q)
-    if attn.norm_k is not None:
-        k = attn.norm_k(k)
-    cos_q = cos[q_pos].unsqueeze(1)                         # [B,1,Sq,d]
-    sin_q = sin[q_pos].unsqueeze(1)
-    q = _rope_apply(q, cos_q, sin_q)
-    k = _rope_apply(k, cos, sin)
-    o = F.scaled_dot_product_attention(q, k, v)
-    o = _unheads(o).to(q_fresh.dtype)
-
-    out = block.proj_out(torch.cat([o, mlp_h], dim=2))
-    return residual + gate.unsqueeze(1) * out
+    with _rf("single_q_mlp"):
+        ctx_norm, gate = block.norm(ctx, emb=temb)          # per-token LN
+        q_norm = _gather_tokens(ctx_norm, q_pos)            # == norm(q_fresh)
+        mlp_h = block.act_mlp(block.proj_mlp(q_norm))
+        attn = block.attn
+        q = _heads(attn.to_q(q_norm), attn.heads)
+        if attn.norm_q is not None:
+            q = attn.norm_q(q)
+    with _rf("single_kv_projection"):                       # full-S K/V — floor의 원천
+        k = _heads(attn.to_k(ctx_norm), attn.heads)
+        v = _heads(attn.to_v(ctx_norm), attn.heads)
+        if attn.norm_k is not None:
+            k = attn.norm_k(k)
+    with _rf("single_attention"):
+        cos_q = cos[q_pos].unsqueeze(1)                     # [B,1,Sq,d]
+        sin_q = sin[q_pos].unsqueeze(1)
+        q = _rope_apply(q, cos_q, sin_q)
+        k = _rope_apply(k, cos, sin)
+        o = F.scaled_dot_product_attention(q, k, v)
+        o = _unheads(o).to(q_fresh.dtype)
+    with _rf("single_q_mlp"):
+        out = block.proj_out(torch.cat([o, mlp_h], dim=2))
+        return residual + gate.unsqueeze(1) * out
 
 
 # ------------------------------------------------------------------- runner ---

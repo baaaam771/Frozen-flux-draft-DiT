@@ -73,7 +73,8 @@ def main():
                 fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6))
 
     ax.set_xscale("log")
-    ax.set_xlabel("refresh ratio $r$ (log)")
+    ax.set_xlabel("refresh ratio $r$ (log; leftmost point: "
+                  "$r\\to 0$, measured at $k{=}1$)")
     ax.set_ylabel("latency / dense")
     ax.set_ylim(0, 1.3)
     ax.legend(fontsize=6.5, frameon=False, loc="upper left",

@@ -1,11 +1,12 @@
 """tools/selector_overhead.py — Stage 15-D: selector/router 비용의 정밀
 마이크로벤치. "unmeasurable" 대신 정확한 ms 수치를 만든다.
 
-측정 항목 (각각 수백 회, CUDA events):
-  mbd_scoring  : mask+boundary+delta rank-normalized 결합 점수
-  rank_topk    : rank 정규화 + top-k + sort
+측정 항목 (각각 수백 회):
+  mbd_scoring  : delta 계산 + mask/boundary/delta rank-normalized 결합
+  rank_topk    : top-k + sort (select_hard_tokens)
   router       : learned CNN router forward (--draft-ckpt 제공 시)
-  gather_prep  : hard index로 gather/scatter 인덱스 텐서 준비
+  index_preparation : gather/scatter 인덱스 텐서 준비 (view/offset만)
+  gather / scatter  : 실제 _gather_tokens / _scatter_tokens (D=3072 상태)
 
 출력: ms/sparse-step + sparse-step transformer latency 대비 % +
 50-step 샘플링 전체 대비 %.
@@ -42,6 +43,9 @@ def main():
     ap.add_argument("--sparse-step-ms", type=float, required=True,
                     help="headline sparse-step transformer latency (ms)")
     ap.add_argument("--steps", type=int, default=50)
+    ap.add_argument("--num-sparse-steps", type=int, required=True,
+                    help="실제 스케줄의 sparse step 수 (예: headline c2/t4 "
+                         "50step -> 23; run.json evals a/s에서 읽을 것)")
     ap.add_argument("--draft-ckpt", default="")
     ap.add_argument("--out", default="selector_overhead.md")
     a = ap.parse_args()
@@ -75,14 +79,22 @@ def main():
 
     hard, _, _ = _topk()
 
-    def _gather_prep():
+    def _index_prep():
         idx = hard.unsqueeze(-1).expand(-1, -1, 3072)
         pos = hard + 512
         return idx, pos
 
+    # 실제 gather/scatter 비용 — runner와 동일 helper, 동일 shape/dtype
+    from models.flux_sparse_transformer import _gather_tokens, _scatter_tokens
+    x_state = torch.randn(1, N, 3072, device=dev, dtype=torch.bfloat16)
+    fresh = torch.randn(1, k, 3072, device=dev, dtype=torch.bfloat16)
+
     results = {"mbd_scoring": bench(_score),
                "rank_topk": bench(_topk),
-               "gather_prep": bench(_gather_prep)}
+               "index_preparation": bench(_index_prep),
+               "gather": bench(lambda: _gather_tokens(x_state, hard)),
+               "scatter": bench(lambda: _scatter_tokens(x_state.clone(),
+                                                        hard, fresh))}
 
     if a.draft_ckpt:
         from models.drafts.cnn_router import CNNRouter
@@ -96,21 +108,24 @@ def main():
             lambda: router(lat, mask_token, pred, t, (hp, wp)))
 
     rows = [f"# Selector/router overhead ({a.resolution}^2, r={a.ratio}, "
-            f"median of 300 iters)",
+            f"median of 300 iters; scatter includes a clone of the [1,N,D] "
+            f"state — an upper bound on the runner's in-place path)",
             "",
             "| component | ms/sparse step | % of sparse transformer step "
             "| % of full 50-step sampling |",
             "|---|---|---|---|"]
+    # 전체 샘플링 대비: 실측 sparse-step 수 사용 (steps//2 추정 금지)
     full_ms = a.sparse_step_ms * a.steps          # 보수적 상한 (전부 sparse 가정)
+    n_sp = a.num_sparse_steps
     for name, ms in results.items():
         rows.append(f"| {name} | {ms:.3f} | "
                     f"{100 * ms / a.sparse_step_ms:.2f}% | "
-                    f"{100 * ms * (a.steps // 2) / full_ms:.3f}% |")
+                    f"{100 * ms * n_sp / full_ms:.3f}% |")
         print(rows[-1])
     total = sum(results.values())
     rows.append(f"| **total** | {total:.3f} | "
                 f"{100 * total / a.sparse_step_ms:.2f}% | "
-                f"{100 * total * (a.steps // 2) / full_ms:.3f}% |")
+                f"{100 * total * n_sp / full_ms:.3f}% |")
     open(a.out, "w").write("\n".join(rows) + "\n")
     print("->", a.out)
 

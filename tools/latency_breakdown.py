@@ -6,14 +6,19 @@ record_function 태그(dual_stream / single_kv_cached / single_kv_recompute /
 sparse_overhead / cache_record / final_head)를 torch.profiler로 수집해
 4그룹으로 집계한다:
 
-  dual        = dual_stream
-  single_kv   = single_kv_cached + single_kv_recompute
-  overhead    = sparse_overhead + cache_record
-  head        = final_head
-  other       = 전체 - 태그 합 (embed, 파이프라인 등)
+  dual_blocks  = dual_stream (블록 전체)
+  single_kv    = single_kv_projection + single_kv_scatter (K/V만)
+  single_other = single_q_mlp + single_attention
+  overhead     = sparse_overhead + cache_record
+  head         = final_head
 
-기대 결과: naive에서 dual과 single_kv가 dense 수준으로 남고(=floor의
-정체), dual+KV에서 두 고정비가 모두 감소하며 overhead 증가분은 작다.
+비율은 profiled CUDA time 합 기준 share로 보고하고, clean wall-clock
+total은 별도 열로 병기한다 (profiler CUDA time과 wall-clock은 측정
+도메인이 달라 빼기 연산으로 "other"를 만들면 안 됨).
+
+기대 결과: naive에서 dual_blocks와 single_kv가 dense 수준으로 남고
+(=floor의 정체), dual+KV에서 두 고정비가 모두 감소하며 overhead
+증가분은 작다.
 
   FLUX_PROFILE=1 python -m tools.latency_breakdown --resolution 1024 \
       --ratio 0.15 --iters 12 --out breakdown_1024.md
@@ -40,11 +45,14 @@ CONFIGS = [
     ("dual",   dict(kv_cache=False, dual_sparse=True)),
     ("dualkv", dict(kv_cache=True,  dual_sparse=True)),
 ]
+# 내부 세분 태그 기반 그룹 — single K/V projection이 별도 항목이므로
+# "full-sequence K/V가 floor를 만든다"를 profiler로 직접 보일 수 있다.
 GROUPS = {
-    "dual":      ["dual_stream"],
-    "single_kv": ["single_kv_cached", "single_kv_recompute"],
-    "overhead":  ["sparse_overhead", "cache_record"],
-    "head":      ["final_head"],
+    "dual_blocks": ["dual_stream"],
+    "single_kv":   ["single_kv_projection", "single_kv_scatter"],
+    "single_other": ["single_q_mlp", "single_attention"],
+    "overhead":    ["sparse_overhead", "cache_record"],
+    "head":        ["final_head"],
 }
 
 
@@ -93,11 +101,13 @@ def main():
     k = max(1, int(a.ratio * N))
     hard = torch.sort(torch.randperm(N, device=dev)[:k]).values[None]
 
-    rows = [f"# Latency breakdown ({a.resolution}^2, r={a.ratio}, "
-            f"CUDA-time per forward, {a.iters} profiled iters)",
+    rows = [f"# Latency breakdown ({a.resolution}^2, r={a.ratio}) — "
+            f"profiled CUDA time by tagged region ({a.iters} iters); "
+            "shares are of the profiled-tag sum; clean total is a separate "
+            "un-profiled wall-clock",
             "",
-            "| config | dual | single(K/V) | sparse+cache overhead | head "
-            "| other | total(ms) |",
+            "| config | dual blocks | single K/V proj | single attn+Q/MLP "
+            "| overhead | head | clean total(ms) |",
             "|---|---|---|---|---|---|---|"]
     raw = {}
     for name, flags in CONFIGS:
@@ -115,16 +125,22 @@ def main():
         tag_ms, total = _collect(fn, a.iters)
         g = {gname: sum(tag_ms.get(t, 0.0) for t in tags)
              for gname, tags in GROUPS.items()}
-        other = max(total - sum(g.values()), 0.0)
-        raw[name] = dict(groups=g, other=other, total=total)
-        rows.append(f"| {name} | {g['dual']:.1f} | {g['single_kv']:.1f} "
-                    f"| {g['overhead']:.2f} | {g['head']:.2f} "
-                    f"| {other:.1f} | {total:.1f} |")
+        psum = max(sum(g.values()), 1e-9)
+        share = {k2: v / psum for k2, v in g.items()}
+        raw[name] = dict(groups_ms=g, profiled_sum_ms=psum,
+                         shares=share, clean_total_ms=total)
+        rows.append(
+            f"| {name} | {g['dual_blocks']:.1f} ({share['dual_blocks']:.0%}) "
+            f"| {g['single_kv']:.1f} ({share['single_kv']:.0%}) "
+            f"| {g['single_other']:.1f} ({share['single_other']:.0%}) "
+            f"| {g['overhead']:.2f} ({share['overhead']:.0%}) "
+            f"| {g['head']:.2f} | {total:.1f} |")
         print(rows[-1])
 
-    dense_total = raw["dense"]["total"]
-    rows += ["", f"dense 대비 비율: " + ", ".join(
-        f"{n} {raw[n]['total'] / dense_total:.3f}x" for n, _ in CONFIGS)]
+    dense_total = raw["dense"]["clean_total_ms"]
+    rows += ["", "dense 대비 clean-total 비율: " + ", ".join(
+        f"{n} {raw[n]['clean_total_ms'] / dense_total:.3f}x"
+        for n, _ in CONFIGS)]
     open(a.out, "w").write("\n".join(rows) + "\n")
     json.dump(raw, open(a.out.replace(".md", ".json"), "w"), indent=1)
     print("->", a.out)

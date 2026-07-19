@@ -8,6 +8,7 @@ import argparse
 import json
 import os
 import statistics
+from pathlib import Path
 
 import torch
 
@@ -35,8 +36,10 @@ def main():
     except Exception:
         clip_model = None
 
-    items = {it["sample_id"]: it
-             for it in json.load(open(a.manifest))["items"][: a.limit]}
+    items = {
+        Path(str(it["sample_id"])).stem: it
+        for it in json.load(open(a.manifest))["items"][:a.limit]
+    }
 
     def to_t(p):
         arr = np.asarray(Image.open(p).convert("RGB"), np.float32) / 127.5 - 1

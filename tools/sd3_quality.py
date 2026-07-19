@@ -178,18 +178,19 @@ def main():
         os.makedirs(d, exist_ok=True)
         rows = []
         for it in items:
-            sid = it["sample_id"]
-            fp = os.path.join(d, f"{sid}.png")
+            sid = str(it["sample_id"])
+            sid_stem = os.path.splitext(os.path.basename(sid))[0]
+            fp = os.path.join(d, f"{sid_stem}.png")
             if os.path.exists(fp):
                 continue
             img, wall, ev = sample(pipe, runner, it["prompt"],
-                                   10000 + int(sid) % 10 ** 6
+                                   10000 + int(sid_stem) % 10 ** 6
                                    + a.seed_offset,
                                    steps, dev, dtype, cfg["mode"],
                                    guidance=a.guidance,
                                    height=a.resolution, width=a.resolution)
             img.save(fp)
-            rows.append(dict(sample_id=sid, wall_s=wall, **ev))
+            rows.append(dict(sample_id=sid_stem, wall_s=wall, **ev))
         json.dump(dict(config=dict(arm=arm, steps=steps, mode=cfg["mode"],
                                    guidance=a.guidance, model=a.model_id,
                                    resolution=a.resolution,

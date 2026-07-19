@@ -109,9 +109,16 @@ def main():
     hard = torch.randperm(N, device=dev)[:k].sort().values.unsqueeze(0)
     vd = torch.gather(v_man, 1,
                       hard.unsqueeze(-1).expand(-1, -1, v_man.shape[-1]))
+    # BF16 허용치: dense/sparse의 attention GEMM 배치·reduction 순서 차이로
+    # bitwise 동일이 불가 — official-vs-manual bf16 오차(~4.6e-3)와 같은
+    # 규모까지 허용. 로직 정확성은 fp32 블록 검사(~1e-7)가 담당한다.
+    FULL_REL_TOL = 3e-3
+    HARD_REL_TOL = 6e-3
+    sp_outs = {}
     for lever in ("dual", "dualkv"):
         v_sp = runner.sparse_forward(latents, pe, t, pooled, cache, hard,
                                      lever)
+        sp_outs[lever] = v_sp
         # hard rows: sparse 계산 경로의 핵심
         vh = torch.gather(v_sp, 1,
                           hard.unsqueeze(-1).expand(-1, -1, v_sp.shape[-1]))
@@ -122,12 +129,22 @@ def main():
         fd = v_sp.float() - v_man.float()
         full_rel = (fd.norm()
                     / v_man.float().norm().clamp_min(1e-12)).item()
-        ok = hard_rel < 1e-3 and full_rel < 1e-3
-        print(f"[2] fresh-cache {lever}: full rel={full_rel:.3e}, "
-              f"hard rel={hard_rel:.3e} "
+        ok = full_rel < FULL_REL_TOL and hard_rel < HARD_REL_TOL
+        print(f"[2] fresh-cache {lever}: "
+              f"full rel={full_rel:.3e} (<{FULL_REL_TOL:.1e}), "
+              f"hard rel={hard_rel:.3e} (<{HARD_REL_TOL:.1e}) "
               f"(max_abs full={fd.abs().max().item():.3e}) "
               f"{'OK' if ok else 'FAIL'}")
         failed |= not ok
+    # fresh cache에서는 K/V 재계산(dual)과 캐시 재사용(dualkv)이 같은 값을
+    # 만들어야 한다 — 두 경로의 일치는 캐시 무결성의 직접 증거.
+    cdiff = sp_outs["dual"].float() - sp_outs["dualkv"].float()
+    crel = (cdiff.norm()
+            / sp_outs["dual"].float().norm().clamp_min(1e-12)).item()
+    ok = crel < 1e-6
+    print(f"[2b] cache-consistency (dual vs dualkv): rel={crel:.3e} "
+          f"{'OK' if ok else 'FAIL'}")
+    failed |= not ok
 
     if failed:
         raise SystemExit("SD3 exactness gate FAILED")

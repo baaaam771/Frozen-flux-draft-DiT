@@ -62,9 +62,28 @@ def main():
     ax2.set_xlabel("denoising step")
     fig.align_ylabels()
     fig.tight_layout(pad=0.3)
-    # twinx의 오른쪽 ylabel은 tight_layout이 잘라먹으므로 bbox_inches로 강제 포함
-    fig.savefig(a.out, bbox_inches="tight", pad_inches=0.02)
-    print("saved", a.out)
+    # cm-mathtext/serif에서 tight bbox가 라벨 폭을 과소평가할 수 있음 —
+    # 저장 후 가장자리 잉크를 검사해 잘림이 있으면 pad를 늘려 재저장.
+    import io as _io
+    import numpy as np
+    from PIL import Image
+    pad = 0.06
+    for attempt in range(4):
+        fig.savefig(a.out, bbox_inches="tight", pad_inches=pad)
+        buf = _io.BytesIO()
+        fig.savefig(buf, format="png", dpi=200, bbox_inches="tight",
+                    pad_inches=pad)
+        buf.seek(0)
+        arr = np.asarray(Image.open(buf).convert("L"))
+        ink = arr < 128
+        edge = (ink[:, :3].any() or ink[:, -3:].any()
+                or ink[:3, :].any() or ink[-3:, :].any())
+        if not edge:
+            print(f"saved {a.out} (pad={pad}, edges clean)")
+            break
+        pad += 0.05
+    else:
+        print(f"saved {a.out} (pad={pad}) — WARNING: edge ink persists")
 
 
 if __name__ == "__main__":

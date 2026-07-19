@@ -110,11 +110,13 @@ def sample(pipe, runner, prompt, seed, steps, dev, dtype, mode,
                 v = v_anchor
             else:                                   # dualkv
                 hard = _delta_topk(v_anchor, prev_v_anchor, ratio)
-                v_hard = runner.sparse_forward(lm, pe, tt, po, cache, hard,
-                                               "dualkv")
-                v = v_anchor.clone()
-                v.scatter_(1, hard.unsqueeze(-1).expand(-1, -1, v.shape[-1]),
-                           v_hard)
+                # sparse_forward는 FULL [B, N, out]을 반환한다 (easy 행은
+                # anchor depth-state 기반으로 이미 채워짐 — exactness [2]의
+                # full-output 검사가 보증). scatter 금지: PyTorch scatter는
+                # index 크기만큼 src 앞부분을 쓰므로 토큰 0..k-1 값이 hard
+                # 위치에 흩뿌려져 출력이 붕괴한다 (Stage 14 1차 실행의 원인).
+                v = runner.sparse_forward(lm, pe, tt, po, cache, hard,
+                                          "dualkv")
             n_sparse += 1
         v_img = _unpatchify(v, latH, latW, ch)
         if B > 1:

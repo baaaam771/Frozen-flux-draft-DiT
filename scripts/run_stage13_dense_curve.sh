@@ -36,7 +36,9 @@ met() {
     python - "$OUT/$1/metrics.json" << 'PY' || rm -f "$OUT/$1/metrics.json"
 import json, sys
 m = json.load(open(sys.argv[1]))
-assert m.get("n", 0) > 0 and "mask_lpips_to_ref" in m.get("aggregate", {})
+if not (m.get("n", 0) > 0 and "mask_lpips_to_ref" in m.get("aggregate", {})):
+    print(f"[recompute] {sys.argv[1]} (empty metrics from wrong ref)")
+    sys.exit(1)
 PY
   fi
   test -f "$OUT/$1/metrics.json" || \

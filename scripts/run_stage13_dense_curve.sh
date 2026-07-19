@@ -17,7 +17,12 @@ set -e
 cd "$(dirname "$0")/.."; export PYTHONPATH=.
 MAN=${MAN:-data/coco_manifest_1024.json}; OUT=${OUT:?예: .../stage9_n100}
 N=${N:-100}; PC=${PC:-}; PCARG=(); [ -n "$PC" ] && PCARG=(--prompt-cache "$PC")
-DREF=$OUT/dense_s50
+# seed0 ref: OUT에 dense_s50이 있으면 그것, 없으면 DREF로 명시 지정
+# (예: DREF=/mnt/HDD_12TB/bam_ki/flux_fill/stage9_n100/dense_s50)
+DREF=${DREF:-$OUT/dense_s50}
+test -d "$DREF" || DREF=/mnt/HDD_12TB/bam_ki/flux_fill/stage9_n100/dense_s50
+test -d "$DREF" || { echo "FATAL: seed0 ref 없음 — DREF=<dense_s50 경로> 지정"; exit 1; }
+echo "seed0 ref: $DREF"
 # seed-offset run의 ref는 반드시 같은 seed의 dense_s50 (기존 3-seed 프로토콜)
 SEED_REF_BASE=${SEED_REF_BASE:-/mnt/HDD_12TB/bam_ki/flux_fill/out_final}
 
@@ -25,9 +30,19 @@ run() { local tag=$1; shift
   test -f "$OUT/$tag/run.json" || \
     python -m samplers.cached_flux_fill --manifest $MAN --out $OUT --limit $N \
       "${PCARG[@]}" "$@" --tag "$tag"; }
-met() { test -f "$OUT/$1/metrics.json" || \
-  python -m eval.region_metrics --run $OUT/$1 --ref ${2:-$DREF} --manifest $MAN \
-    --out $OUT/$1/metrics.json; }
+met() {
+  if [ -f "$OUT/$1/metrics.json" ]; then
+    # 과거 잘못된 ref로 n=0이 저장됐으면 삭제 후 재계산
+    python - "$OUT/$1/metrics.json" << 'PY' || rm -f "$OUT/$1/metrics.json"
+import json, sys
+m = json.load(open(sys.argv[1]))
+assert m.get("n", 0) > 0 and "mask_lpips_to_ref" in m.get("aggregate", {})
+PY
+  fi
+  test -f "$OUT/$1/metrics.json" || \
+    python -m eval.region_metrics --run $OUT/$1 --ref ${2:-$DREF} --manifest $MAN \
+      --out $OUT/$1/metrics.json
+}
 
 # ---------- pass 1: seed 0, 6점 탐색 ----------
 for S in 20 25 27 34 37 41; do
@@ -52,15 +67,21 @@ python - << 'PY'
 import json, glob, os, statistics
 out = os.environ["OUT"]
 
-def load(tag):
-    runs = sorted(glob.glob(f"{out}/{tag}*/metrics.json"))
+SPARSE_BASE = os.environ.get("SPARSE_BASE",
+                             "/mnt/HDD_12TB/bam_ki/flux_fill/stage9_n100")
+
+def load(tag, base=None):
+    runs = sorted(glob.glob(f"{base or out}/{tag}*/metrics.json"))
     q = []
     w = []
     for p in runs:
-        m = json.load(open(p))["aggregate"]["mask_lpips_to_ref"]
+        agg = json.load(open(p)).get("aggregate", {})
+        if "mask_lpips_to_ref" not in agg:
+            print(f"[warn] skip {p} (empty metrics — wrong ref?)")
+            continue
         r = json.load(open(os.path.dirname(p) + "/run.json"))
         rows = [x for x in r["rows"] if not x.get("warmup")]
-        q.append(m)
+        q.append(agg["mask_lpips_to_ref"])
         w.append(statistics.median(x["wall_s"] for x in rows))
     return q, w
 
@@ -68,7 +89,7 @@ def load(tag):
 dense = {}
 for s in (20, 25, 27, 30, 34, 37, 40, 41, 50):
     tags = {30: "dense_s30", 40: "dense_s40", 50: "dense_s50"}.get(s, f"dc_s{s}")
-    qs, ws = load(tags)
+    qs, ws = load(tags, base=SPARSE_BASE if s in (30, 40, 50) else None)
     if qs:
         dense[s] = (statistics.mean(qs), statistics.mean(ws), len(qs))
 
@@ -77,7 +98,7 @@ sparse_tags = ["reuse_c2_t4", "mbd_c2_r03_t4_dualkv", "mbd_c2_r03_t4_kv"]
 lines = ["| sparse arm | wall(s) | LPIPS | nearest dense | dense wall | dense LPIPS | ΔQ | Δt(s) |",
          "|---|---|---|---|---|---|---|---|"]
 for tag in sparse_tags:
-    qs, ws = load(tag)
+    qs, ws = load(tag, base=SPARSE_BASE)
     if not qs:
         continue
     q, w = statistics.mean(qs), statistics.mean(ws)

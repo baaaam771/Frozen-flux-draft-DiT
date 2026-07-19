@@ -178,13 +178,24 @@ def main():
                   f"dense {walls.get('dense_ref', 0):.2f}s)")
         d = os.path.join(a.out, arm)
         os.makedirs(d, exist_ok=True)
+        # resume: 기존 run.json의 rows를 보존 (skip된 이미지의 wall 기록 유지
+        # — 이걸 빈 리스트로 덮어쓰면 매칭/집계가 죽는다: Stage 14 2차의 원인)
         rows = []
+        rj = os.path.join(d, "run.json")
+        if os.path.exists(rj):
+            try:
+                rows = json.load(open(rj)).get("rows", [])
+            except Exception:
+                rows = []
+        done_ids = {r["sample_id"] for r in rows}
         for it in items:
             sid = str(it["sample_id"])
             sid_stem = os.path.splitext(os.path.basename(sid))[0]
             fp = os.path.join(d, f"{sid_stem}.png")
-            if os.path.exists(fp):
+            if os.path.exists(fp) and sid_stem in done_ids:
                 continue
+            if os.path.exists(fp):
+                continue          # 이미지만 있고 기록 없음 — wall 재측정 불가
             img, wall, ev = sample(pipe, runner, it["prompt"],
                                    10000 + int(sid_stem) % 10 ** 6
                                    + a.seed_offset,

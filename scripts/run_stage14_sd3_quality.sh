@@ -31,6 +31,9 @@ import json, os, statistics
 out = os.environ["OUT"]
 def med(arm):
     r = json.load(open(f"{out}/{arm}/run.json"))["rows"]
+    if not r:
+        raise SystemExit(f"FATAL: {arm}/run.json has no wall rows — "
+                         f"rm -rf {out}/{arm} 후 해당 arm 재생성 필요")
     return statistics.median(x["wall_s"] for x in r)
 steps = int(os.environ.get("STEPS", 28))
 m = max(4, round(steps * med("dualkv") / med("dense_ref")))

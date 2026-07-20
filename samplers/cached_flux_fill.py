@@ -100,6 +100,14 @@ class SelectorState:
         if w.eta != 0.0 and self.draft is not None:
             # router-style draft outputs a per-token difficulty score directly
             draft_term = self.draft.scores(latents, self.mask_tok, cache, t, self.grid)
+        # delta-only 계열: 첫 sparse 스텝(prev anchor 부재)에는 delta가 None
+        # -> 활성 term이 없어 combo_score가 죽는다. 정보가 없는 스텝이므로
+        # uniform random 선택으로 명시적 fallback (mask-free generic pruning의
+        # cold-start와 동일한 의미론; mbd는 mask/boundary가 있어 해당 없음).
+        if (w.alpha == 0.0 and w.beta == 0.0 and w.gamma == 0.0
+                and w.eta == 0.0 and delta is None):
+            return torch.rand(self.mask_tok.shape, generator=generator,
+                              device="cpu").to(dev)
         return combo_score(w, mask=self.mask_tok.to(dev), boundary=self.bnd_tok.to(dev),
                            frequency=freq, delta=delta, draft=draft_term)
 

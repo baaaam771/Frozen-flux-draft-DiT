@@ -46,6 +46,11 @@ def main():
     ap.add_argument("--num-sparse-steps", type=int, required=True,
                     help="실제 스케줄의 sparse step 수 (예: headline c2/t4 "
                          "50step -> 23; run.json evals a/s에서 읽을 것)")
+    ap.add_argument("--dense-step-ms", type=float, required=True,
+                    help="dense/anchor step transformer latency (ms)")
+    ap.add_argument("--num-dense-steps", type=int, required=True,
+                    help="실제 스케줄의 dense(anchor+tail) step 수 "
+                         "(예: headline 50step -> 27)")
     ap.add_argument("--draft-ckpt", default="")
     ap.add_argument("--out", default="selector_overhead.md")
     a = ap.parse_args()
@@ -93,8 +98,8 @@ def main():
                "rank_topk": bench(_topk),
                "index_preparation": bench(_index_prep),
                "gather": bench(lambda: _gather_tokens(x_state, hard)),
-               "scatter": bench(lambda: _scatter_tokens(x_state.clone(),
-                                                        hard, fresh))}
+               "scatter": bench(lambda: _scatter_tokens(x_state, hard,
+                                                        fresh))}
 
     if a.draft_ckpt:
         from models.drafts.cnn_router import CNNRouter
@@ -108,14 +113,15 @@ def main():
             lambda: router(lat, mask_token, pred, t, (hp, wp)))
 
     rows = [f"# Selector/router overhead ({a.resolution}^2, r={a.ratio}, "
-            f"median of 300 iters; scatter includes a clone of the [1,N,D] "
-            f"state — an upper bound on the runner's in-place path)",
+            f"median of 300 iters; scatter is the runner's _scatter_tokens, "
+            f"which clones the [1,N,D] base once — identical cost model)",
             "",
             "| component | ms/sparse step | % of sparse transformer step "
             "| % of full 50-step sampling |",
             "|---|---|---|---|"]
-    # 전체 샘플링 대비: 실측 sparse-step 수 사용 (steps//2 추정 금지)
-    full_ms = a.sparse_step_ms * a.steps          # 보수적 상한 (전부 sparse 가정)
+    # 전체 샘플링 대비: 실제 dense/sparse step 구성으로 분모 계산
+    full_ms = (a.dense_step_ms * a.num_dense_steps
+               + a.sparse_step_ms * a.num_sparse_steps)
     n_sp = a.num_sparse_steps
     for name, ms in results.items():
         rows.append(f"| {name} | {ms:.3f} | "

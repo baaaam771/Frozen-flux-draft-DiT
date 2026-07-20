@@ -2,9 +2,9 @@
 
 "0.49 floor가 MAC 계산상의 숫자가 아니라 실제 GPU latency에서도 관찰되는
 구조적 현상"임을 profiler로 보인다. FLUX_PROFILE=1 환경에서 transformer의
-record_function 태그(dual_stream / single_kv_cached / single_kv_recompute /
-sparse_overhead / cache_record / final_head)를 torch.profiler로 수집해
-4그룹으로 집계한다:
+record_function 태그(dual_stream / single_kv_projection / single_kv_scatter /
+single_q_mlp / single_attention / sparse_overhead / cache_record /
+final_head)를 torch.profiler로 수집해 그룹으로 집계한다:
 
   dual_blocks  = dual_stream (블록 전체)
   single_kv    = single_kv_projection + single_kv_scatter (K/V만)

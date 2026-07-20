@@ -10,7 +10,9 @@
 #   delta_only          : generic dynamic token pruning (mask 미사용)
 #   (TeaCache는 기존 stage10 결과 재사용)
 # 2단계: (1) N=50 seed0 sweep으로 각 baseline Pareto 지점 파악
-#        (2) headline wall(12.1s)에 가장 가까운 지점만 N=300 확정
+#        (2) 선정 arm만 N=300 확정 — 동일 300 sample의 paired comparison
+#            (single seed offset; "3-seed"가 아님. 3-seed가 필요하면
+#            N=100 x SEED_OFFSET {0,1000,2000}으로 별도 실행할 것)
 #
 #   OUT=/mnt/HDD_12TB/bam_ki/flux_fill/stage16_baselines N1=50 N2=300 \
 #   MAN=$PWD/data/coco_manifest_1024.json \
@@ -54,7 +56,7 @@ met() { test -f "$OUT/$1/metrics.json" || \
 
 # ---------- 1단계: N=50 sweep ----------
 # blockcache delta threshold: 낮을수록 재사용 적음(느림·정확) — 5점
-for TH in 0.02 0.04 0.06 0.10 0.15; do
+for TH in 0.015 0.02 0.04 0.06 0.10 0.15; do
   run bc_delta_th${TH} $N1 --method blockcache \
     --blockcache-policy delta_threshold --blockcache-thresh $TH
   met bc_delta_th${TH}
@@ -78,13 +80,25 @@ for R in 0.3 0.5; do
   met delta_only_r${R}_dualkv
 done
 
+# 우리 arm 3종을 동일 N/seed/이미지에서 대조로 (N=50 sweep 내 직접 비교용
+# — 기존 frontier 수치는 N=100/3-seed라 sweep과 직접 비교 불가)
+run ours_mbd_dualkv $N1 --method cache_sparse --selector mbd \
+  --cache-period 2 --ratio 0.3 --dense-tail 4 --kv-cache --dual-sparse
+met ours_mbd_dualkv
+run ours_mbd_kv $N1 --method cache_sparse --selector mbd \
+  --cache-period 2 --ratio 0.3 --dense-tail 4 --kv-cache
+met ours_mbd_kv
+run ours_reuse $N1 --method reuse --cache-period 2 --dense-tail 4
+met ours_reuse
+
 # 태그별 개별 표 (assemble은 blockcache 설정 컬럼을 몰라 config를 병합함)
 python - << 'PY'
 import glob, json, os, statistics
 out = os.environ["OUT"]
 rows = ["| tag | thresh/period | mask-LPIPS→ref | wall(s) | evals a/s |",
         "|---|---|---|---|---|"]
-for d in sorted(glob.glob(f"{out}/bc_*") + glob.glob(f"{out}/delta_only_*")):
+for d in sorted(glob.glob(f"{out}/bc_*") + glob.glob(f"{out}/delta_only_*")
+                + glob.glob(f"{out}/ours_*")):
     mj, rj = f"{d}/metrics.json", f"{d}/run.json"
     if not (os.path.exists(mj) and os.path.exists(rj)):
         continue
@@ -118,14 +132,28 @@ import json, sys
 c = json.load(open(sys.argv[1]))["config"]
 parts = ["--method", c["method"]]
 if c["method"] == "blockcache":
-    parts += ["--blockcache-policy", c["blockcache_policy"],
-              "--blockcache-thresh", str(c["blockcache_thresh"]),
-              "--blockcache-period", str(c["blockcache_period"])]
+    policy = c["blockcache_policy"]
+    parts += ["--blockcache-policy", policy]
+    if policy == "delta_threshold":
+        parts += ["--blockcache-thresh", str(c["blockcache_thresh"])]
+    elif policy == "fixed_period":
+        parts += ["--blockcache-period", str(c["blockcache_period"])]
     if c.get("blockcache_mask_aware"):
         parts.append("--blockcache-mask-aware")
+elif c["method"] == "cache_sparse":
+    parts += ["--selector", c["selector"],
+              "--cache-period", str(c["cache_period"]),
+              "--ratio", str(c["ratio"]),
+              "--dense-tail", str(c.get("dense_tail", 0))]
+    if c.get("kv_cache"):
+        parts.append("--kv-cache")
+    if c.get("dual_sparse"):
+        parts.append("--dual-sparse")
+elif c["method"] == "reuse":
+    parts += ["--cache-period", str(c["cache_period"]),
+              "--dense-tail", str(c.get("dense_tail", 0))]
 else:
-    parts += ["--selector", c["selector"], "--cache-period",
-              str(c["cache_period"]), "--ratio", str(c["ratio"])]
+    raise SystemExit(f"FATAL: unknown method {c['method']} — replay 미지원")
 print(" ".join(parts))
 PY
 )

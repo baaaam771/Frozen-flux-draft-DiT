@@ -608,3 +608,85 @@ D) tools/selector_overhead.py: mbd scoring(delta+rank결합)/rank+topk/
    대신 ms 수치.
 공용화: eval/latency.py에서 load_transformer_only() 추출.
 실행: scripts/run_stage15_cost_evidence.sh (총 ~1.5h; B는 즉시).
+
+### Stage 15 리뷰 반영 (필수 3 + 권장 6)
+필수 1: e2e_variance -> e2e_runtime_distribution 개명 — "per-sample runtime
+  distribution across evaluation samples"로 해석 제한 (반복성 주장 금지 명시).
+필수 2: single 블록 내부 세분 태깅 — 3개 helper(_single_block_dense/
+  _single_block_sparse/_single_block_sparse_kv)에 single_q_mlp /
+  single_kv_projection / single_attention / single_kv_scatter 삽입.
+  breakdown GROUPS를 K/V 중심 재편 (dual_blocks / single_kv[projection+
+  scatter만] / single_other / overhead / head) — "full-S K/V가 floor"를
+  profiler로 직접 증명 가능. 양 모드 회귀 통과.
+필수 3: other 제거 — profiled-tag 합 기준 share + clean wall-clock total
+  별도 열 (측정 도메인 혼합 금지).
+권장: floor_curve에 anchor_record[lever] 실측 + manual_seed(0) + env 메타
+  (gpu/torch/cuda/git); "r→0(k=1)" 표기 (출력/그림 축라벨/docstring 경고);
+  selector에 실제 _gather_tokens/_scatter_tokens 벤치(+scatter clone 상한
+  명시), index_preparation 개명, --num-sparse-steps 필수 인자(헤드라인 23);
+  스크립트 RUNS 배열 + 필수 run 사전검증 exit 1.
+
+### Stage 15 2차 리뷰 반영 (3건)
+1) scatter 벤치 이중 clone 제거 — _scatter_tokens 내부 clone 1회만
+   (runner와 동일 비용), caption도 사실로 갱신.
+2) full-sampling 분모 정확화 — --dense-step-ms/--num-dense-steps 추가,
+   full = dense_ms*27 + sparse_ms*23 (headline 실측 구성); 스크립트가
+   floor_curve JSON에서 dense_ms까지 읽어 전달 (read-split 스모크 검증).
+3) latency_breakdown docstring의 옛 태그명(single_kv_cached/recompute) ->
+   세분 태그명으로 갱신.
+
+### Stage 15 실행: A/B/C 성공, D scatter off-by-one 수정
+성공 결과 (핵심): r→0(k=1) 실측 floor — naive 0.573x, kv 0.476x,
+dual 0.372x, dualkv 0.197x (analytic 0.49/0.24와 방향·크기 일치, dualkv는
+analytic보다도 낮음); anchor record 1.01-1.08x dense; breakdown에서
+naive single_kv 61ms ≈ dense 69ms(잔존) vs kv 39ms(= (1229+512)/4608 예측
+그대로), dual_blocks는 dual에서 142ms로 감소 — "K/V가 floor" profiler 증명
+완성. breakdown의 profiled 합 > clean total (profiler 계측 오버헤드) —
+share 방식 보고가 옳았음을 실증.
+D 오류: select_hard_tokens가 block 정렬로 k=1229 반환하는데 fresh를
+사전계산 k=1228로 생성 -> scatter index>src. 수정: k_actual=hard.shape[1]
+기준으로 fresh 생성 (스모크 통과). selector_overhead만 재실행하면 됨.
+
+### 종합평가2 대응: 3 실험 패키지 구현 (Stage 16/17/18)
+약점 3.1/3.2/3.3에 1:1 대응. 우선순위: 18(C) -> 16(B) -> 17(A).
+- Stage 18 (패키지 C, GPU 0): tools/mask_local_quality.py — 기존 5k 이미지
+  재사용; mask tight-bbox crop FID/KID (margin 32, min 128, size-bucket
+  s/m/l), masked-DINO distance (DINOv2 feature pooling, open_clip
+  fallback), mask-LPIPS→real (spatial LPIPS + mask pooling). mask는
+  manifest spec에서 make_mask로 런타임 재생성 (생성시와 동일 규약).
+  bbox/bucket/edge-clamp 스모크 검증.
+- Stage 16 (패키지 B): mechanism-matched baselines — (1) delta_only
+  selector preset (generic dynamic pruning, mask 미사용), (2) runner에
+  blockcache_forward (per-block temporal reuse; delta_threshold=block-
+  caching 계열, fixed_period=FORA 계열, mask_weight로 mask-aware variant;
+  첫/끝 스텝 강제 계산; mock 3종 통과: exact reuse/period 패턴/mask-aware),
+  (3) sampler method "blockcache" + CLI 4인자 (cfg=vars(a)로 run.json 자동
+  기록). 스크립트: N=50 sweep(threshold 5점+MA, period 3점, delta_only
+  2점) -> FINAL_ARMS 지정 시 N=300 wall-matched 확정.
+- Stage 17 (패키지 A): tools/sd3_masked_transfer.py — SD3.5-Large
+  controlled masked-generation ("native inpainting"이라 부르지 않음);
+  매 스텝 known reinjection z_t=(1-σ)z0+σε (스케줄러 sigmas 사용, FLUX
+  공식 복사 금지 요건 충족); mask+boundary+delta selector를 FLUX와 동일
+  가중치로 재튜닝 없이; arms 6종 (dense_ref/matched/reuse/refresh
+  r015/r03/kv_r03; SD3는 all-joint라 명칭 joint-token refresh). CFG 배치
+  간 동일 hard 선택(배치 평균 score). CPU mock 4 config 완주. eval:
+  mask-LPIPS→dense_ref + known PSNR + wall (스크립트 내장).
+
+### edit_16 리뷰 반영 (필수 5 + 권장 3)
+1) Stage 18/17 LPIPS spatial=True + 1x1 map 거부 (핵심 — 이전 코드는
+   full-image LPIPS를 mask-local로 오표기할 뻔함; 수정 전 결과 사용 금지).
+2) Stage 18 bucket = manifest bucket 그대로 (자체 재분류 삭제 — 기존 논문
+   mask-condition breakdown과 정합).
+3) Stage 18 crop side를 int(min(max(side,MIN),H,W))로 clamp + 좌표 assert
+   (전체-이미지 mask 케이스 검증).
+4) Stage 18 DINO fallback 삭제 — masked pooling은 spatial token 필수,
+   timm 실패 시 명확히 죽음. real feature는 sid당 1회 캐시 (5 arm 중복
+   forward 제거: 50k -> 30k). 스크립트에 LIMIT 노출 (smoke: LIMIT=20).
+5) Stage 17 dense_matched: 프로세스 분리로 walls가 비는 문제 — 기존
+   run.json에서 load_wall로 복원, 없으면 FATAL(+--matched-steps 안내);
+   실행 후 실측 wall이 target 대비 10%+ 어긋나면 dense-curve 재매칭 경고.
+6) Stage 16 DREF 기본 안내 n500 + 사전검증: png 개수>=N2, manifest 앞
+   N2개 stem 커버리지 assert.
+7) Stage 16 명칭 정직화: "BlockCache-style/FORA-style mechanism-matched
+   adaptation" — 공식 재현 주장 금지 주석.
+서버 확인 요청: pytest 종료 여부 (tests는 plain python 실행도 지원).

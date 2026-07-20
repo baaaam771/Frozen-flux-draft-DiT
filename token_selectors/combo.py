@@ -43,6 +43,7 @@ PRESETS: dict[str, ComboWeights] = {
     "mask_frequency":  ComboWeights(1.0, 0.0, 1.0, 0.0, 0.0),
     "mbd":             ComboWeights(1.0, 0.5, 0.0, 1.0, 0.0),   # M+B+Δ
     "mbfd":            ComboWeights(1.0, 0.5, 1.0, 1.0, 0.0),   # M+B+F+Δ  (핵심 비교)
+    "delta_only":      ComboWeights(0.0, 0.0, 0.0, 1.0, 0.0),   # generic pruning
     "mbd_draft":  ComboWeights(alpha=1.0, beta=0.5, gamma=0.0, delta=1.0, eta=1.0),
     "mbfd_draft":      ComboWeights(1.0, 0.5, 1.0, 1.0, 1.0),
 }

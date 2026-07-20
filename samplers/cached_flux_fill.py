@@ -239,6 +239,10 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
                dual_sparse: bool = False, adaptive_tail: float = 0.0,
                teacache_thresh: float = 0.15,
                teacache_rel_l1: float = 0.4,
+               blockcache_policy: str = "delta_threshold",
+               blockcache_thresh: float = 0.05,
+               blockcache_period: int = 2,
+               blockcache_mask_aware: bool = False,
                sample_seed_offset: int = 0, dump_selection: list | None = None,
                draft=None, log: dict | None = None):
     """Runs one image through the chosen method; mutates state.latents; returns
@@ -260,6 +264,9 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
     adaptive_switch_step = None
     tc = {"cnt": 0, "num_steps": n_steps, "rel_l1_thresh": teacache_rel_l1,
           "accumulated": 0.0, "prev_mod": None, "prev_residual": None}
+    bc = {"cnt": 0, "num_steps": n_steps, "policy": blockcache_policy,
+          "thresh": blockcache_thresh, "period": blockcache_period,
+          "mask_weight": None}
 
     for i, t in enumerate(state.timesteps):
         sigma = pipe.scheduler.sigmas[i]
@@ -267,6 +274,22 @@ def sample_one(pipe, runner: FluxSparseRunner, state: FluxFillState, *,
         # 퍼지고(in/out 25x -> 0.4) energy가 튐 -> 그 구간은 무조건 dense(anchor).
         forced_dense = (i < dense_head) or (i >= n_steps - dense_tail) \
             or adaptive_switched
+        if method == "blockcache":
+            if blockcache_mask_aware and bc["mask_weight"] is None:
+                bc["mask_weight"] = sel_mask(mask_px, grid,
+                                             state.latents.device)  # [B, N]
+            model_input = torch.cat([state.latents, state.cond], dim=2)
+            timestep = t.expand(1).to(state.latents.dtype) / 1000
+            v, n_comp = runner.blockcache_forward(
+                model_input, state.prompt_embeds, state.pooled, timestep,
+                state.guidance, state.img_ids, state.txt_ids, bc)
+            if n_comp == 57:
+                n_anchor += 1
+            else:
+                n_thresh_reuse += 1        # 부분 재사용 스텝
+            state.latents = scheduler_step(pipe, v, t, state.latents)
+            continue
+
         if method == "teacache":
             model_input = torch.cat([state.latents, state.cond], dim=2)
             timestep = t.expand(1).to(state.latents.dtype) / 1000
@@ -420,7 +443,7 @@ def main():
     ap.add_argument("--method",
                     choices=["dense", "reuse", "cache_sparse", "hetero",
                              "temporal_thresh", "uniform_grid", "contiguous_block",
-                             "teacache"],
+                             "teacache", "blockcache"],
                     required=True)
     ap.add_argument("--selector", default="mask",
                     choices=list(PRESETS) + ["random", "oracle"])
@@ -431,6 +454,11 @@ def main():
     ap.add_argument("--teacache-rel-l1", type=float, default=0.4,
                     help="faithful TeaCache: accumulated rescaled rel-L1 임계 "
                          "(공식 운영점 0.25/0.4/0.6/0.8)")
+    ap.add_argument("--blockcache-policy", default="delta_threshold",
+                    choices=["delta_threshold", "fixed_period"])
+    ap.add_argument("--blockcache-thresh", type=float, default=0.05)
+    ap.add_argument("--blockcache-period", type=int, default=2)
+    ap.add_argument("--blockcache-mask-aware", action="store_true")
     ap.add_argument("--ratio", type=float, default=0.3)
     ap.add_argument("--block", type=int, default=1,
                     help="structured selection window in tokens (Stage 7): 1, 2, 4")
@@ -532,6 +560,10 @@ def main():
                    adaptive_tail=a.adaptive_tail,
                    teacache_thresh=a.teacache_thresh,
                    teacache_rel_l1=a.teacache_rel_l1,
+                   blockcache_policy=a.blockcache_policy,
+                   blockcache_thresh=a.blockcache_thresh,
+                   blockcache_period=a.blockcache_period,
+                   blockcache_mask_aware=a.blockcache_mask_aware,
                    sample_seed_offset=(s["latent_seed"] + a.seed_offset) * 131 + i,
                    dump_selection=(sel_dump := [] if a.dump_selection else None),
                    draft=draft, log=log)

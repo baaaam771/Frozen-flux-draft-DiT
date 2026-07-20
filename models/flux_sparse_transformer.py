@@ -582,6 +582,101 @@ class FluxSparseRunner:
         return v, should_calc
 
     @torch.no_grad()
+    def blockcache_forward(
+        self,
+        packed_model_input: torch.Tensor,
+        prompt_embeds: torch.Tensor,
+        pooled: torch.Tensor,
+        timestep: torch.Tensor,
+        guidance: torch.Tensor | None,
+        img_ids: torch.Tensor,
+        txt_ids: torch.Tensor,
+        bc: dict,
+    ):
+        """Mechanism-matched block-level temporal caching baseline
+        (block-caching / FORA-style), 종합평가2 §2.1–2.2. 각 블록의 image-측
+        residual을 이전 스텝에서 재사용한다.
+
+        정책 (bc["policy"]):
+          "delta_threshold": 블록 입력의 rel-L1 변화 < bc["thresh"]면 그
+              블록의 이전 residual 재사용 (block-caching 계열).
+          "fixed_period": bc["period"] 스텝마다 전체 계산, 그 외 스텝은 모든
+              블록 residual 재사용 (FORA 계열).
+        bc["mask_weight"]: [B, N] (0/1) 주어지면 rel-L1을 mask 토큰에서만
+              계산 (mask-aware variant). None이면 global.
+        첫 스텝(bc["cnt"]==0)과 마지막 스텝은 항상 전체 계산.
+        상태: prev_in/prev_res (블록별 리스트, dual는 (ctx,x) 튜플 저장).
+        Returns (v, n_blocks_computed).
+        """
+        x, ctx, temb, cos, sin = self._embed(
+            packed_model_input, prompt_embeds, pooled, timestep, guidance,
+            img_ids, txt_ids)
+        T = ctx.shape[1]
+        n_dual = len(self.t.transformer_blocks)
+        n_single = len(self.t.single_transformer_blocks)
+        n_blocks = n_dual + n_single
+        first = bc["cnt"] == 0
+        last = bc["cnt"] == bc["num_steps"] - 1
+        force = first or last
+        if bc["policy"] == "fixed_period" and not force:
+            force_skip_all = (bc["cnt"] % max(bc.get("period", 2), 1)) != 0
+        else:
+            force_skip_all = False
+        if first:
+            bc["prev_in"] = [None] * n_blocks
+            bc["prev_res"] = [None] * n_blocks
+        mw = bc.get("mask_weight")                 # [B, N] or None
+
+        def _rel(cur, prev):
+            d = (cur - prev).abs()
+            p = prev.abs()
+            if mw is not None:
+                m = mw.unsqueeze(-1)
+                return ((d * m).sum() / (p * m).sum().clamp_min(1e-6)).item()
+            return (d.mean() / p.mean().clamp_min(1e-6)).item()
+
+        computed = 0
+        for j, blk in enumerate(self.t.transformer_blocks):
+            reuse = False
+            if not force and bc["prev_in"][j] is not None:
+                if force_skip_all or (
+                        bc["policy"] == "delta_threshold"
+                        and _rel(x, bc["prev_in"][j]) < bc["thresh"]):
+                    reuse = True
+            if reuse:
+                ctx = ctx + bc["prev_res"][j][0]
+                x = x + bc["prev_res"][j][1]
+            else:
+                bc["prev_in"][j] = x.detach()
+                ci, xi = ctx, x
+                ctx, x = _dual_block_dense(blk, x, ctx, temb, cos, sin)
+                bc["prev_res"][j] = (
+                    (ctx - ci).detach(), (x - xi).detach())
+                computed += 1
+        cat = torch.cat([ctx, x], dim=1)
+        for i, blk in enumerate(self.t.single_transformer_blocks):
+            j = n_dual + i
+            reuse = False
+            if not force and bc["prev_in"][j] is not None:
+                if force_skip_all or (
+                        bc["policy"] == "delta_threshold"
+                        and _rel(cat[:, T:], bc["prev_in"][j]) < bc["thresh"]):
+                    reuse = True
+            if reuse:
+                cat = cat + bc["prev_res"][j]
+            else:
+                bc["prev_in"][j] = cat[:, T:].detach()
+                ci = cat
+                cat = _single_block_dense(blk, cat, temb, cos, sin)
+                bc["prev_res"][j] = (cat - ci).detach()
+                computed += 1
+        bc["cnt"] += 1
+        if bc["cnt"] == bc["num_steps"]:
+            bc["cnt"] = 0
+        v = self._final(cat[:, T:], temb)
+        return v, computed
+
+    @torch.no_grad()
     def sparse_forward(
         self,
         packed_model_input: torch.Tensor,

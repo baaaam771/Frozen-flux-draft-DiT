@@ -5,7 +5,7 @@
 (seam까지 보이도록) — --raw로 raw 출력 전환.
 
     python figures/make_fig4_qualitative.py \
-        --seed-dir /mnt/HDD_12TB/bam_ki/flux_fill/out_final/seed0 \
+        --seed-dir /path/to/results/out_final/seed0 \
         --manifest data/coco_manifest_1024.json \
         --methods dense_s20 reuse_c2_t4 mbd_c2_r03_t4_dualkv mbd_draft_c2_r03_t4_dualkv \
         --indices 0 3 7 12 --out fig4_qual.png
@@ -69,10 +69,16 @@ def main():
     except OSError:
         font = fsmall = ImageFont.load_default()
 
+    # 열 라벨: 내부 태그 -> 논문 명칭 (리뷰 지적: mbd_draft는 미정의 태그)
+    PRETTY = {"dense": "dense", "reuse": "reuse",
+              "mbd": "mbd", "mbd_draft": "mbd + learned router"}
     for j, cname in enumerate(cols):
         label = cname
         if cname in meta:
-            label = f"{cname.split('_c')[0]}  ({meta[cname][0]:.1f}s)"
+            stem = cname.split("_c")[0]
+            label = f"{PRETTY.get(stem, stem)}  ({meta[cname][0]:.1f}s)"
+        elif cname.startswith("dense_s"):
+            label = f"dense-{cname.split('_s')[1]}"
         draw.text((j * C + 6, 6), label, fill="black", font=font)
 
     for i, idx in enumerate(a.indices):

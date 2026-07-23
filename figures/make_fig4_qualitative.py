@@ -72,13 +72,15 @@ def main():
     # 열 라벨: 내부 태그 -> 논문 명칭 (리뷰 지적: mbd_draft는 미정의 태그)
     PRETTY = {"dense": "dense", "reuse": "reuse",
               "mbd": "mbd", "mbd_draft": "mbd + learned router"}
+    def _pretty(name):
+        stem = name.split("_c")[0]
+        if stem.startswith("dense_s"):                 # dense_s20 -> dense-20
+            return f"dense-{stem.split('_s')[1]}"
+        return PRETTY.get(stem, stem)
+
     for j, cname in enumerate(cols):
-        label = cname
-        if cname in meta:
-            stem = cname.split("_c")[0]
-            label = f"{PRETTY.get(stem, stem)}  ({meta[cname][0]:.1f}s)"
-        elif cname.startswith("dense_s"):
-            label = f"dense-{cname.split('_s')[1]}"
+        label = _pretty(cname) if cname not in meta else \
+            f"{_pretty(cname)}  ({meta[cname][0]:.1f}s)"
         draw.text((j * C + 6, 6), label, fill="black", font=font)
 
     for i, idx in enumerate(a.indices):
